@@ -1,14 +1,9 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:cs_compas/pages/check_format.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-//import 'package:flutter/services.dart';
-
-//import 'package:student_ccs/user_auth/firesbase_auth/firebase_auth_services.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -20,11 +15,12 @@ class _LoginState extends State<Login> {
   final storage = const FlutterSecureStorage();
 
   Future<void> _saveEmail(String email) async {
-    await storage.write(key: "email", value: email);
+    await storage.write(key: "email", value: email); //saves the inputed email
   }
 
   Future<void> _saveID(String idnumber) async {
-    await storage.write(key: "idnumber", value: idnumber);
+    await storage.write(
+        key: "idnumber", value: idnumber); //saves the inputed ID number
   }
 
   final TextEditingController _emailCPUcontroller = TextEditingController();
@@ -101,6 +97,8 @@ class _LoginState extends State<Login> {
                   height: 48,
                   child: ElevatedButton(
                       onPressed: () async {
+                        //login is pressed, and 2 types of validations is executed an empty check and a regex, we're also pushing the saved email and id number
+
                         final isValidEmail =
                             validateEmailAddress(_emailCPUcontroller.text);
                         final isvalidID =
