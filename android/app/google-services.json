@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "200849814262",
+    "project_id": "compas-cs",
+    "storage_bucket": "compas-cs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200849814262:android:e0296ce0941ea3d3bf72d7",
+        "android_client_info": {
+          "package_name": "com.example.cs_compas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhr1mmSYYElhiZvOvlnufXVA7sWvdwF3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
