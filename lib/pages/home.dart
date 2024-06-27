@@ -2,7 +2,7 @@
 
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cs_compas/pages/notif.dart';
+import 'package:cs_compas/pages/message.dart';
 import 'package:cs_compas/pages/calendar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             Calendar(),
-            Notifications()
+            MessagePopUP()
           ],
         ),
       ),
