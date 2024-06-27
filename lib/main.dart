@@ -8,19 +8,31 @@ import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
+final navigatorkey = GlobalKey<NavigatorState>();
+
 Future main() async {
+  String? screen;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  OneSignal.Debug.setLogLevel(
-      OSLogLevel.verbose); // Enable verbose logging for debugging (optional)
+  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
   OneSignal.Notifications.requestPermission(true);
+
+  OneSignal.Notifications.addClickListener((event) {
+    final data = event.notification.additionalData;
+    screen = data?["screen"];
+    if (screen != null) {
+      navigatorkey.currentState?.pushNamed(screen!);
+    }
+  });
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/notification',
+      navigatorKey: navigatorkey,
       routes: {
         '/': (context) => const CheckUser(),
         '/signup': (context) => const Signup(),
