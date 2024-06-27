@@ -1,29 +1,35 @@
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:cs_compas/firebase_options.dart';
+import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  OneSignal.Debug.setLogLevel(
+      OSLogLevel.verbose); // Enable verbose logging for debugging (optional)
+  OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
+  OneSignal.Notifications.requestPermission(true);
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/notification',
       routes: {
-        '/': (context) => CheckUser(),
-        '/signup': (context) => Signup(),
-        '/login': (context) => Login(),
+        '/': (context) => const CheckUser(),
+        '/signup': (context) => const Signup(),
+        '/login': (context) => const Login(),
         '/home': (context) => const Home(
-              email:
-                  'hey this is one of the creators vince, if you managed to see this CONGRATULATIONS!!',
-              idnumber: 'thats it thats the easter egg',
+              email: '',
+              idnumber: '',
             ),
+        '/notification': (context) => const Notifications(),
       },
     ),
   );
@@ -52,7 +58,7 @@ class _CheckUserState extends State<CheckUser> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),
