@@ -36,7 +36,7 @@ Future main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/notification',
+      initialRoute: '/',
       navigatorKey: navigatorkey,
       routes: {
         '/': (context) => const CheckUser(),
