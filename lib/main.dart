@@ -11,7 +11,6 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 final navigatorkey = GlobalKey<NavigatorState>();
 
 Future main() async {
-  String? screen;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -22,9 +21,15 @@ Future main() async {
 
   OneSignal.Notifications.addClickListener((event) {
     final data = event.notification.additionalData;
-    screen = data?["screen"];
+    final String? screen = data?["screen"];
+    final String? notificationTitle = event.notification.title;
+    final String? notificationBody = event.notification.body;
+
     if (screen != null) {
-      navigatorkey.currentState?.pushNamed(screen!);
+      navigatorkey.currentState?.pushNamed(screen, arguments: {
+        'title': notificationTitle,
+        'body': notificationBody,
+      });
     }
   });
 
