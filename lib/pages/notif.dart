@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -8,65 +9,61 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-  String? notificationTitle;
-  String? notificationBody;
+  List<String> notifications = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchNotifications();
+  }
+
+  Future<void> _fetchNotifications() async {
+    final prefs = await SharedPreferences.getInstance();
+    notifications = prefs.getStringList("notifications") ?? [];
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        // Ensures vertical layout
+        mainAxisAlignment: MainAxisAlignment.end, // Aligns content to bottom
         children: [
+          // Home button row
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/home");
-                  },
-                  label: Icon(Icons.home))
-            ],
-          ),
-          Row(
-            children: [
-              FutureBuilder(
-                future: _getNotificationData(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final data = snapshot.data as Map<String, String>;
-                    return Column(
-                      children: [
-                        if (data['title'] != null) Text(data['title']!),
-                        if (data['body'] != null) Text(data['body']!),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                },
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, "/home"),
+                label: const Icon(Icons.home),
               ),
             ],
           ),
+
+          // Notification list (conditionally displayed)
+          if (notifications.isNotEmpty)
+            Flexible(
+              // Controls list height within available space
+              child: ListView.builder(
+                itemCount: notifications.length,
+                itemBuilder: (context, index) {
+                  final notification = notifications[index];
+                  return ListTile(
+                    title: Text(notification.split('-')[0].trim()),
+                    subtitle: Text(notification.split('-')[1].trim()),
+                  );
+                },
+              ),
+            ),
+
+          // "No notifications yet" message (displayed if empty)
+          if (notifications.isEmpty)
+            const Center(child: Text("No notifications yet")),
         ],
       ),
     );
-  }
-
-  Future<Map<String, String>> _getNotificationData() async {
-    final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
-    if (arguments != null &&
-        arguments.containsKey('title') &&
-        arguments.containsKey('body')) {
-      notificationTitle = arguments['title'] as String?;
-      notificationBody = arguments['body'] as String?;
-      return {
-        'title': notificationTitle ?? '',
-        'body': notificationBody ?? '',
-      };
-    } else {
-      return {};
-    }
   }
 }

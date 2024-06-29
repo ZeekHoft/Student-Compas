@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final navigatorkey = GlobalKey<NavigatorState>();
 
@@ -15,6 +16,14 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Future<void> _storeNotification(String title, String body) async {
+    final prefs = await SharedPreferences.getInstance();
+    final notifications = prefs.getStringList('notifications') ?? [];
+    notifications.add('$title - $body');
+    await prefs.setStringList("notifications", notifications);
+  }
+
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
   OneSignal.Notifications.requestPermission(true);
@@ -31,6 +40,7 @@ Future main() async {
         'body': notificationBody,
       });
     }
+    _storeNotification(notificationTitle ?? '', notificationBody ?? '');
   });
 
   runApp(

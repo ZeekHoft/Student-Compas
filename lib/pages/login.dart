@@ -166,7 +166,7 @@ class _LoginState extends State<Login> {
 
   void styleSnackBar(BuildContext context) {
     const snackBar = SnackBar(
-      content: Text("Account Created You Can Now Log In!!"),
+      content: Text("You are now logged in to CS compass"),
       backgroundColor: Colors.amber,
       behavior: SnackBarBehavior.floating,
     );
