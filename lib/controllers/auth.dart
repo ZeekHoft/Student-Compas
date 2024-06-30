@@ -8,10 +8,8 @@ class AuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return "Account Created";
     } on FirebaseAuthException catch (e) {
-      print("Firebase Auth Error: ${e.message}");
       return e.message.toString();
     } catch (e) {
-      print("Unexpected Error: ${e.toString()}");
       return e.toString();
     }
   }
@@ -22,12 +20,10 @@ class AuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       return "Login Successful";
     } on FirebaseAuthException catch (e) {
-      print(
-          "Firebase Auth Error: ${e.message}"); // Print the entire error object
+      // Print the entire error object
       return e.message!; // Return the specific error message
     } catch (e) {
-      print(
-          "Unexpected Error: ${e.toString()}"); // Print the entire error object
+      // Print the entire error object
       return "Login failed. Please try again."; // Generic error message
     }
   }

@@ -17,7 +17,7 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  Future<void> _storeNotification(String title, String body) async {
+  Future<void> storeNotification(String title, String body) async {
     final prefs = await SharedPreferences.getInstance();
     final notifications = prefs.getStringList('notifications') ?? [];
     notifications.add('$title - $body');
@@ -40,7 +40,7 @@ Future main() async {
         'body': notificationBody,
       });
     }
-    _storeNotification(notificationTitle ?? '', notificationBody ?? '');
+    storeNotification(notificationTitle ?? '', notificationBody ?? '');
   });
 
   runApp(

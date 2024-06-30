@@ -123,10 +123,9 @@ class _LoginState extends State<Login> {
                                 ),
                               );
                             } else {
-                              print(ScaffoldMessenger.of(context).showSnackBar(
+                              ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content:
-                                          Text("Login up Error: $value"))));
+                                      content: Text("Login up Error: $value")));
                             }
                           });
                         } else {
