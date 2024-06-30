@@ -1,4 +1,3 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/check_format.dart';
@@ -99,7 +98,7 @@ class _SignupState extends State<Signup> {
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   '/login', (Route<dynamic> route) => false);
                             } else {
-                              print(ScaffoldMessenger.of(context).showSnackBar(
+                              (ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text("Sign up Error: $value"))));
                             }

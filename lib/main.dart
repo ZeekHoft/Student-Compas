@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final navigatorkey = GlobalKey<NavigatorState>();
 
@@ -17,13 +16,6 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  Future<void> _storeNotification(String title, String body) async {
-    final prefs = await SharedPreferences.getInstance();
-    final notifications = prefs.getStringList('notifications') ?? [];
-    notifications.add('$title - $body');
-    await prefs.setStringList("notifications", notifications);
-  }
-
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
   OneSignal.Notifications.requestPermission(true);
@@ -31,16 +23,10 @@ Future main() async {
   OneSignal.Notifications.addClickListener((event) {
     final data = event.notification.additionalData;
     final String? screen = data?["screen"];
-    final String? notificationTitle = event.notification.title;
-    final String? notificationBody = event.notification.body;
 
     if (screen != null) {
-      navigatorkey.currentState?.pushNamed(screen, arguments: {
-        'title': notificationTitle,
-        'body': notificationBody,
-      });
+      navigatorkey.currentState?.pushNamed(screen);
     }
-    _storeNotification(notificationTitle ?? '', notificationBody ?? '');
   });
 
   runApp(
