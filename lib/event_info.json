@@ -21,6 +21,16 @@
             "sender": [
                 "support"
             ]
+        },
+        {
+            "id": "session3",
+            "color": "#00ff00",
+            "title": "hellllooooo frommmm meee",
+            "dateTimeFrom": "2024-07-02T14:00:00Z",
+            "dateTimeTo": "2024-07-02T15:00:00Z",
+            "sender": [
+                "DEVELOPER VINCE HEHEHEHE"
+            ]
         }
     ]
 }
