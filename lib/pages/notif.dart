@@ -60,6 +60,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => _syncData(),
+          heroTag: "button announcement",
           tooltip: 'Sync',
           child: const Icon(Icons.sync)),
     );

@@ -1,0 +1,18 @@
+{
+    "event": "Important Events",
+    "dateStart": "2024-07-01",
+    "sessions": [
+        {
+            "dateStart": "2024-07-01",
+            "event": "session1"
+        },
+        {
+            "dateStart": "2024-07-01",
+            "event": "session1"
+        },
+        {
+            "dateStart": "2024-07-01",
+            "event": "session1"
+        }
+    ]
+}
