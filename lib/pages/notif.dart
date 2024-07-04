@@ -1,9 +1,10 @@
 import 'package:cs_compas/anouncement_controllers/announcement_entity.dart';
 import 'package:cs_compas/anouncement_controllers/util.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart'; // Import here
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-final remote_user_data_key = "announcements";
+const remote_user_data_key = "announcements";
 
 class DataValueNotifier extends ValueNotifier<Announcement?> {
   DataValueNotifier() : super(null);
@@ -21,21 +22,20 @@ class _NotificationsState extends State<Notifications> {
   final dataNotifier = DataValueNotifier();
   final util = Util();
 
-  @override
+  @override //Fetches the announcement
   void initState() {
     super.initState();
-    () async {
-      await remoteConfig.setConfigSettings(RemoteConfigSettings(
-        fetchTimeout: const Duration(seconds: 10),
-        minimumFetchInterval: const Duration(hours: 1),
-      ));
-    }();
+    remoteConfig.fetchAndActivate().then((_) {
+      _syncData();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, //disables back button
+
         title: const Text("Announcements:"),
       ),
       body: ValueListenableBuilder(
@@ -50,10 +50,9 @@ class _NotificationsState extends State<Notifications> {
               final session = value.sessions[index];
               return ListTile(
                 title: Text(session.title),
-                subtitle: Text(
-                    '${session.dateTimeFrom.toString()} - ${session.dateTimeTo.toString()}'),
+                subtitle: Text(session.body.toString()),
                 trailing: Text(
-                    session.sender.join(', ')), // Join sender names with comma
+                    "${session.sender.join(', ')}:\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}"), // Join sender names with comma
               );
             },
           );
@@ -79,7 +78,9 @@ class _NotificationsState extends State<Notifications> {
       dataNotifier.value = await util.parseJsonConfig(rs);
       Navigator.pop(context); // hide loading
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -93,7 +94,7 @@ class _NotificationsState extends State<Notifications> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(),
-              const SizedBox(height: 8.0),
+              SizedBox(height: 8.0),
               Text('Loading...')
             ],
           ),

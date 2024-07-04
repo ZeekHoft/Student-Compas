@@ -23,7 +23,7 @@ class Announcement {
 
   get dateTimeFrom => null;
 
-  get dateTimeTo => null;
+  get body => null;
 
   get sender => null;
 }
@@ -33,7 +33,7 @@ class Session {
   final String color;
   final String title;
   final DateTime dateTimeFrom;
-  final DateTime dateTimeTo;
+  final String body;
   final List<String> sender;
 
   Session({
@@ -41,7 +41,7 @@ class Session {
     required this.color,
     required this.title,
     required this.dateTimeFrom,
-    required this.dateTimeTo,
+    required this.body,
     required this.sender,
   });
 
@@ -50,7 +50,7 @@ class Session {
         color: json['color'] as String,
         title: json['title'] as String,
         dateTimeFrom: DateTime.parse(json['dateTimeFrom'] as String),
-        dateTimeTo: DateTime.parse(json['dateTimeTo'] as String),
+        body: json['body'] as String,
         sender: (json['sender'] as List).map((s) => s as String).toList(),
       );
 }

@@ -1,13 +1,13 @@
 {
     "title": "Important Update",
-    "startsAt": "2024-07-01T10:00:00Z",
+    "startsAt": "2024-07-01",
     "sessions": [
         {
             "id": "session1",
             "color": "#ff0000",
             "title": "Session 1: New Feature Overview",
+            "body": "2024-07-01T12:00:00Z",
             "dateTimeFrom": "2024-07-01T11:00:00Z",
-            "dateTimeTo": "2024-07-01T12:00:00Z",
             "sender": [
                 "admin"
             ]
@@ -16,8 +16,8 @@
             "id": "session2",
             "color": "#00ff00",
             "title": "Session 2: Q&A with Developers",
+            "body": "2024-07-02T15:00:00Z",
             "dateTimeFrom": "2024-07-02T14:00:00Z",
-            "dateTimeTo": "2024-07-02T15:00:00Z",
             "sender": [
                 "support"
             ]
@@ -26,10 +26,10 @@
             "id": "session3",
             "color": "#00ff00",
             "title": "hellllooooo frommmm meee",
+            "body": "Hellloooo this is the body",
             "dateTimeFrom": "2024-07-02T14:00:00Z",
-            "dateTimeTo": "2024-07-02T15:00:00Z",
             "sender": [
-                "DEVELOPER VINCE HEHEHEHE"
+                "DEVELOPER"
             ]
         }
     ]
