@@ -6,7 +6,7 @@
             "id": "session1",
             "color": "#ff0000",
             "title": "Session 1: New Feature Overview",
-            "body": "2024-07-01T12:00:00Z",
+            "body": "Gear up, CPU Freshmen! We're roaring with excitement to welcome you to the #CPULife! Get ready to unleash your inner scholar, unleash your potential, and become a true Centralian. From top-notch academics to vibrant campus life, CPU offers everything you need to make memories that last a lifetime.",
             "dateTimeFrom": "2024-07-01T11:00:00Z",
             "sender": [
                 "admin"
@@ -16,7 +16,7 @@
             "id": "session2",
             "color": "#00ff00",
             "title": "Session 2: Q&A with Developers",
-            "body": "2024-07-02T15:00:00Z",
+            "body": "Welcom to CPU",
             "dateTimeFrom": "2024-07-02T14:00:00Z",
             "sender": [
                 "support"

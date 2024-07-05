@@ -1,10 +1,11 @@
 import 'package:cs_compas/calendar_controller/calendar_entity.dart';
 import 'package:cs_compas/calendar_controller/util_calendar.dart';
+import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const remote_calendar_data_key = "events";
+const remoteCalendarKey = "events";
 
 class ValueDateNotifier extends ValueNotifier<CalendarEvents?> {
   ValueDateNotifier() : super(null);
@@ -20,13 +21,14 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   final remoteConfig = FirebaseRemoteConfig.instance;
   final notifierData = ValueDateNotifier();
-  final util = UtilCalendar();
+  final utilCalendar = UtilCalendar();
 
   @override
   void initState() {
     super.initState();
-    remoteConfig.fetchAndActivate().then((_) {
-      _syncDataCalendar();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await LoadNotifCalendar().fetchDataAsync();
+      notifierData.value = LoadNotifCalendar().calendarEvents;
     });
   }
 
@@ -45,8 +47,8 @@ class _CalendarState extends State<Calendar> {
           }
           return ListView.builder(
             itemCount: value.sessions.length,
-            itemBuilder: (context, Index) {
-              final session = value.sessions[Index];
+            itemBuilder: (context, index) {
+              final session = value.sessions[index];
               return ListTile(
                 title: Text(session.dateStart.toString()),
                 subtitle: Text(session.event.toString()),
@@ -72,8 +74,8 @@ class _CalendarState extends State<Calendar> {
         minimumFetchInterval: Duration.zero, // Force fetch on every call
       ));
       await remoteConfig.fetchAndActivate();
-      final rs = remoteConfig.getString(remote_calendar_data_key);
-      notifierData.value = await util.parseJsonConfig(rs);
+      final rs = remoteConfig.getString(remoteCalendarKey);
+      notifierData.value = await utilCalendar.parseJsonConfig(rs);
       Navigator.pop(context); // hide loading
     } catch (e) {
       if (kDebugMode) {

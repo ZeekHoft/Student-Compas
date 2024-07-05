@@ -1,10 +1,11 @@
 import 'package:cs_compas/anouncement_controllers/announcement_entity.dart';
 import 'package:cs_compas/anouncement_controllers/util.dart';
+import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const remote_user_data_key = "announcements";
+const remoteUserDataKey = "announcements";
 
 class DataValueNotifier extends ValueNotifier<Announcement?> {
   DataValueNotifier() : super(null);
@@ -20,13 +21,15 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   final remoteConfig = FirebaseRemoteConfig.instance;
   final dataNotifier = DataValueNotifier();
+
   final util = Util();
 
-  @override //Fetches the announcement
+  @override
   void initState() {
     super.initState();
-    remoteConfig.fetchAndActivate().then((_) {
-      _syncData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await LoadNotifCalendar().fetchDataAsync();
+      dataNotifier.value = LoadNotifCalendar().announcement;
     });
   }
 
@@ -75,7 +78,7 @@ class _NotificationsState extends State<Notifications> {
         minimumFetchInterval: Duration.zero, // Force fetch on every call
       ));
       await remoteConfig.fetchAndActivate();
-      final rs = remoteConfig.getString(remote_user_data_key);
+      final rs = remoteConfig.getString(remoteUserDataKey);
       dataNotifier.value = await util.parseJsonConfig(rs);
       Navigator.pop(context); // hide loading
     } catch (e) {
