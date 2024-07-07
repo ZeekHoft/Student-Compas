@@ -50,7 +50,8 @@ class _CalendarState extends State<Calendar> {
             itemBuilder: (context, index) {
               final session = value.sessions[index];
               return ListTile(
-                title: Text(session.dateStart.toString()),
+                title: Text(
+                    "${session.dateStart.year.toString()}/${session.dateStart.month.toString()}/${session.dateStart.day.toString()}"),
                 subtitle: Text(session.event.toString()),
               );
             },

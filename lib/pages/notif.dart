@@ -51,11 +51,48 @@ class _NotificationsState extends State<Notifications> {
             itemCount: value.sessions.length,
             itemBuilder: (context, index) {
               final session = value.sessions[index];
-              return ListTile(
-                title: Text(session.title),
-                subtitle: Text(session.body.toString()),
-                trailing: Text(
-                    "${session.sender.join(', ')}:\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}"), // Join sender names with comma
+              return Card(
+                color: Colors.blue[800],
+                child: ExpansionTile(
+                  backgroundColor: Colors.blue[50],
+                  title: Text(
+                    "${session.title} ",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+
+                  children: [
+                    //collapsable announcements
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                      child: Text(
+                        session.body.toString(),
+                        style: TextStyle(color: Colors.grey[800]),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "\nSender: ${session.sender.join(', ')} • ",
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                  // Join sender names with comma
+                ),
               );
             },
           );

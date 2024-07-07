@@ -55,7 +55,6 @@ class _HomeState extends State<Home> {
           IconButton(
               onPressed: () async {
                 Navigator.pushReplacementNamed(context, "/login");
-
                 await AuthService.logout();
               },
               icon: Icon(Icons.logout))
