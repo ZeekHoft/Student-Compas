@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cs_compas/controllers/auth.dart';
+import 'package:cs_compas/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/calendar.dart';
@@ -22,10 +21,10 @@ class Home extends StatefulWidget {
 int currentIndex = 0;
 
 class _HomeState extends State<Home> {
-  String email = "";
-  String idnumber = "";
+  String email = "Easter egg AHAHHAHAH";
+  String idnumber = "naka login kw nga wla ka register? nays ya";
 
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   Future<void> _getEmail() async {
     email = await storage.read(key: "email") ?? "";
@@ -51,27 +50,26 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         automaticallyImplyLeading: false, //disables back button
         backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-              onPressed: () async {
-                Navigator.pushReplacementNamed(context, "/login");
-                await AuthService.logout();
-              },
-              icon: Icon(Icons.logout))
-        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.amber,
-        unselectedItemColor: Color.fromARGB(255, 1, 8, 104),
+        unselectedItemColor: const Color.fromARGB(255, 1, 8, 104),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month), label: "Calendar"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notification_add), label: "Announcements"),
+              icon: Icon(Icons.announcement), label: "Announcements"),
+          BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
         ],
         currentIndex: currentIndex,
-        onTap: (index) => setState(() => currentIndex = index),
+        onTap: (index) async {
+          if (index == 3) {
+            _alertDialog(context);
+          } else {
+            setState(() => currentIndex = index);
+          }
+        },
       ),
       backgroundColor: Colors.red,
       body: SafeArea(
@@ -81,36 +79,64 @@ class _HomeState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(email, style: TextStyle(color: Colors.white)),
+                      padding: const EdgeInsets.all(20),
+                      child: Text(email,
+                          style: const TextStyle(color: Colors.white)),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(20),
-                      child:
-                          Text(idnumber, style: TextStyle(color: Colors.white)),
+                      padding: const EdgeInsets.all(20),
+                      child: Text(idnumber,
+                          style: const TextStyle(color: Colors.white)),
                     ),
                   ],
                 ),
               ],
             ),
-            Calendar(),
-            Notifications()
+            const Calendar(),
+            const Notifications(),
+            const Login()
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _alertDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Log out of CS Compass?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.pushReplacementNamed(context, "/login");
+                await AuthService.logout();
+              },
+              child: const Text("Confirm"),
+            )
+          ],
+        );
+      },
     );
   }
 }
