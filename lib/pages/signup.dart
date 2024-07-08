@@ -10,6 +10,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  bool passwordVisible = false;
   final TextEditingController _emailCPUcontroller = TextEditingController();
   final TextEditingController _idnumberCPUcontroller = TextEditingController();
 
@@ -56,13 +57,26 @@ class _SignupState extends State<Signup> {
                 const SizedBox(
                   height: 10.0,
                 ),
+
+                //password
                 TextFormField(
+                    obscureText: passwordVisible,
                     inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     controller: _idnumberCPUcontroller,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text("ID"),
-                        hintText: "Enter Student Number ID"),
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      label: const Text("ID"),
+                      hintText: "Enter Student Number ID",
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              passwordVisible = !passwordVisible;
+                            });
+                          },
+                          icon: Icon(passwordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility)),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Please enter Your ID number";
@@ -79,6 +93,7 @@ class _SignupState extends State<Signup> {
                 const SizedBox(
                   height: 10.0,
                 ),
+
                 SizedBox(
                   width: double.infinity,
                   height: 48,
