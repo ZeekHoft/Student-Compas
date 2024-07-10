@@ -47,19 +47,26 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, //disables back button
-        backgroundColor: Colors.white,
-      ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
         selectedItemColor: Colors.amber,
-        unselectedItemColor: const Color.fromARGB(255, 1, 8, 104),
+        unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: "Calendar"),
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.black,
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.announcement), label: "Announcements"),
+            icon: Icon(Icons.timeline),
+            label: "Timeline",
+            backgroundColor: Colors.black,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.announcement),
+            label: "Announcements",
+            backgroundColor: Colors.black,
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
         ],
         currentIndex: currentIndex,
@@ -71,44 +78,52 @@ class _HomeState extends State<Home> {
           }
         },
       ),
-      backgroundColor: Colors.red,
-      body: SafeArea(
-        child: IndexedStack(
-          index: currentIndex,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(email,
-                          style: const TextStyle(color: Colors.white)),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(idnumber,
-                          style: const TextStyle(color: Colors.white)),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const Calendar(),
-            const Notifications(),
-            const Login()
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.white, Colors.white])),
+        child: SafeArea(
+          child: IndexedStack(
+            index: currentIndex,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(email,
+                            style: const TextStyle(
+                                color: Colors.amber, fontSize: 20.0)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(idnumber,
+                            style: const TextStyle(
+                                color: Colors.amber, fontSize: 20.0)),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const Calendar(),
+              const Notifications(),
+              const Login()
+            ],
+          ),
         ),
       ),
     );
@@ -119,20 +134,29 @@ class _HomeState extends State<Home> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Log out of CS Compass?"),
+          title: const Text(
+            "Log out of CS Compass?",
+            style: TextStyle(color: Colors.black),
+          ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("Cancel"),
+              child: const Text(
+                "Cancel",
+                style: TextStyle(color: Colors.amber),
+              ),
             ),
             TextButton(
               onPressed: () async {
                 Navigator.pushReplacementNamed(context, "/login");
                 await AuthService.logout();
               },
-              child: const Text("Confirm"),
+              child: const Text(
+                "Confirm",
+                style: TextStyle(color: Colors.amber),
+              ),
             )
           ],
         );

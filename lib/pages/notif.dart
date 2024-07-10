@@ -36,73 +36,95 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, //disables back button
-
-        title: const Text("Announcements:"),
-      ),
-      body: ValueListenableBuilder(
-        valueListenable: dataNotifier,
-        builder: (context, Announcement? value, child) {
-          if (value == null) {
-            return const Center(child: Text('No announcements found'));
-          }
-          return ListView.builder(
-            itemCount: value.sessions.length,
-            itemBuilder: (context, index) {
-              final session = value.sessions[index];
-              return Card(
-                color: Colors.blue[800],
-                child: ExpansionTile(
-                  backgroundColor: Colors.blue[50],
-                  title: Text(
-                    "${session.title} ",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-
-                  children: [
-                    //collapsable announcements
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-                      child: Text(
-                        session.body.toString(),
-                        style: TextStyle(color: Colors.grey[800]),
-                        textAlign: TextAlign.justify,
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.white, Colors.white])),
+        child: ValueListenableBuilder(
+          valueListenable: dataNotifier,
+          builder: (context, Announcement? value, child) {
+            if (value == null) {
+              return const Center(child: Text('No announcements found'));
+            }
+            return ListView.builder(
+              itemCount: value.sessions.length,
+              itemBuilder: (context, index) {
+                final session = value.sessions[index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    color: Colors.amber,
+                    child: ExpansionTile(
+                      backgroundColor: Colors.amber,
+                      title: Text(
+                        "${session.title} ",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "\nSender: ${session.sender.join(', ')} • ",
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
-                            textAlign: TextAlign.start,
+
+                      children: [
+                        //collapsable announcements
+                        //body
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                          child: Text(
+                            session.body.toString(),
                             style: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontStyle: FontStyle.italic),
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                        ],
-                      ),
+                        ),
+                        //Sender
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "\nSender: ${session.sender.join(', ')} • ",
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              //date
+                              Text(
+                                "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.italic),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      // Join sender names with comma
                     ),
-                  ],
-                  // Join sender names with comma
-                ),
-              );
-            },
-          );
-        },
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => _syncData(),
-          heroTag: "button announcement",
-          tooltip: 'Sync',
-          child: const Icon(Icons.sync)),
+        onPressed: () => _syncData(),
+        backgroundColor: Colors.black,
+        mini: true,
+        heroTag: "button announcement",
+        tooltip: 'Sync',
+        child: const Icon(
+          Icons.sync,
+          color: Colors.amber,
+        ),
+      ),
     );
   }
 
@@ -134,9 +156,13 @@ class _NotificationsState extends State<Notifications> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircularProgressIndicator(),
+              CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
               SizedBox(height: 8.0),
-              Text('Loading...')
+              Text(
+                'Loading...',
+                style: TextStyle(color: Colors.amber),
+              )
             ],
           ),
         );

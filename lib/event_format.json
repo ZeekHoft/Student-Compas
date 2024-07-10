@@ -4,15 +4,21 @@
     "sessions": [
         {
             "dateStart": "2024-07-01",
-            "event": "session1"
+            "event": "session 1",
+            "dayname": "Friday",
+            "monthname": "july"
         },
         {
             "dateStart": "2024-07-01",
-            "event": "session1"
+            "event": "session 2",
+            "dayname": "Friday",
+            "monthname": "july"
         },
         {
             "dateStart": "2024-07-01",
-            "event": "session1"
+            "event": "session 3",
+            "dayname": "Friday",
+            "monthname": "july"
         }
     ]
 }
