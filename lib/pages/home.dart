@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/calendar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   final String email, idnumber;
@@ -92,7 +93,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   Row(
                     children: [
@@ -104,9 +105,6 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
                   Row(
                     children: [
                       Padding(
@@ -117,11 +115,12 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
+                  const ActionButtons()
                 ],
               ),
               const Calendar(),
               const Notifications(),
-              const Login()
+              const Login(),
             ],
           ),
         ),
@@ -162,5 +161,48 @@ class _HomeState extends State<Home> {
         );
       },
     );
+  }
+}
+
+class ActionButtons extends StatelessWidget {
+  const ActionButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    return Container(
+      child: SizedBox(
+        height: screenHeight * 0.6,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  print("object");
+                },
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                  ),
+                  child: Image.asset('assets/image3.jpg'),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
