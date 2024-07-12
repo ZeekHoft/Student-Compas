@@ -1,6 +1,7 @@
 import 'package:cs_compas/controllers/auth.dart';
-import 'package:cs_compas/pages/check_format.dart';
+import 'package:cs_compas/controllers/check_format.dart';
 import 'package:cs_compas/pages/home.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -43,7 +44,7 @@ class _LoginState extends State<Login> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center, // Optional
                   children: [
-                    CpuLogo(),
+                    CpuLogo(), //stateless widget below for CPU
                   ],
                 ),
                 const Text(
@@ -126,42 +127,55 @@ class _LoginState extends State<Login> {
                             validateEmailAddress(_emailCPUcontroller.text);
                         final isvalidID =
                             validateIDNumber(_idnumberCPUcontroller.text);
-                        if (isValidEmail && isvalidID) {
-                          await AuthService.loginWithEmail(
-                                  _emailCPUcontroller.text,
-                                  _idnumberCPUcontroller.text)
-                              .then((value) {
-                            if (value == "Login Successful") {
-                              _saveEmail(_emailCPUcontroller.text);
-                              _saveID(_idnumberCPUcontroller.text);
-                              styleSnackBar(context);
+                        try {
+                          if (isValidEmail && isvalidID) {
+                            try {
+                              await AuthService.loginWithEmail(
+                                      _emailCPUcontroller.text,
+                                      _idnumberCPUcontroller.text)
+                                  .then((value) {
+                                if (value == "Login Successful") {
+                                  _saveEmail(_emailCPUcontroller.text);
+                                  _saveID(_idnumberCPUcontroller.text);
+                                  styleSnackBar(context);
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Home(
-                                    email: _emailCPUcontroller.text,
-                                    idnumber: _idnumberCPUcontroller.text,
-                                  ),
-                                ),
-                              );
-                            } else {
-                              (ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content:
-                                          Text("Login up Error: $value"))));
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Home(
+                                        email: _emailCPUcontroller.text,
+                                        idnumber: _idnumberCPUcontroller.text,
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  (ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content:
+                                              Text("Login up Error: $value"))));
+                                }
+                              });
+                            } catch (e) {
+                              if (kDebugMode) {
+                                print("AuthService Error in login.dart: $e");
+                              }
                             }
-                          });
-                        } else {
-                          String errorMessage = "";
-                          if (!isValidEmail) {
-                            errorMessage += "Invalid Email Address\n";
+                          } else {
+                            String errorMessage = "";
+                            if (!isValidEmail) {
+                              errorMessage += "Invalid Email Address\n";
+                            }
+                            if (!isvalidID) {
+                              errorMessage += "Invalid ID Number";
+                            }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(errorMessage)));
                           }
-                          if (!isvalidID) {
-                            errorMessage += "Invalid ID Number";
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(
+                                "Error within the validation in login.dart: $e");
                           }
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(errorMessage)));
                         }
                       },
                       child: const Text(

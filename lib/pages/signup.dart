@@ -1,7 +1,8 @@
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:cs_compas/pages/login.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:cs_compas/pages/check_format.dart';
+import 'package:cs_compas/controllers/check_format.dart';
 import 'package:flutter/services.dart';
 
 class Signup extends StatefulWidget {
@@ -112,31 +113,46 @@ class _SignupState extends State<Signup> {
                             validateEmailAddress(_emailCPUcontroller.text);
                         final isvalidID =
                             validateIDNumber(_idnumberCPUcontroller.text);
-                        if (isValidEmail && isvalidID) {
-                          await AuthService.createAccountWithEmail(
-                                  _emailCPUcontroller.text,
-                                  _idnumberCPUcontroller.text)
-                              .then((value) {
-                            if (value == "Account Created") {
-                              styleSnackBar(context);
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  '/login', (Route<dynamic> route) => false);
-                            } else {
-                              (ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content: Text("Sign up Error: $value"))));
+                        try {
+                          if (isValidEmail && isvalidID) {
+                            try {
+                              await AuthService.createAccountWithEmail(
+                                      _emailCPUcontroller.text,
+                                      _idnumberCPUcontroller.text)
+                                  .then((value) {
+                                if (value == "Account Created") {
+                                  styleSnackBar(context);
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/login',
+                                      (Route<dynamic> route) => false);
+                                } else {
+                                  (ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content:
+                                              Text("Sign up Error: $value"))));
+                                }
+                              });
+                            } catch (e) {
+                              if (kDebugMode) {
+                                print("AuthService Erron in singup.dart: $e");
+                              }
                             }
-                          });
-                        } else {
-                          String errorMessage = "";
-                          if (!isValidEmail) {
-                            errorMessage += "Invalid Email Address\n";
+                          } else {
+                            String errorMessage = "";
+                            if (!isValidEmail) {
+                              errorMessage += "Invalid Email Address\n";
+                            }
+                            if (!isvalidID) {
+                              errorMessage += "Invalid ID Number";
+                            }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(errorMessage)));
                           }
-                          if (!isvalidID) {
-                            errorMessage += "Invalid ID Number";
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(
+                                "Error withint the validation in signup.dart: $e");
                           }
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(errorMessage)));
                         }
                       },
                       child: const Text("Register Account",

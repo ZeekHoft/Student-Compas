@@ -3,6 +3,7 @@ import 'package:cs_compas/firebase_options.dart';
 import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
@@ -12,10 +13,15 @@ final navigatorkey = GlobalKey<NavigatorState>();
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    if (kDebugMode) {
+      print("error in firebase initialization in main.dart: $e");
+    }
+  }
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
   OneSignal.Notifications.requestPermission(true);

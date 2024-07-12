@@ -56,53 +56,59 @@ class _NotificationsState extends State<Notifications> {
                   margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: Card(
                     color: Colors.amber,
-                    child: ExpansionTile(
-                      backgroundColor: Colors.amber,
-                      title: Text(
-                        session.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-
-                      children: [
-                        //collapsable announcements
-                        //body
-                        Text(
-                          session.body.toString(),
+                    child: Container(
+                      decoration: templateContainer(),
+                      child: ExpansionTile(
+                        backgroundColor: Colors.amber,
+                        title: Text(
+                          session.title,
                           style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
-                          textAlign: TextAlign.justify,
                         ),
-                        //Sender
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                "\nSender: ${session.sender.join(', ')} • ",
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
+
+                        children: [
+                          //collapsable announcements
+                          //body
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              session.body.toString(),
+                              style: const TextStyle(
+                                color: Colors.black,
                               ),
-                              //date
-                              Text(
-                                "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.italic),
-                              ),
-                            ],
+                              textAlign: TextAlign.justify,
+                            ),
                           ),
-                        ),
-                      ],
-                      // Join sender names with comma
+                          //Sender
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "\nSender: ${session.sender.join(', ')} • ",
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                //date
+                                Text(
+                                  "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                        // Join sender names with comma
+                      ),
                     ),
                   ),
                 );
@@ -165,5 +171,12 @@ class _NotificationsState extends State<Notifications> {
         );
       },
     );
+  }
+
+  BoxDecoration templateContainer() {
+    return BoxDecoration(
+        color: Colors.amber,
+        border: Border.all(color: Colors.black, width: 4),
+        borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 }
