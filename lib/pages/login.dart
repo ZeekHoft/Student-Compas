@@ -33,17 +33,25 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.tealAccent,
+        backgroundColor: Colors.grey,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center, // Optional
+                  children: [
+                    CpuLogo(),
+                  ],
+                ),
                 const Text(
                   "Login",
-                  style: TextStyle(color: Colors.pink),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -67,11 +75,11 @@ class _LoginState extends State<Login> {
                         validEmail = isValid;
                       });
                     }),
+
+                //password
                 const SizedBox(
                   height: 10.0,
                 ),
-
-                //password
                 TextFormField(
                     obscureText: passwordVisible,
                     inputFormatters: [LengthLimitingTextInputFormatter(10)],
@@ -103,6 +111,7 @@ class _LoginState extends State<Login> {
                         validEmail = isValid;
                       });
                     }),
+
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -155,7 +164,10 @@ class _LoginState extends State<Login> {
                               SnackBar(content: Text(errorMessage)));
                         }
                       },
-                      child: const Text("Login Account")),
+                      child: const Text(
+                        "Login Account",
+                        style: TextStyle(color: Colors.black),
+                      )),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -169,7 +181,8 @@ class _LoginState extends State<Login> {
                         onPressed: () {
                           Navigator.pushNamed(context, "/signup");
                         },
-                        child: const Text("Register")),
+                        child: const Text("Register",
+                            style: TextStyle(color: Colors.black))),
                   ],
                 )
               ],
@@ -185,5 +198,19 @@ class _LoginState extends State<Login> {
       behavior: SnackBarBehavior.floating,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+}
+
+class CpuLogo extends StatelessWidget {
+  const CpuLogo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipOval(
+      child: SizedBox.fromSize(
+        size: const Size.fromRadius(48), // Image radius
+        child: Image.asset('assets/imageCPULogo.jpg', fit: BoxFit.cover),
+      ),
+    );
   }
 }

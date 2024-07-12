@@ -1,4 +1,5 @@
 import 'package:cs_compas/controllers/auth.dart';
+import 'package:cs_compas/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/check_format.dart';
 import 'package:flutter/services.dart';
@@ -20,17 +21,25 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.tealAccent,
+        backgroundColor: Colors.grey,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center, // Optional
+                  children: [
+                    CpuLogo(),
+                  ],
+                ),
                 const Text(
                   "Sign up",
-                  style: TextStyle(color: Colors.pink),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -55,7 +64,7 @@ class _SignupState extends State<Signup> {
                       });
                     }),
                 const SizedBox(
-                  height: 10.0,
+                  height: 5.0,
                 ),
 
                 //password
@@ -91,7 +100,7 @@ class _SignupState extends State<Signup> {
                       });
                     }),
                 const SizedBox(
-                  height: 10.0,
+                  height: 5.0,
                 ),
 
                 SizedBox(
@@ -130,7 +139,8 @@ class _SignupState extends State<Signup> {
                               SnackBar(content: Text(errorMessage)));
                         }
                       },
-                      child: const Text("Register Account")),
+                      child: const Text("Register Account",
+                          style: TextStyle(color: Colors.black))),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -144,7 +154,8 @@ class _SignupState extends State<Signup> {
                         onPressed: () {
                           Navigator.pop(context, "/login");
                         },
-                        child: const Text("Login Here")),
+                        child: const Text("Login Here",
+                            style: TextStyle(color: Colors.black))),
                   ],
                 )
               ],

@@ -52,14 +52,14 @@ class _NotificationsState extends State<Notifications> {
               itemCount: value.sessions.length,
               itemBuilder: (context, index) {
                 final session = value.sessions[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                return Container(
+                  margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: Card(
                     color: Colors.amber,
                     child: ExpansionTile(
                       backgroundColor: Colors.amber,
                       title: Text(
-                        "${session.title} ",
+                        session.title,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -69,15 +69,12 @@ class _NotificationsState extends State<Notifications> {
                       children: [
                         //collapsable announcements
                         //body
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          child: Text(
-                            session.body.toString(),
-                            style: const TextStyle(
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.justify,
+                        Text(
+                          session.body.toString(),
+                          style: const TextStyle(
+                            color: Colors.black,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                         //Sender
                         Padding(
