@@ -27,7 +27,7 @@ class ActionButtons extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(15, 5, 0, 0),
                 child: Center(
                   child: Text(
-                    "CCS facebook page",
+                    "CCS Facebook Page",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -47,13 +47,16 @@ class ActionButtons extends StatelessWidget {
                   child: Image.asset('assets/imageCCS.jpg'),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
 
               //Student Handbook
               const Padding(
                 padding: EdgeInsets.fromLTRB(15, 5, 0, 0),
                 child: Center(
                   child: Text(
-                    "CPU student handbook",
+                    "CPU Ftudent Handbook",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -83,7 +86,7 @@ class ActionButtons extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(15, 5, 0, 0),
                 child: Center(
                   child: Text(
-                    "CPU online canvas",
+                    "CPU Online Canvas",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -111,7 +114,7 @@ class ActionButtons extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(15, 5, 0, 0),
                 child: Center(
                   child: Text(
-                    "SOS student account",
+                    "SOS Student Account",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,

@@ -35,12 +35,15 @@ class _SignupState extends State<Signup> {
                     CpuLogo(),
                   ],
                 ),
-                const Text(
-                  "Sign up",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -76,7 +79,7 @@ class _SignupState extends State<Signup> {
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
                       label: const Text("ID"),
-                      hintText: "Enter Student Number ID",
+                      hintText: "Enter ID Number",
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {

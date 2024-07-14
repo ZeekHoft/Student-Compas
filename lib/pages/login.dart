@@ -47,12 +47,15 @@ class _LoginState extends State<Login> {
                     CpuLogo(), //stateless widget below for CPU
                   ],
                 ),
-                const Text(
-                  "Login",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -62,7 +65,7 @@ class _LoginState extends State<Login> {
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         label: Text("Email"),
-                        hintText: "Enter Email"),
+                        hintText: "Enter CPU Email"),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Please Enter Your CPU Email";
@@ -220,11 +223,24 @@ class CpuLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipOval(
-      child: SizedBox.fromSize(
-        size: const Size.fromRadius(48), // Image radius
-        child: Image.asset('assets/imageCPULogo.jpg', fit: BoxFit.cover),
-      ),
+    return Row(
+      children: [
+        ClipOval(
+          child: SizedBox.fromSize(
+            size: const Size.fromRadius(41), // Image radius
+            child: Image.asset('assets/imageCPULogo.jpg', fit: BoxFit.cover),
+          ),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        ClipOval(
+          child: SizedBox.fromSize(
+            size: const Size.fromRadius(41), // Image radius
+            child: Image.asset('assets/ccsLogo.jpg', fit: BoxFit.cover),
+          ),
+        ),
+      ],
     );
   }
 }
