@@ -85,28 +85,24 @@ class _NotificationsState extends State<Notifications> {
                             ),
                           ),
                           //Link
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
-                                child: GestureDetector(
-                                  onTap: () => _launchUrl(
-                                      Uri.parse(session.link.toString()),
-                                      false),
-                                  child: Text(
-                                    session.link.toString(),
-                                    style: const TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      decorationColor: Colors.white,
-                                      decorationThickness: 3,
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.end,
-                                  ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
+                            child: GestureDetector(
+                              onTap: () => _launchUrl(
+                                  Uri.parse(session.link.toString()), false),
+                              child: Text(
+                                session.link.toString(),
+                                overflow: TextOverflow.clip,
+                                style: const TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.white,
+                                  decorationThickness: 3,
+                                  fontSize: 16.0,
+                                  color: Colors.white,
                                 ),
+                                textAlign: TextAlign.start,
                               ),
-                            ],
+                            ),
                           ),
                           //Sender
                           Padding(

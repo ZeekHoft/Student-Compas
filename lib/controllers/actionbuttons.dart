@@ -33,7 +33,7 @@ class ActionButtons extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       //Canvas page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/jpgCanvas.jpg",
                         labelImage: "Online Canvas",
                         onTap: () => _launchUrl(
@@ -45,7 +45,7 @@ class ActionButtons extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/jpgHandbook.jpg",
                         labelImage: "Student Handbook",
                         onTap: () => _launchUrl(
@@ -57,7 +57,7 @@ class ActionButtons extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/jpgSOS.jpg",
                         labelImage: "Online SOS",
                         onTap: () => _launchUrl(
@@ -68,7 +68,7 @@ class ActionButtons extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/jpgRepublic.jpg",
                         labelImage: "CPU republic",
                         onTap: () => _launchUrl(
@@ -92,7 +92,7 @@ class ActionButtons extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       //Council FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/councilPage.jpg",
                         labelImage: "CCS Council Page",
                         onTap: () => _launchUrl(
@@ -104,7 +104,7 @@ class ActionButtons extends StatelessWidget {
                         width: 20,
                       ),
                       //Cipher FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/cipherPage.jpg",
                         labelImage: "Cipher Page",
                         onTap: () => _launchUrl(
@@ -116,7 +116,7 @@ class ActionButtons extends StatelessWidget {
                         width: 20,
                       ),
                       //CCS FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/ccsPage.jpg",
                         labelImage: "CSS Page",
                         onTap: () => _launchUrl(
@@ -128,7 +128,7 @@ class ActionButtons extends StatelessWidget {
                         width: 20,
                       ),
                       //ITSO FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/itsoPage.jpg",
                         labelImage: "ITSO Page",
                         onTap: () => _launchUrl(
@@ -140,7 +140,7 @@ class ActionButtons extends StatelessWidget {
                         width: 20,
                       ),
                       //DMIA FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/dmiaPage.jpg",
                         labelImage: "MIDAS Page",
                         onTap: () => _launchUrl(
@@ -152,12 +152,147 @@ class ActionButtons extends StatelessWidget {
                         width: 20,
                       ),
                       //LISSO FB page
-                      _actionButton(
+                      _actionButtonPages(
                         imageUrl: "assets/lissoPage.jpg",
                         labelImage: "LISSO Page",
                         onTap: () => _launchUrl(
                             Uri.parse(
                                 "https://www.facebook.com/profile.php?id=100063651357008"),
+                            false),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Council members
+              const SizedBox(
+                height: 10,
+              ),
+              _titleActionButtons(label: "CCS Council Officers"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 110, //height of images
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      //Council FB page
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/bryson.jpg",
+                        labelImage: "Gov Gagula",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100010649170418"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/chavez.jpg",
+                        labelImage: "Vice Gov Chavez",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100002329390864"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/poblacion.jpg",
+                        labelImage: "Rep poblacion",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100002353288542"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/draper.jpg",
+                        labelImage: "BM Draper",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100000588657286"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/balane.jpg",
+                        labelImage: "BM Balane",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100004411247569"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/tupas.jpg",
+                        labelImage: "BM Tupas",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100008139348809"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/damelerio.jpg",
+                        labelImage: "BM Damelerio",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100009460432897"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/gonzales.jpg",
+                        labelImage: "BM Gonzales",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100054243183372"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/jacildo.jpg",
+                        labelImage: "BM Jacildo",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100079262975160"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/auman.jpg",
+                        labelImage: "BM Auman",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100001585643079"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _actionButtonPagesOfficers(
+                        imageUrl: "assets/sanJose.jpg",
+                        labelImage: "BM San Jose",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=100084537758852"),
                             false),
                       ),
                     ],
@@ -190,7 +325,7 @@ class ActionButtons extends StatelessWidget {
     }
   }
 
-  Widget _actionButton({
+  Widget _actionButtonPages({
     // attributes for action button
     //required parameters for orginal widget
     required String imageUrl,
@@ -204,6 +339,41 @@ class ActionButtons extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                imageUrl,
+                errorBuilder: (context, error, stackTrace) => const Center(
+                  child: Icon(Icons.error),
+                ),
+              ),
+            ),
+          ),
+          Text(
+            labelImage,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _actionButtonPagesOfficers({
+    // attributes for action button
+    //required parameters for orginal widget
+    required String imageUrl,
+    required String labelImage,
+    required VoidCallback onTap, // requires a GestureDetector
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(48),
               child: Image.asset(
                 imageUrl,
                 errorBuilder: (context, error, stackTrace) => const Center(
