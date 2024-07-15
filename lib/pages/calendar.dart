@@ -154,9 +154,9 @@ class Timeline extends StatelessWidget {
                             Text(
                               session.monthname,
                               style: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ],
@@ -189,7 +189,7 @@ class Timeline extends StatelessWidget {
                       Text(
                         session.event.toString(),
                         style: const TextStyle(
-                            fontSize: 15.0, color: Colors.black),
+                            fontSize: 16.0, color: Colors.black),
                         textAlign: TextAlign.start,
                         overflow:
                             TextOverflow.clip, // Add TextOverflow.ellipsis

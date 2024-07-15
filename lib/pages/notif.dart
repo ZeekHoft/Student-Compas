@@ -64,6 +64,7 @@ class _NotificationsState extends State<Notifications> {
                           session.title,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
                             color: Colors.black,
                           ),
                         ),
@@ -76,6 +77,7 @@ class _NotificationsState extends State<Notifications> {
                             child: Text(
                               session.body.toString(),
                               style: const TextStyle(
+                                fontSize: 16.0,
                                 color: Colors.black,
                               ),
                               textAlign: TextAlign.justify,
@@ -91,6 +93,7 @@ class _NotificationsState extends State<Notifications> {
                                   "\nSender: ${session.sender.join(', ')} • ",
                                   textAlign: TextAlign.start,
                                   style: const TextStyle(
+                                      fontSize: 14.0,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -99,6 +102,7 @@ class _NotificationsState extends State<Notifications> {
                                   "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
                                   textAlign: TextAlign.start,
                                   style: const TextStyle(
+                                      fontSize: 14.0,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500,
                                       fontStyle: FontStyle.italic),

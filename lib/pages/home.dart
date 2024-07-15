@@ -1,4 +1,4 @@
-import 'package:cs_compas/calendar_controller/actionbuttons.dart';
+import 'package:cs_compas/controllers/actionbuttons.dart';
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Text("ID number: $idnumber",
+                          child: Text(idnumber,
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 20.0)),
                         ),
