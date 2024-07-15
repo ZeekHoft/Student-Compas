@@ -19,7 +19,7 @@ class Announcement {
 
   get id => null;
 
-  get color => null;
+  get link => null;
 
   get dateTimeFrom => null;
 
@@ -30,7 +30,7 @@ class Announcement {
 
 class Session {
   final String id;
-  final String color;
+  final String link;
   final String title;
   final DateTime dateTimeFrom;
   final String body;
@@ -38,7 +38,7 @@ class Session {
 
   Session({
     required this.id,
-    required this.color,
+    required this.link,
     required this.title,
     required this.dateTimeFrom,
     required this.body,
@@ -47,7 +47,7 @@ class Session {
 
   factory Session.fromJson(Map<String, dynamic> json) => Session(
         id: json['id'] as String,
-        color: json['color'] as String,
+        link: json['link'] as String,
         title: json['title'] as String,
         dateTimeFrom: DateTime.parse(json['dateTimeFrom'] as String),
         body: json['body'] as String,

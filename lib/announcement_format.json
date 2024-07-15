@@ -3,33 +3,33 @@
     "startsAt": "2024-07-01",
     "sessions": [
         {
-            "id": "session1",
-            "color": "#ff0000",
-            "title": "Session 1: New Feature Overview",
-            "body": "Gear up, CPU Freshmen! We're roaring with excitement to welcome you to the #CPULife! Get ready to unleash your inner scholar, unleash your potential, and become a true Centralian. From top-notch academics to vibrant campus life, CPU offers everything you need to make memories that last a lifetime.",
-            "dateTimeFrom": "2024-07-01T11:00:00Z",
-            "sender": [
-                "admin"
-            ]
-        },
-        {
-            "id": "session2",
-            "color": "#00ff00",
-            "title": "Session 2: Q&A with Developers",
-            "body": "Welcom to CPU",
-            "dateTimeFrom": "2024-07-02T14:00:00Z",
+            "id": "Announcement",
+            "dateTimeFrom": "2024-07-13",
+            "title": "Link test",
+            "body": "testing links if its possible in announcements",
+            "link": "https://www.youtube.com",
             "sender": [
                 "support"
             ]
         },
         {
-            "id": "session3",
-            "color": "#00ff00",
-            "title": "hellllooooo frommmm meee",
-            "body": "Hellloooo this is the body",
-            "dateTimeFrom": "2024-07-02T14:00:00Z",
+            "id": "session1",
+            "dateTimeFrom": "2024-07-02",
+            "title": "Session 1: New Feature Overview",
+            "body": "Gear up, CPU Freshmen! We're roaring with excitement to welcome you to the #CPULife! Get ready to unleash your inner scholar, unleash your potential, and become a true Centralian. From top-notch academics to vibrant campus life, CPU offers everything you need to make memories that last a lifetime.",
+            "link": "https://www.youtube.com",
             "sender": [
-                "DEVELOPER"
+                "admin"
+            ]
+        },
+        {
+            "id": "Announcement",
+            "dateTimeFrom": "2024-07-13",
+            "title": "Link test",
+            "body": "testing links if its possible in announcements",
+            "link": "https://www.youtube.com",
+            "sender": [
+                "support"
             ]
         }
     ]

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +21,9 @@ class ActionButtons extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               _titleActionButtons(label: "Student Information Tools"),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -78,6 +79,9 @@ class ActionButtons extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               _titleActionButtons(label: "Organization Facebook Pages"),
               Padding(

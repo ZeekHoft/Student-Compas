@@ -4,6 +4,7 @@ import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const remoteUserDataKey = "announcements";
 
@@ -83,9 +84,33 @@ class _NotificationsState extends State<Notifications> {
                               textAlign: TextAlign.justify,
                             ),
                           ),
+                          //Link
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
+                                child: GestureDetector(
+                                  onTap: () => _launchUrl(
+                                      Uri.parse(session.link.toString()),
+                                      false),
+                                  child: Text(
+                                    session.link.toString(),
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: Colors.white,
+                                      decorationThickness: 3,
+                                      fontSize: 16.0,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.end,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           //Sender
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -182,5 +207,24 @@ class _NotificationsState extends State<Notifications> {
         color: Colors.amber,
         border: Border.all(color: Colors.black, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
+  }
+
+  void _launchUrl(Uri uri, bool inAPP) async {
+    try {
+      if (await canLaunchUrl(uri)) {
+        if (inAPP) {
+          await launchUrl(
+            uri,
+            mode: LaunchMode.inAppBrowserView,
+          );
+        } else {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("URI error in home.dart: ${e.toString()}");
+      }
+    }
   }
 }

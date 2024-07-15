@@ -3,22 +3,22 @@
     "dateStart": "2024-07-01",
     "sessions": [
         {
-            "dateStart": "2024-07-01",
-            "event": "session 1",
+            "monthname": "july",
+            "dateStart": "2024-07-14",
             "dayname": "Friday",
-            "monthname": "july"
+            "event": "at friday the 14th, the event will begin in RMA"
         },
         {
+            "monthname": "july",
             "dateStart": "2024-07-01",
-            "event": "session 2",
             "dayname": "Friday",
-            "monthname": "july"
+            "event": "session 1"
         },
         {
+            "monthname": "july",
             "dateStart": "2024-07-01",
-            "event": "session 3",
             "dayname": "Friday",
-            "monthname": "july"
+            "event": "session 1"
         }
     ]
 }
