@@ -14,7 +14,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final storage = const FlutterSecureStorage();
-  bool passwordVisible = false;
 
   Future<void> _saveEmail(String email) async {
     await storage.write(key: "email", value: email); //saves the inputed email
@@ -85,22 +84,11 @@ class _LoginState extends State<Login> {
                   height: 10.0,
                 ),
                 TextFormField(
-                    obscureText: passwordVisible,
                     inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     controller: _idnumberCPUcontroller,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      label: const Text("ID"),
-                      hintText: "Enter ID Number",
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              passwordVisible = !passwordVisible;
-                            });
-                          },
-                          icon: Icon(passwordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility)),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("ID"),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {

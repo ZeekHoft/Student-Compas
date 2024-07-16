@@ -5,28 +5,8 @@
         {
             "id": "Announcement",
             "dateTimeFrom": "2024-07-13",
-            "title": "Link test",
-            "body": "testing links if its possible in announcements",
-            "link": "https://www.youtube.com",
-            "sender": [
-                "support"
-            ]
-        },
-        {
-            "id": "session1",
-            "dateTimeFrom": "2024-07-02",
-            "title": "Session 1: New Feature Overview",
-            "body": "Gear up, CPU Freshmen! We're roaring with excitement to welcome you to the #CPULife! Get ready to unleash your inner scholar, unleash your potential, and become a true Centralian. From top-notch academics to vibrant campus life, CPU offers everything you need to make memories that last a lifetime.",
-            "link": "https://www.youtube.com",
-            "sender": [
-                "admin"
-            ]
-        },
-        {
-            "id": "Announcement",
-            "dateTimeFrom": "2024-07-13",
-            "title": "Link test",
-            "body": "testing links if its possible in announcements",
+            "title": "Welcom to CS Compass",
+            "body": "Hello User! We are happy that you're using the app developed by the students /n of CCS, The purpose of this app is to guide you so use well, Enjoy /n your time here in CPU!!!",
             "link": "https://www.youtube.com",
             "sender": [
                 "support"

@@ -92,7 +92,6 @@ class _NotificationsState extends State<Notifications> {
                                   Uri.parse(session.link.toString()), false),
                               child: Text(
                                 session.link.toString(),
-                                overflow: TextOverflow.clip,
                                 style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   decorationColor: Colors.white,
@@ -100,7 +99,6 @@ class _NotificationsState extends State<Notifications> {
                                   fontSize: 16.0,
                                   color: Colors.white,
                                 ),
-                                textAlign: TextAlign.start,
                               ),
                             ),
                           ),

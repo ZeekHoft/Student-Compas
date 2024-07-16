@@ -46,7 +46,7 @@ class _CalendarState extends State<Calendar> {
           valueListenable: notifierData,
           builder: (context, CalendarEvents? value, child) {
             if (value == null) {
-              return const Center(child: Text("Normal School Month"));
+              return const Center(child: Text("No events found"));
             }
 
             return Timeline(

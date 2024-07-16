@@ -28,7 +28,7 @@ class ActionButtons extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 110, //height of images
+                  height: 130, //height of images
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
@@ -87,7 +87,7 @@ class ActionButtons extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 110, //height of images
+                  height: 130, //height of images
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
@@ -172,7 +172,7 @@ class ActionButtons extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 110, //height of images
+                  height: 130, //height of images
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [

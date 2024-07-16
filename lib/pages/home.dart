@@ -134,7 +134,22 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 5.0,
                   ),
-                  const ActionButtons()
+                  //Bottom team mention
+                  const ActionButtons(),
+                  const Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Created by CS Compass & Ternary Vanguards 🧭",
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               const Calendar(),

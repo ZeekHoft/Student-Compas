@@ -65,27 +65,29 @@ class Timeline extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "${session.dayname} - ${session.dateStart.day.toString()}",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 18),
+                  child: SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Date: ${session.dateStart.toString()}${session.dateEnd.toString()}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
                         ),
-                      ),
-                      Text(
-                        session.event.toString(),
-                        style: const TextStyle(
-                            fontSize: 16.0, color: Colors.black),
-                        textAlign: TextAlign.start,
-                        overflow:
-                            TextOverflow.clip, // Add TextOverflow.ellipsis
-                      ),
-                    ],
+                        Text(
+                          session.event.toString(),
+                          style: const TextStyle(
+                              fontSize: 16.0, color: Colors.black),
+                          textAlign: TextAlign.start,
+                          overflow:
+                              TextOverflow.clip, // Add TextOverflow.ellipsis
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
