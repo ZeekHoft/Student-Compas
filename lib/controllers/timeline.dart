@@ -62,7 +62,7 @@ class Timeline extends StatelessWidget {
                     color: Colors.amber,
                     border: Border.all(color: Colors.black, width: 3),
                     borderRadius: const BorderRadius.all(Radius.circular(10))),
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.fromLTRB(10, 50, 10, 0),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                   child: SizedBox(

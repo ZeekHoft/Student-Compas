@@ -93,11 +93,23 @@ class ActionButtons extends StatelessWidget {
                     children: [
                       //Council FB page
                       _actionButtonPages(
-                        imageUrl: "assets/councilPage.jpg",
+                        imageUrl: "assets/provincialPage.jpg",
                         labelImage: "CCS Council Page",
                         onTap: () => _launchUrl(
                             Uri.parse(
-                                "https://www.facebook.com/groups/977686173457202"),
+                                "https://www.facebook.com/profile.php?id=100068659266555"),
+                            false),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      //Cipher FB page
+                      _actionButtonPages(
+                        imageUrl: "assets/cenvasPage.jpg",
+                        labelImage: "Cenvas Page",
+                        onTap: () => _launchUrl(
+                            Uri.parse(
+                                "https://www.facebook.com/profile.php?id=61562716684826"),
                             false),
                       ),
                       const SizedBox(

@@ -147,7 +147,7 @@ class _NotificationsState extends State<Notifications> {
         heroTag: "button announcement",
         tooltip: 'Sync',
         child: const Icon(
-          Icons.sync,
+          Icons.announcement_rounded,
           color: Colors.amber,
         ),
       ),

@@ -112,21 +112,27 @@ class _HomeState extends State<Home> {
                         border: Border.all(color: Colors.black, width: 3),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Text(
-                              "Hello Mr/Ms ${userName.toCapitalized()}, welcome to CS compass!",
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 20.0)),
+                        SizedBox(
+                          height: 110,
+                          width: 110,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(48),
+                              child: Image.asset('assets/smallCompass.jpg'),
+                            ),
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Text(idnumber,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 20.0)),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                                "Hello Mr/Ms ${userName.toCapitalized()}, welcome to CS compass! \n$idnumber",
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 20.0)),
+                          ),
                         ),
                       ],
                     ),
@@ -141,13 +147,14 @@ class _HomeState extends State<Home> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(4.0),
                           child: Text(
                             "Created by CS Compass & Ternary Vanguards 🧭",
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
+                      Text("Lead Dev: Vince Jaca")
                     ],
                   ),
                 ],
