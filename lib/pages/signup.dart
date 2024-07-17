@@ -77,7 +77,7 @@ class _SignupState extends State<Signup> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("ID"),
-                      hintText: "Enter ID Number",
+                      hintText: "Enter ID Number: 99-9999-99",
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -163,7 +163,9 @@ class _SignupState extends State<Signup> {
                           Navigator.pop(context, "/login");
                         },
                         child: const Text("Login Here",
-                            style: TextStyle(color: Colors.black))),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold))),
                   ],
                 )
               ],

@@ -149,12 +149,11 @@ class _HomeState extends State<Home> {
                         child: Padding(
                           padding: EdgeInsets.all(4.0),
                           child: Text(
-                            "Created by CS Compass & Ternary Vanguards 🧭",
+                            "Created by CS Compass\n& Ternary Vanguards 🧭",
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
-                      Text("Lead Dev: Vince Jaca")
                     ],
                   ),
                 ],

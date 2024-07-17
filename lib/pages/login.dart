@@ -87,9 +87,9 @@ class _LoginState extends State<Login> {
                     inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     controller: _idnumberCPUcontroller,
                     decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text("ID"),
-                    ),
+                        border: OutlineInputBorder(),
+                        label: Text("ID"),
+                        hintText: "Enter ID Number"),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Please Enter Your CPU Email";
@@ -186,8 +186,10 @@ class _LoginState extends State<Login> {
                         onPressed: () {
                           Navigator.pushNamed(context, "/signup");
                         },
-                        child: const Text("Register",
-                            style: TextStyle(color: Colors.black))),
+                        child: const Text("Register Here",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold))),
                   ],
                 )
               ],

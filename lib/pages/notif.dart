@@ -109,7 +109,7 @@ class _NotificationsState extends State<Notifications> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "\nSender: ${session.sender.join(', ')} • ",
+                                  "\nFrom: ${session.sender.join(', ')} • ",
                                   textAlign: TextAlign.start,
                                   style: const TextStyle(
                                       fontSize: 14.0,
