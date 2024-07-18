@@ -61,13 +61,18 @@ class _NotificationsState extends State<Notifications> {
                       decoration: templateContainer(),
                       child: ExpansionTile(
                         backgroundColor: Colors.amber,
-                        title: Text(
-                          session.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
-                            color: Colors.black,
-                          ),
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              session.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
 
                         children: [
@@ -105,27 +110,33 @@ class _NotificationsState extends State<Notifications> {
                           //Sender
                           Padding(
                             padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                            child: Column(
                               children: [
-                                Text(
-                                  "\nFrom: ${session.sender.join(', ')} • ",
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "\nFrom: ${session.sender.join(', ')}",
+                                      textAlign: TextAlign.start,
+                                      style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
                                 ),
                                 //date
-                                Text(
-                                  "\n ${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()}",
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FontStyle.italic),
-                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
+                                      style: const TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
                           ),
