@@ -12,42 +12,6 @@
             "dateStart": "5",
             "dateEnd": "-6",
             "event": "Start Enrollment of 4th year students"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "7",
-            "dateEnd": "",
-            "event": "Start Enrollment of 2nd year students"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "9",
-            "dateEnd": "-10",
-            "event": "Start Enrollment of 3rd year students"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "9",
-            "dateEnd": "",
-            "event": "Enrollment for All Levels"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "9",
-            "dateEnd": "",
-            "event": "Faculty & Staff Conference"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "12",
-            "dateEnd": "",
-            "event": "Start of Change of Subject Assignment and Change of Schedule"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "14",
-            "dateEnd": "",
-            "event": "Classes Begin"
         }
     ]
 }

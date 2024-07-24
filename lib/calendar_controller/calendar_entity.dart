@@ -19,20 +19,14 @@ class CalendarEvents {
 //initialize the sub values of session
 class Session {
   final String event;
-  final String dateStart;
-  final String dateEnd;
-  final String monthname;
-  Session({
-    required this.event,
-    required this.dateStart,
-    required this.dateEnd,
-    required this.monthname,
-  });
+  final int dayevent;
+  final int monthnum;
+
+  Session(
+      {required this.event, required this.dayevent, required this.monthnum});
 
   factory Session.fromJson(Map<String, dynamic> json) => Session(
-        monthname: json['monthname'] as String,
-        dateStart: json['dateStart'] as String,
-        dateEnd: json['dateEnd'] as String,
-        event: json['event'] as String,
-      );
+      event: json['event'] as String,
+      dayevent: DateTime.parse(json['dayevent'] as String).day,
+      monthnum: DateTime.parse(json['monthnum'] as String).month);
 }
