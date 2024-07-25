@@ -69,8 +69,8 @@ class _HomeState extends State<Home> {
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timeline),
-            label: "Timeline",
+            icon: Icon(Icons.calendar_month_outlined),
+            label: "Calendar",
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(

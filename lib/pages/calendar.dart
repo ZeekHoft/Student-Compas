@@ -62,7 +62,7 @@ class _CalendarState extends State<Calendar> {
         onPressed: () => _syncDataCalendar(),
         tooltip: 'Sync Calendar',
         child: const Icon(
-          Icons.timeline,
+          Icons.calendar_month_outlined,
           color: Colors.amber,
         ),
       ),

@@ -1,6 +1,4 @@
 import 'package:cs_compas/calendar_controller/calendar_entity.dart';
-import 'package:flutter/foundation.dart';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -33,11 +31,7 @@ class _TimelineState extends State<Timeline> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: EdgeInsets.all(10),
-      // decoration: BoxDecoration(
-      //     color: Colors.amber,
-      //     border: Border.all(color: Colors.black, width: 4),
-      //     borderRadius: const BorderRadius.all(Radius.circular(10))),
+      color: Colors.amber,
       child: Column(
         children: [
           _buildHeader(),
@@ -64,25 +58,28 @@ class _TimelineState extends State<Timeline> {
 
   Widget _buildHeader() {
     // this widget will allow user to interact with the calendar such as selecting year and month
-    bool isLastMonthOfYear = _currentMonth.month ==
-        12; // Check if the current month is the last month of the year (December)
+    //bool isLastMonthOfYear = _currentMonth.month == 12;
+    // Check if the current month is the last month of the year (December)
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(
-            onPressed: () {
-              // move the previous pages
-              if (_pageController.page! > 0) {
-                _pageController.previousPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut);
-              }
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     // move the previous pages
+          //     if (_pageController.page! > 0) {
+          //       _pageController.previousPage(
+          //           duration: const Duration(milliseconds: 300),
+          //           curve: Curves.easeInOut);
+          //     }
+          //   },
+          //   icon: const Icon(
+          //     Icons.arrow_back,
+          //     color: Colors.black,
+          //   ),
+          // ),
           //display the currecnt month
           // M - month number/ MM - month number with leading zeroes/ MMM - month name shortcut/ MMMM - full name
           Text(
@@ -90,6 +87,7 @@ class _TimelineState extends State<Timeline> {
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           DropdownButton<int>(
+            dropdownColor: Colors.white,
             items: [
               // Generates DropdownMenuItems for a range of years from current year to 10 years ahead
               for (int year = DateTime.now().year;
@@ -114,18 +112,21 @@ class _TimelineState extends State<Timeline> {
               }
             },
           ),
-          IconButton(
-              onPressed: () {
-                //Move to the next page of it's not hte last month of the year
-                if (!isLastMonthOfYear) {
-                  setState(() {
-                    _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut);
-                  });
-                }
-              },
-              icon: const Icon(Icons.arrow_forward))
+          // IconButton(
+          //     onPressed: () {
+          //       //Move to the next page of it's not hte last month of the year
+          //       if (!isLastMonthOfYear) {
+          //         setState(() {
+          //           _pageController.nextPage(
+          //               duration: const Duration(milliseconds: 300),
+          //               curve: Curves.easeInOut);
+          //         });
+          //       }
+          //     },
+          //     icon: const Icon(
+          //       Icons.arrow_forward,
+          //       color: Colors.black,
+          //     ))
         ],
       ),
     );
@@ -176,7 +177,7 @@ class _TimelineState extends State<Timeline> {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
-        childAspectRatio: 0.4,
+        childAspectRatio: 0.5,
       ),
       // Calculating the total number of cells required in the grid
 
@@ -194,7 +195,7 @@ class _TimelineState extends State<Timeline> {
           return Container(
             decoration: const BoxDecoration(
               border: Border(
-                top: BorderSide.none,
+                top: BorderSide(width: 1.0, color: Colors.black),
                 left: BorderSide(width: 1.0, color: Colors.black),
                 right: BorderSide(width: 1.0, color: Colors.black),
                 bottom: BorderSide(width: 1.0, color: Colors.black),
@@ -213,13 +214,10 @@ class _TimelineState extends State<Timeline> {
           String text = date.day.toString(); // number of dates in the month
 
           String eventText = '';
-
+          // Logic for displaying the evnets
           for (Session session in sessions) {
             if (session.dayevent == date.day &&
                 session.monthnum == month.month) {
-              if (kDebugMode) {
-                print("Date being incremented by 1: ${session.dayevent}");
-              }
               eventText += session.event;
             }
           }
@@ -229,14 +227,23 @@ class _TimelineState extends State<Timeline> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: const Text('Event Details'),
-                    content: Text(eventText),
+                    title: const Text(
+                      'Event Details',
+                      style: TextStyle(color: Colors.amber),
+                    ),
+                    content: Text(
+                      eventText,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: const Text('Close'),
+                        child: const Text('Close',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber)),
                       ),
                     ],
                   );
@@ -246,7 +253,7 @@ class _TimelineState extends State<Timeline> {
             child: Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  top: BorderSide.none,
+                  top: BorderSide(width: 1.0, color: Colors.black),
                   left: BorderSide(width: 1.0, color: Colors.black),
                   right: BorderSide(width: 1.0, color: Colors.black),
                   bottom: BorderSide(width: 1.0, color: Colors.black),
@@ -260,19 +267,25 @@ class _TimelineState extends State<Timeline> {
                     child: Center(
                       child: Text(
                         text,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   Expanded(
-                    flex: 2,
-                    child: Text(
-                      eventText,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 10.0,
-                        fontWeight: FontWeight.w400,
-                        color: Color.fromARGB(255, 127, 126, 126),
+                    flex: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        eventText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   )
@@ -284,10 +297,12 @@ class _TimelineState extends State<Timeline> {
       },
     );
   }
-}
 
-extension DateOnlyCompare on DateTime {
-  bool isSameDate(DateTime other) {
-    return year == other.year && month == other.month && day == other.day;
+  BoxDecoration customContainer() {
+    return BoxDecoration(
+        color: Colors.amber,
+        border: Border.all(color: Colors.black, width: 4),
+        borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 }
+
