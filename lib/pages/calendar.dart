@@ -1,7 +1,9 @@
 import 'package:cs_compas/calendar_controller/calendar_entity.dart';
 import 'package:cs_compas/calendar_controller/util_calendar.dart';
+import 'package:cs_compas/controllers/default_calendar.dart';
 import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:cs_compas/controllers/timeline.dart';
+import 'package:cs_compas/pages/home.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,7 @@ class _CalendarState extends State<Calendar> {
           valueListenable: notifierData,
           builder: (context, CalendarEvents? value, child) {
             if (value == null) {
-              return const Center(child: Text("No events found"));
+              return const Center(child: DefaultCalendar());
             }
 
             return Timeline(
@@ -58,12 +60,12 @@ class _CalendarState extends State<Calendar> {
       floatingActionButton: FloatingActionButton(
         heroTag: "button calendar",
         mini: true,
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.tertiaryColor,
         onPressed: () => _syncDataCalendar(),
         tooltip: 'Sync Calendar',
         child: const Icon(
           Icons.calendar_month_outlined,
-          color: Colors.amber,
+          color: AppColors.primaryColor,
         ),
       ),
     );
@@ -98,11 +100,12 @@ class _CalendarState extends State<Calendar> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(AppColors.tertiaryColor)),
               SizedBox(height: 8.0),
               Text(
                 'Loading...',
-                style: TextStyle(color: Colors.amber),
+                style: TextStyle(color: AppColors.primaryColor),
               )
             ],
           ),

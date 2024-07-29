@@ -1,21 +1,17 @@
-import 'package:cs_compas/calendar_controller/calendar_entity.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class Timeline extends StatefulWidget {
-  final List<Session> sessions;
-
-  const Timeline({
+class DefaultCalendar extends StatefulWidget {
+  const DefaultCalendar({
     super.key,
-    required this.sessions,
   });
 
   @override
-  State<Timeline> createState() => _TimelineState();
+  State<DefaultCalendar> createState() => _DefaultCalendarState();
 }
 
-class _TimelineState extends State<Timeline> {
+class _DefaultCalendarState extends State<DefaultCalendar> {
   final PageController _pageController = PageController(
       initialPage: DateTime.now().month -
           1); //sets the initial page to the previous month of the current date.
@@ -54,7 +50,7 @@ class _TimelineState extends State<Timeline> {
                   itemBuilder: (context, pageIndex) {
                     DateTime month =
                         DateTime(_currentMonth.year, (pageIndex % 12) + 1, 1);
-                    return buildCalendar(month, widget.sessions);
+                    return buildCalendar(month);
                   }))
         ],
       ),
@@ -71,23 +67,6 @@ class _TimelineState extends State<Timeline> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // IconButton(
-          //   onPressed: () {
-          //     // move the previous pages
-          //     if (_pageController.page! > 0) {
-          //       _pageController.previousPage(
-          //           duration: const Duration(milliseconds: 300),
-          //           curve: Curves.easeInOut);
-          //     }
-          //   },
-          //   icon: const Icon(
-          //     Icons.arrow_back,
-          //     color: AppColors.tertiaryColor,
-          //   ),
-          // ),
-          //display the currecnt month
-          // M - month number/ MM - month number with leading zeroes/ MMM - month name shortcut/ MMMM - full name
-
           Text(
             DateFormat('MMMM').format(_currentMonth),
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -122,22 +101,6 @@ class _TimelineState extends State<Timeline> {
               }
             },
           ),
-
-          // IconButton(
-          //     onPressed: () {
-          //       //Move to the next page of it's not hte last month of the year
-          //       if (!isLastMonthOfYear) {
-          //         setState(() {
-          //           _pageController.nextPage(
-          //               duration: const Duration(milliseconds: 300),
-          //               curve: Curves.easeInOut);
-          //         });
-          //       }
-          //     },
-          //     icon: const Icon(
-          //       Icons.arrow_forward,
-          //       color: AppColors.tertiaryColor,
-          //     ))
         ],
       ),
     );
@@ -179,7 +142,7 @@ class _TimelineState extends State<Timeline> {
   }
 
   //build the month calendar
-  Widget buildCalendar(DateTime month, List<Session> sessions) {
+  Widget buildCalendar(DateTime month) {
     // Calculate varisu details for the months display
     int daysInMonth = DateTime(month.year, month.month + 1, 0)
         .day; //creating a DateTime object for the first day of the next month and extracting the day component, the code calculates the number of days in the current month.
@@ -227,14 +190,6 @@ class _TimelineState extends State<Timeline> {
                 month.year, month.month, index - weekdayOfFirstDay + 2);
             String text = date.day.toString(); // number of dates in the month
 
-            String eventText = '';
-            // Logic for displaying the evnets
-            for (Session session in sessions) {
-              if (session.dayevent == date.day &&
-                  session.monthnum == month.month) {
-                eventText += session.event;
-              }
-            }
             return InkWell(
               onTap: () {
                 showDialog(
@@ -245,15 +200,12 @@ class _TimelineState extends State<Timeline> {
                         'Event Details',
                         style: TextStyle(color: AppColors.primaryColor),
                       ),
-                      content: eventText.isEmpty
-                          ? const Text("No Events yet",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.tertiaryColor))
-                          : Text(eventText,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.tertiaryColor)),
+                      content: const Text(
+                        "Need Internet to fetch data",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.tertiaryColor),
+                      ),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -292,30 +244,6 @@ class _TimelineState extends State<Timeline> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 3,
-                        child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: eventText.isEmpty
-                                ? const Center(
-                                    child: Text(
-                                      "",
-                                      style: TextStyle(
-                                        fontSize: 10.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.tertiaryColor,
-                                      ),
-                                    ),
-                                  )
-                                : Text(
-                                    eventText,
-                                    style: const TextStyle(
-                                      fontSize: 10.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.tertiaryColor,
-                                    ),
-                                  )),
-                      )
                     ],
                   ),
                 ),

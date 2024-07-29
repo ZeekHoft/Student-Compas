@@ -1,6 +1,7 @@
 import 'package:cs_compas/anouncement_controllers/announcement_entity.dart';
 import 'package:cs_compas/anouncement_controllers/util.dart';
 import 'package:cs_compas/controllers/load_notif_calendar.dart';
+import 'package:cs_compas/pages/home.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -56,11 +57,11 @@ class _NotificationsState extends State<Notifications> {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: Card(
-                    color: Colors.amber,
+                    color: AppColors.primaryColor,
                     child: Container(
                       decoration: templateContainer(),
                       child: ExpansionTile(
-                        backgroundColor: Colors.amber,
+                        backgroundColor: AppColors.primaryColor,
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -69,7 +70,7 @@ class _NotificationsState extends State<Notifications> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
-                                color: Colors.black,
+                                color: AppColors.tertiaryColor,
                               ),
                             ),
                           ],
@@ -84,28 +85,32 @@ class _NotificationsState extends State<Notifications> {
                               session.body.toString(),
                               style: const TextStyle(
                                 fontSize: 16.0,
-                                color: Colors.black,
+                                color: AppColors.tertiaryColor,
                               ),
                               textAlign: TextAlign.justify,
                             ),
                           ),
                           //Link
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
-                            child: GestureDetector(
-                              onTap: () => _launchUrl(
-                                  Uri.parse(session.link.toString()), false),
-                              child: Text(
-                                session.link.toString(),
-                                style: const TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.white,
-                                  decorationThickness: 3,
-                                  fontSize: 16.0,
-                                  color: Colors.white,
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
+                                child: GestureDetector(
+                                  onTap: () => _launchUrl(
+                                      Uri.parse(session.link.toString()),
+                                      false),
+                                  child: session.link.isEmpty
+                                      ? const Text("")
+                                      : const Text(
+                                          "Click Me!",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                           //Sender
                           Padding(
@@ -119,7 +124,7 @@ class _NotificationsState extends State<Notifications> {
                                       textAlign: TextAlign.start,
                                       style: const TextStyle(
                                           fontSize: 14.0,
-                                          color: Colors.black,
+                                          color: AppColors.tertiaryColor,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
@@ -131,7 +136,7 @@ class _NotificationsState extends State<Notifications> {
                                       "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
                                       style: const TextStyle(
                                         fontSize: 14.0,
-                                        color: Colors.black,
+                                        color: AppColors.tertiaryColor,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -153,13 +158,13 @@ class _NotificationsState extends State<Notifications> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _syncData(),
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.tertiaryColor,
         mini: true,
         heroTag: "button announcement",
         tooltip: 'Sync',
         child: const Icon(
           Icons.announcement_rounded,
-          color: Colors.amber,
+          color: AppColors.primaryColor,
         ),
       ),
     );
@@ -194,11 +199,12 @@ class _NotificationsState extends State<Notifications> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(AppColors.tertiaryColor)),
               SizedBox(height: 8.0),
               Text(
                 'Loading...',
-                style: TextStyle(color: Colors.amber),
+                style: TextStyle(color: AppColors.primaryColor),
               )
             ],
           ),
@@ -209,8 +215,8 @@ class _NotificationsState extends State<Notifications> {
 
   BoxDecoration templateContainer() {
     return BoxDecoration(
-        color: Colors.amber,
-        border: Border.all(color: Colors.black, width: 4),
+        color: AppColors.primaryColor,
+        border: Border.all(color: AppColors.tertiaryColor, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 

@@ -1,3 +1,4 @@
+import 'package:cs_compas/pages/home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,8 @@ class ActionButtons extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
-          color: Colors.amber,
-          border: Border.all(color: Colors.black, width: 3),
+          color: AppColors.primaryColor,
+          border: Border.all(color: AppColors.tertiaryColor, width: 3),
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: SizedBox(
         height: screenHeight * 0.6,
@@ -362,7 +363,7 @@ class ActionButtons extends StatelessWidget {
           Text(
             labelImage,
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.secondaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -397,7 +398,7 @@ class ActionButtons extends StatelessWidget {
           Text(
             labelImage,
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.secondaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -414,7 +415,7 @@ class ActionButtons extends StatelessWidget {
         child: Text(
           label,
           style: const TextStyle(
-            color: Colors.black,
+            color: AppColors.tertiaryColor,
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),

@@ -6,6 +6,12 @@ import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/calendar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+class AppColors {
+  static const Color primaryColor = Colors.amber;
+  static const Color secondaryColor = Colors.white;
+  static const Color tertiaryColor = Colors.black;
+}
+
 class Home extends StatefulWidget {
   final String email, idnumber;
 
@@ -59,24 +65,24 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.amber,
+        backgroundColor: AppColors.tertiaryColor,
+        selectedItemColor: AppColors.primaryColor,
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
-            backgroundColor: Colors.black,
+            backgroundColor: AppColors.tertiaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
             label: "Calendar",
-            backgroundColor: Colors.black,
+            backgroundColor: AppColors.tertiaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.announcement),
             label: "Announcements",
-            backgroundColor: Colors.black,
+            backgroundColor: AppColors.tertiaryColor,
           ),
           BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
         ],
@@ -94,7 +100,10 @@ class _HomeState extends State<Home> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.white, Colors.white])),
+                colors: [
+              Colors.white,
+              Colors.white,
+            ])),
         child: SafeArea(
           child: IndexedStack(
             index: currentIndex,
@@ -108,8 +117,9 @@ class _HomeState extends State<Home> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
                     decoration: BoxDecoration(
-                        color: Colors.amber,
-                        border: Border.all(color: Colors.black, width: 3),
+                        color: AppColors.primaryColor,
+                        border: Border.all(
+                            color: AppColors.tertiaryColor, width: 3),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
                     child: Row(
@@ -125,14 +135,23 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                                "Hello Mr/Ms ${userName.toCapitalized()}, welcome to CS compass! \n$idnumber",
+                        Column(
+                          children: [
+                            const Text("SURNAME:",
+                                style: TextStyle(
+                                    color: AppColors.tertiaryColor,
+                                    fontSize: 12.0)),
+                            Text(userName.toCapitalized(),
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 20.0)),
-                          ),
+                            const Text("ID NUMBER:",
+                                style: TextStyle(
+                                    color: AppColors.tertiaryColor,
+                                    fontSize: 12.0)),
+                            Text(idnumber,
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 20.0)),
+                          ],
                         ),
                       ],
                     ),
@@ -175,7 +194,7 @@ class _HomeState extends State<Home> {
         return AlertDialog(
           title: const Text(
             "Log out of CS Compass?",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: AppColors.tertiaryColor),
           ),
           actions: [
             TextButton(
@@ -184,7 +203,7 @@ class _HomeState extends State<Home> {
               },
               child: const Text(
                 "Cancel",
-                style: TextStyle(color: Colors.amber),
+                style: TextStyle(color: AppColors.primaryColor),
               ),
             ),
             TextButton(
@@ -194,7 +213,7 @@ class _HomeState extends State<Home> {
               },
               child: const Text(
                 "Confirm",
-                style: TextStyle(color: Colors.amber),
+                style: TextStyle(color: AppColors.primaryColor),
               ),
             )
           ],
