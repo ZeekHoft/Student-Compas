@@ -24,8 +24,18 @@ class _LoginState extends State<Login> {
         key: "idnumber", value: idnumber); //saves the inputed ID number
   }
 
+  Future<void> _saveCourse(String course) async {
+    await storage.write(key: "course", value: course);
+  }
+
+  Future<void> _saveProvince(String province) async {
+    await storage.write(key: "province", value: province);
+  }
+
   final TextEditingController _emailCPUcontroller = TextEditingController();
   final TextEditingController _idnumberCPUcontroller = TextEditingController();
+  final TextEditingController _courseCPUcontroller = TextEditingController();
+  final TextEditingController _provinceCPUcontroller = TextEditingController();
 
   bool validEmail = false;
   bool validID = false;
@@ -79,7 +89,7 @@ class _LoginState extends State<Login> {
                       });
                     }),
 
-                //password
+                //idnumber
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -103,6 +113,54 @@ class _LoginState extends State<Login> {
                         validEmail = isValid;
                       });
                     }),
+                //Province
+                const SizedBox(
+                  height: 10.0,
+                ),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        inputFormatters: [LengthLimitingTextInputFormatter(8)],
+                        controller: _provinceCPUcontroller,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Province"),
+                            hintText: "Enter province"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please Enter Your Province";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+
+                    //course and year
+                    Expanded(
+                      child: TextFormField(
+                        inputFormatters: [LengthLimitingTextInputFormatter(9)],
+                        controller: _courseCPUcontroller,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Course & Year"),
+                            hintText: "Enter e.g: BSCS-1"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please Enter Your Course";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
 
                 const SizedBox(
                   height: 10.0,
@@ -128,15 +186,20 @@ class _LoginState extends State<Login> {
                                 if (value == "Login Successful") {
                                   _saveEmail(_emailCPUcontroller.text);
                                   _saveID(_idnumberCPUcontroller.text);
+                                  _saveCourse(
+                                      _courseCPUcontroller.text.toUpperCase());
+                                  _saveProvince(_provinceCPUcontroller.text);
                                   styleSnackBar(context);
 
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Home(
-                                        email: _emailCPUcontroller.text,
-                                        idnumber: _idnumberCPUcontroller.text,
-                                      ),
+                                          email: _emailCPUcontroller.text,
+                                          idnumber: _idnumberCPUcontroller.text,
+                                          course: _courseCPUcontroller.text,
+                                          province:
+                                              _provinceCPUcontroller.text),
                                     ),
                                   );
                                 } else {

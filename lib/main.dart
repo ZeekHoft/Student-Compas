@@ -47,6 +47,8 @@ Future main() async {
         '/home': (context) => const Home(
               email: '',
               idnumber: '',
+              course: '',
+              province: '',
             ),
         '/notification': (context) => const Notifications(),
       },

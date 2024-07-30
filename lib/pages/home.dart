@@ -13,13 +13,14 @@ class AppColors {
 }
 
 class Home extends StatefulWidget {
-  final String email, idnumber;
+  final String email, idnumber, course, province;
 
-  const Home({
-    super.key,
-    required this.email,
-    required this.idnumber,
-  });
+  const Home(
+      {super.key,
+      required this.email,
+      required this.idnumber,
+      required this.course,
+      required this.province});
 
   @override
   State<Home> createState() => _HomeState();
@@ -38,8 +39,16 @@ class _HomeState extends State<Home> {
 
   String email = "";
   String idnumber = "";
-
+  String course = "";
+  String province = "";
   final storage = const FlutterSecureStorage();
+
+  final courseImages = {
+    'BSCS': 'assets/ccsLogo.jpg',
+    'BSIT': 'assets/itsoPage.jpg',
+    'BSLISSO': 'assets/lissoPage.jpg',
+    'BSDMIA': 'assets/dmiaPage.jpg',
+  };
 
   Future<void> _getEmail() async {
     email = await storage.read(key: "email") ?? "";
@@ -51,17 +60,31 @@ class _HomeState extends State<Home> {
     setState(() {});
   }
 
+  Future<void> _getCourse() async {
+    course = await storage.read(key: "course") ?? "";
+    setState(() {});
+  }
+
+  Future<void> _getProvince() async {
+    province = await storage.read(key: "province") ?? "";
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
 
     _getEmail();
     _getID();
+    _getCourse();
+    _getProvince();
   }
 
   @override
   Widget build(BuildContext context) {
     String userName = getUserNameFromEmail(email);
+    String coursePrefix = course.split('-')[0];
+    String imagePath = courseImages[coursePrefix] ?? 'assets/smallCompass.jpg';
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -122,16 +145,18 @@ class _HomeState extends State<Home> {
                             color: AppColors.tertiaryColor, width: 3),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
+
+                    //profile logo
                     child: Row(
                       children: [
                         SizedBox(
-                          height: 110,
-                          width: 110,
+                          height: 130,
+                          width: 130,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(48),
-                              child: Image.asset('assets/smallCompass.jpg'),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(imagePath),
                             ),
                           ),
                         ),
@@ -144,11 +169,32 @@ class _HomeState extends State<Home> {
                             Text(userName.toCapitalized(),
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 20.0)),
+                            const Text("COURSE & YEAR:",
+                                style: TextStyle(
+                                    color: AppColors.tertiaryColor,
+                                    fontSize: 12.0)),
+                            Text(course.toUpperCase(),
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 20.0)),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        Column(
+                          children: [
                             const Text("ID NUMBER:",
                                 style: TextStyle(
                                     color: AppColors.tertiaryColor,
                                     fontSize: 12.0)),
                             Text(idnumber,
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 20.0)),
+                            const Text("PROVINCE:",
+                                style: TextStyle(
+                                    color: AppColors.tertiaryColor,
+                                    fontSize: 12.0)),
+                            Text(province.toCapitalized(),
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 20.0)),
                           ],
@@ -223,6 +269,7 @@ class _HomeState extends State<Home> {
   }
 }
 
+//upper case the first letter cause theres no fking camel case function in dart
 extension StringCasingExtension on String {
   String toCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';

@@ -102,7 +102,7 @@ class _NotificationsState extends State<Notifications> {
                                   child: session.link.isEmpty
                                       ? const Text("")
                                       : const Text(
-                                          "Click Me!",
+                                          "Click Here!",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 18,
