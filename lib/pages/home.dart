@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
 
   final courseImages = {
     'BSCS': 'assets/ccsPage.jpg',
-    'BSIT': 'assets/itsoPage.jpg',
+    'BSIT': 'assets/itPage.jpg',
     'BSLISSO': 'assets/lissoPage.jpg',
     'BSDMIA': 'assets/dmiaPage.jpg',
   };
@@ -252,7 +252,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 "Cancel",
                 style: TextStyle(color: AppColors.primaryColor),
               ),
@@ -262,7 +262,7 @@ class _HomeState extends State<Home> {
                 Navigator.pushReplacementNamed(context, "/login");
                 await AuthService.logout();
               },
-              child: Text(
+              child: const Text(
                 "Confirm",
                 style: TextStyle(color: AppColors.primaryColor),
               ),

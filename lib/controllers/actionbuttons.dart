@@ -142,7 +142,7 @@ class ActionButtons extends StatelessWidget {
                       ),
                       //ITSO FB page
                       _actionButtonPages(
-                        imageUrl: "assets/itsoPage.jpg",
+                        imageUrl: "assets/itPage.jpg",
                         labelImage: "ITSO Page",
                         onTap: () => _launchUrl(
                             Uri.parse(
