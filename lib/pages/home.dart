@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cs_compas/controllers/actionbuttons.dart';
 import 'package:cs_compas/controllers/auth.dart';
 import 'package:cs_compas/pages/login.dart';
@@ -44,7 +46,7 @@ class _HomeState extends State<Home> {
   final storage = const FlutterSecureStorage();
 
   final courseImages = {
-    'BSCS': 'assets/ccsLogo.jpg',
+    'BSCS': 'assets/ccsPage.jpg',
     'BSIT': 'assets/itsoPage.jpg',
     'BSLISSO': 'assets/lissoPage.jpg',
     'BSDMIA': 'assets/dmiaPage.jpg',
@@ -131,97 +133,100 @@ class _HomeState extends State<Home> {
           child: IndexedStack(
             index: currentIndex,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                    decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        border: Border.all(
-                            color: AppColors.tertiaryColor, width: 3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                      decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          border: Border.all(
+                              color: AppColors.tertiaryColor, width: 3),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
 
-                    //profile logo
-                    child: Row(
+                      //profile logo
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 130,
+                            width: 130,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(30),
+                                child: Image.asset(imagePath),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              const Text("SURNAME:",
+                                  style: TextStyle(
+                                      color: AppColors.tertiaryColor,
+                                      fontSize: 12.0)),
+                              Text(userName.toCapitalized(),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 20.0)),
+                              const Text("COURSE & YEAR:",
+                                  style: TextStyle(
+                                      color: AppColors.tertiaryColor,
+                                      fontSize: 12.0)),
+                              Text(course.toUpperCase(),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 20.0)),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          Column(
+                            children: [
+                              const Text("ID NUMBER:",
+                                  style: TextStyle(
+                                      color: AppColors.tertiaryColor,
+                                      fontSize: 12.0)),
+                              Text(idnumber,
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 20.0)),
+                              const Text("PROVINCE:",
+                                  style: TextStyle(
+                                      color: AppColors.tertiaryColor,
+                                      fontSize: 12.0)),
+                              Text(province.toCapitalized(),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 20.0)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5.0,
+                    ),
+                    //Bottom team mention
+                    const ActionButtons(),
+                    const Column(
                       children: [
-                        SizedBox(
-                          height: 130,
-                          width: 130,
+                        Align(
+                          alignment: Alignment.bottomCenter,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(imagePath),
+                            padding: EdgeInsets.all(4.0),
+                            child: Text(
+                              "Created by CS Compass\n& Ternary Vanguards 🧭",
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
-                        Column(
-                          children: [
-                            const Text("SURNAME:",
-                                style: TextStyle(
-                                    color: AppColors.tertiaryColor,
-                                    fontSize: 12.0)),
-                            Text(userName.toCapitalized(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 20.0)),
-                            const Text("COURSE & YEAR:",
-                                style: TextStyle(
-                                    color: AppColors.tertiaryColor,
-                                    fontSize: 12.0)),
-                            Text(course.toUpperCase(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 20.0)),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: [
-                            const Text("ID NUMBER:",
-                                style: TextStyle(
-                                    color: AppColors.tertiaryColor,
-                                    fontSize: 12.0)),
-                            Text(idnumber,
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 20.0)),
-                            const Text("PROVINCE:",
-                                style: TextStyle(
-                                    color: AppColors.tertiaryColor,
-                                    fontSize: 12.0)),
-                            Text(province.toCapitalized(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 20.0)),
-                          ],
-                        ),
                       ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  //Bottom team mention
-                  const ActionButtons(),
-                  const Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Text(
-                            "Created by CS Compass\n& Ternary Vanguards 🧭",
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Calendar(),
               const Notifications(),
@@ -247,7 +252,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text(
+              child: Text(
                 "Cancel",
                 style: TextStyle(color: AppColors.primaryColor),
               ),
@@ -257,7 +262,7 @@ class _HomeState extends State<Home> {
                 Navigator.pushReplacementNamed(context, "/login");
                 await AuthService.logout();
               },
-              child: const Text(
+              child: Text(
                 "Confirm",
                 style: TextStyle(color: AppColors.primaryColor),
               ),
