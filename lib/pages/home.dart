@@ -10,6 +10,13 @@ class AppColors {
   static const Color primaryColor = Colors.amber;
   static const Color secondaryColor = Colors.white;
   static const Color tertiaryColor = Colors.black;
+
+  static const Color white = Color.fromRGBO(250, 248, 241, 1);
+  static const Color black = Color.fromRGBO(28, 26, 21, 1);
+  static const Color primary = Color.fromRGBO(255, 193, 7, 1);
+  static const Color secondary = Color.fromRGBO(145, 116, 23, 1);
+  static const Color accent = Color.fromRGBO(246, 202, 73, 1);
+  static const Color container = Color.fromRGBO(253, 240, 200, 1);
 }
 
 class Home extends StatefulWidget {
@@ -64,64 +71,60 @@ class _HomeState extends State<Home> {
     String userName = getUserNameFromEmail(email);
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.tertiaryColor,
-        selectedItemColor: AppColors.primaryColor,
-        unselectedItemColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-            backgroundColor: AppColors.tertiaryColor,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            label: "Calendar",
-            backgroundColor: AppColors.tertiaryColor,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.announcement),
-            label: "Announcements",
-            backgroundColor: AppColors.tertiaryColor,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
-        ],
-        currentIndex: currentIndex,
-        onTap: (index) async {
-          if (index == 3) {
-            _alertDialog(context);
-          } else {
-            setState(() => currentIndex = index);
-          }
-        },
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+            border: Border(top: BorderSide(color: AppColors.black, width: 2))),
+        child: BottomNavigationBar(
+          selectedItemColor: AppColors.black,
+          unselectedItemColor: AppColors.secondary,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: "Home",
+              backgroundColor: AppColors.primary,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month_rounded),
+              label: "Calendar",
+              backgroundColor: AppColors.container,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.announcement),
+              label: "Announcements",
+              backgroundColor: AppColors.container,
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
+          ],
+          currentIndex: currentIndex,
+          onTap: (index) async {
+            if (index == 3) {
+              _alertDialog(context);
+            } else {
+              setState(() => currentIndex = index);
+            }
+          },
+        ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-              Colors.white,
-              Colors.white,
-            ])),
+        decoration: const BoxDecoration(color: AppColors.white),
         child: SafeArea(
           child: IndexedStack(
             index: currentIndex,
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(
                     height: 10.0,
                   ),
                   Container(
-                    margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                    decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        border: Border.all(
-                            color: AppColors.tertiaryColor, width: 3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
+                    margin: const EdgeInsets.fromLTRB(0, 4, 0, 0),
+                    decoration: const BoxDecoration(
+                        color: AppColors.primary,
+                        border: Border.symmetric(
+                          horizontal:
+                              BorderSide(color: AppColors.black, width: 3),
+                        )),
                     child: Row(
                       children: [
                         SizedBox(
@@ -156,24 +159,15 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 5.0,
+                  const Expanded(
+                    child: ActionButtons(),
                   ),
-                  //Bottom team mention
-                  const ActionButtons(),
-                  const Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Text(
-                            "Created by CS Compass\n& Ternary Vanguards 🧭",
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
+                  const Padding(
+                    padding: EdgeInsets.all(4.0),
+                    child: Text(
+                      "Created by CS Compass & Ternary Vanguards 🧭",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ],
               ),
