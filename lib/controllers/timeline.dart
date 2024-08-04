@@ -161,7 +161,7 @@ class _TimelineState extends State<Timeline> {
             _buildWeekDay('Thu'),
             _buildWeekDay('Fri'),
             _buildWeekDay('Sat'),
-            _buildWeekDay('Sunsadfsadfsdf'),
+            _buildWeekDay('Sun'),
           ],
         ),
       ),
@@ -169,11 +169,13 @@ class _TimelineState extends State<Timeline> {
   }
 
   Widget _buildWeekDay(String day) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(13, 0, 13, 0),
-      child: Text(
-        day,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(13, 0, 13, 0),
+        child: Text(
+          day,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
