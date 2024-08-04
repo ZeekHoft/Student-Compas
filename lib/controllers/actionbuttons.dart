@@ -150,7 +150,7 @@ class ActionButtons extends StatelessWidget {
             ),
             _titleActionButtons(label: "CCS Council Officers"),
             SizedBox(
-              height: 150, //height of images
+              height: 210, //height of images
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -323,43 +323,64 @@ class ActionButtons extends StatelessWidget {
   }) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Container(
-        decoration: BoxDecoration(
-            color: AppColors.accent,
-            border: Border.all(color: AppColors.black, width: 3),
-            borderRadius: BorderRadius.circular(5)),
-        child: GestureDetector(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.black, width: 2)),
-                    child: Image.asset(
-                      imageUrl,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(Icons.error),
-                      ),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: const ShapeDecoration(
+                    shape: BeveledRectangleBorder(
+                        side: BorderSide(color: AppColors.black, width: 2),
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(7),
+                            bottomLeft: Radius.circular(7))),
+                    color: AppColors.accent)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 5, bottom: 7),
+            child: SizedBox(
+              width: 130,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.accent,
+                  border: Border.all(color: AppColors.black, width: 3),
+                ),
+                child: GestureDetector(
+                  onTap: onTap,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: AppColors.black, width: 2)),
+                          child: Image.asset(
+                            imageUrl,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Center(
+                              child: Icon(Icons.error),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          labelImage,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: AppColors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 5),
-                Text(
-                  labelImage,
-                  style: const TextStyle(
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
