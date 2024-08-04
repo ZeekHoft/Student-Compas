@@ -150,7 +150,7 @@ class ActionButtons extends StatelessWidget {
             ),
             _titleActionButtons(label: "CCS Council Officers"),
             SizedBox(
-              height: 210, //height of images
+              height: 205, //height of images
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -330,20 +330,20 @@ class ActionButtons extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 decoration: const ShapeDecoration(
                     shape: BeveledRectangleBorder(
-                        side: BorderSide(color: AppColors.black, width: 2),
+                        side: BorderSide(color: AppColors.black, width: 1.5),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(7),
                             bottomLeft: Radius.circular(7))),
                     color: AppColors.accent)),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 7),
+            padding: const EdgeInsets.only(right: 6, bottom: 7),
             child: SizedBox(
               width: 130,
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.accent,
-                  border: Border.all(color: AppColors.black, width: 3),
+                  border: Border.all(color: AppColors.black, width: 2),
                 ),
                 child: GestureDetector(
                   onTap: onTap,
