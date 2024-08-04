@@ -161,7 +161,7 @@ class _TimelineState extends State<Timeline> {
             _buildWeekDay('Thu'),
             _buildWeekDay('Fri'),
             _buildWeekDay('Sat'),
-            _buildWeekDay('Sun'),
+            _buildWeekDay('Sunsadfsadfsdf'),
           ],
         ),
       ),
