@@ -21,12 +21,17 @@ class Session {
   final String event;
   final int dayevent;
   final int monthnum;
+  final int yearnum;
 
   Session(
-      {required this.event, required this.dayevent, required this.monthnum});
+      {required this.event,
+      required this.dayevent,
+      required this.monthnum,
+      required this.yearnum});
 
   factory Session.fromJson(Map<String, dynamic> json) => Session(
       event: json['event'] as String,
       dayevent: DateTime.parse(json['dayevent'] as String).day,
-      monthnum: DateTime.parse(json['monthnum'] as String).month);
+      monthnum: DateTime.parse(json['monthnum'] as String).month,
+      yearnum: DateTime.parse(json['yearnum'] as String).year);
 }

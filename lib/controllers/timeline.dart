@@ -22,6 +22,7 @@ class _TimelineState extends State<Timeline> {
 
   DateTime _currentMonth =
       DateTime.now(); // stores in the curerntly displayed month
+
   bool selectedcurrentyear = false;
 
   @override
@@ -63,7 +64,7 @@ class _TimelineState extends State<Timeline> {
 
   Widget _buildHeader() {
     // this widget will allow user to interact with the calendar such as selecting year and month
-    //bool isLastMonthOfYear = _currentMonth.month == 12;
+    bool isLastMonthOfYear = _currentMonth.month == 12;
     // Check if the current month is the last month of the year (December)
 
     return Padding(
@@ -71,73 +72,71 @@ class _TimelineState extends State<Timeline> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // IconButton(
-          //   onPressed: () {
-          //     // move the previous pages
-          //     if (_pageController.page! > 0) {
-          //       _pageController.previousPage(
-          //           duration: const Duration(milliseconds: 300),
-          //           curve: Curves.easeInOut);
-          //     }
-          //   },
-          //   icon: const Icon(
-          //     Icons.arrow_back,
-          //     color: AppColors.tertiaryColor,
-          //   ),
-          // ),
+          IconButton(
+            onPressed: () {
+              // move the previous pages
+              if (_pageController.page! > 0) {
+                _pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut);
+              }
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: AppColors.tertiaryColor,
+            ),
+          ),
           //display the currecnt month
           // M - month number/ MM - month number with leading zeroes/ MMM - month name shortcut/ MMMM - full name
-
+          Text(showDate()),
           Text(
-            DateFormat('MMMM').format(_currentMonth),
+            "${DateFormat('MMMM').format(_currentMonth)} ",
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          Text(
-            showDate(),
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+
           DropdownButton<int>(
-            dropdownColor: Colors.white,
+            // Dropdown for selecting a year
+            value: _currentMonth.year,
+            onChanged: (int? year) {
+              if (year != null) {
+                setState(() {
+                  // Sets the current month to January of the selected year
+                  _currentMonth = DateTime(year, 1, 1);
+
+                  // Calculates the month index based on the selected year and sets the page
+                  int yearDiff = DateTime.now().year - year;
+                  int monthIndex = 12 * yearDiff + _currentMonth.month - 1;
+                  _pageController.jumpToPage(monthIndex);
+                });
+              }
+            },
             items: [
               // Generates DropdownMenuItems for a range of years from current year to 10 years ahead
               for (int year = DateTime.now().year;
                   year <= DateTime.now().year + 10;
                   year++)
-                DropdownMenuItem<int>(value: year, child: Text(year.toString()))
+                DropdownMenuItem<int>(
+                  value: year,
+                  child: Text(year.toString()),
+                ),
             ],
-            value: _currentMonth.year,
-            onChanged: (int? year) {
-              if (year != null) {
-                setState(
-                  () {
-                    //sets the current month to january of the selected year
-                    _currentMonth = DateTime(year, 1, 1);
-
-                    // Calculates the month index based on the selected year and sets the page
-                    int yearDiff = DateTime.now().year - year;
-                    int monthIndex = 12 * yearDiff + _currentMonth.month - 1;
-                    _pageController.jumpToPage(monthIndex);
-                  },
-                );
-              }
-            },
           ),
 
-          // IconButton(
-          //     onPressed: () {
-          //       //Move to the next page of it's not hte last month of the year
-          //       if (!isLastMonthOfYear) {
-          //         setState(() {
-          //           _pageController.nextPage(
-          //               duration: const Duration(milliseconds: 300),
-          //               curve: Curves.easeInOut);
-          //         });
-          //       }
-          //     },
-          //     icon: const Icon(
-          //       Icons.arrow_forward,
-          //       color: AppColors.tertiaryColor,
-          //     ))
+          IconButton(
+              onPressed: () {
+                //Move to the next page of it's not the last month of the year
+                if (!isLastMonthOfYear) {
+                  setState(() {
+                    _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut);
+                  });
+                }
+              },
+              icon: const Icon(
+                Icons.arrow_forward,
+                color: AppColors.tertiaryColor,
+              ))
         ],
       ),
     );
@@ -147,7 +146,7 @@ class _TimelineState extends State<Timeline> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 9.0),
       child: Container(
-        margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
             color: AppColors.primaryColor,
             border: Border.all(color: AppColors.tertiaryColor, width: 4),
@@ -172,9 +171,13 @@ class _TimelineState extends State<Timeline> {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(13, 0, 13, 0),
-        child: Text(
-          day,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+        child: Column(
+          children: [
+            Text(
+              day,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
       ),
     );
@@ -227,13 +230,15 @@ class _TimelineState extends State<Timeline> {
             //Display the current months days
             DateTime date = DateTime(
                 month.year, month.month, index - weekdayOfFirstDay + 2);
+
             String text = date.day.toString(); // number of dates in the month
 
             String eventText = '';
             // Logic for displaying the evnets
             for (Session session in sessions) {
               if (session.dayevent == date.day &&
-                  session.monthnum == month.month) {
+                  session.monthnum == month.month &&
+                  session.yearnum == month.year) {
                 eventText += session.event;
               }
             }
@@ -338,7 +343,13 @@ class _TimelineState extends State<Timeline> {
 
   String showDate() {
     final now = DateTime.now();
-    String formatter = DateFormat('E, MMM dd').format(now);
+    String formatter = DateFormat('MMMM, dd, E').format(now);
+    return formatter;
+  }
+
+  String showYear() {
+    final now = DateTime.now();
+    String formatter = DateFormat('yyyy').format(now);
     return formatter;
   }
 }

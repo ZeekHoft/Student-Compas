@@ -133,108 +133,98 @@ class _HomeState extends State<Home> {
           child: IndexedStack(
             index: currentIndex,
             children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                      decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          border: Border.all(
-                              color: AppColors.tertiaryColor, width: 3),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                    decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        border: Border.all(
+                            color: AppColors.tertiaryColor, width: 3),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10))),
 
-                      //profile logo
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 90,
-                            width: 90,
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(40),
-                                child: Image.asset(imagePath),
-                              ),
+                    //profile logo
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 90,
+                          width: 90,
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(40),
+                              child: Image.asset(imagePath),
                             ),
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Column(
-                                children: [
-                                  const Text("SURNAME:",
-                                      style: TextStyle(
-                                          color: AppColors.tertiaryColor,
-                                          fontSize: 12.0)),
-                                  Text(userName.toCapitalized(),
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 20.0)),
-                                  const Text("ID NUMBER:",
-                                      style: TextStyle(
-                                          color: AppColors.tertiaryColor,
-                                          fontSize: 12.0)),
-                                  Text("$idnumber ",
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 20.0)),
-                                ],
-                              ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text("SURNAME:",
+                                    style: TextStyle(
+                                        color: AppColors.tertiaryColor,
+                                        fontSize: 12.0)),
+                                Text(userName.toCapitalized(),
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 20.0)),
+                                const Text("ID NUMBER:",
+                                    style: TextStyle(
+                                        color: AppColors.tertiaryColor,
+                                        fontSize: 12.0)),
+                                Text("$idnumber ",
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 20.0)),
+                              ],
                             ),
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Column(
-                                children: [
-                                  const Text("PROVINCE:",
-                                      style: TextStyle(
-                                          color: AppColors.tertiaryColor,
-                                          fontSize: 12.0)),
-                                  Text("${province.toCapitalized()}. ",
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 20.0)),
-                                  const Text("COURSE & YEAR:",
-                                      style: TextStyle(
-                                          color: AppColors.tertiaryColor,
-                                          fontSize: 12.0)),
-                                  Text("$course ",
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 20.0)),
-                                ],
-                              ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text("PROVINCE:",
+                                    style: TextStyle(
+                                        color: AppColors.tertiaryColor,
+                                        fontSize: 12.0)),
+                                Text("${province.toCapitalized()}. ",
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 20.0)),
+                                const Text("COURSE & YEAR:",
+                                    style: TextStyle(
+                                        color: AppColors.tertiaryColor,
+                                        fontSize: 12.0)),
+                                Text("$course ",
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 20.0)),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
+                  ),
 
-                    const SizedBox(
-                      height: 5.0,
+                  //Bottom team mention
+                  const Expanded(
+                    child: ActionButtons(),
+                  ),
+                  const Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "Created by CS Compass & Ternary Vanguards 🧭",
                     ),
-                    //Bottom team mention
-                    const ActionButtons(),
-                    // const Column(
-                    //   children: [
-                    //     Align(
-                    //       alignment: Alignment.bottomCenter,
-                    //       child: Padding(
-                    //         padding: EdgeInsets.all(4.0),
-                    //         child: Text(
-                    //           "Created by CS Compass\n& Ternary Vanguards 🧭",
-                    //           textAlign: TextAlign.center,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const Calendar(),
               const Notifications(),

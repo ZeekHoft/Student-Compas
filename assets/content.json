@@ -1,0 +1,113 @@
+{
+    "Student Information Tools": [
+        {
+            "imageUrl": "assets/jpgCanvas.jpg",
+            "labelImage": "Online Canvas",
+            "link": "https://cpu.instructure.com/login/canvas"
+        },
+        {
+            "imageUrl": "assets/jpgHandbook.jpg",
+            "labelImage": "Student Handbook",
+            "link": "https://cpu.edu.ph/wp-content/uploads/2023/09/2023-gold-and-blue-student-handbook.pdf"
+        },
+        {
+            "imageUrl": "assets/jpgSOS.jpg",
+            "labelImage": "Online SOS",
+            "link": "https://my.cpu.edu.ph/Membership/Login"
+        },
+        {
+            "imageUrl": "assets/jpgRepublic.jpg",
+            "labelImage": "CPU republic",
+            "link": "https://www.facebook.com/profile.php?id=100070022602096"
+        }
+    ],
+    "Organization Facebook Pages": [
+        {
+            "imageUrl": "assets/provincialPage.jpg",
+            "labelImage": "CCS Council Page",
+            "link": "https://www.facebook.com/profile.php?id=100068659266555"
+        },
+        {
+            "imageUrl": "assets/cenvasPage.jpg",
+            "labelImage": "Cenvas Page",
+            "link": "https://www.facebook.com/profile.php?id=61562716684826"
+        },
+        {
+            "imageUrl": "assets/cipherPage.jpg",
+            "labelImage": "Cipher Page",
+            "link": "https://www.facebook.com/profile.php?id=61555733671039"
+        },
+        {
+            "imageUrl": "assets/ccsPage.jpg",
+            "labelImage": "CSS Page",
+            "link": "https://www.facebook.com/profile.php?id=100076214379794"
+        },
+        {
+            "imageUrl": "assets/itsoPage.jpg",
+            "labelImage": "ITSO Page",
+            "link": "https://www.facebook.com/profile.php?id=100067320420361"
+        },
+        {
+            "imageUrl": "assets/lissoPage.jpg",
+            "labelImage": "LISSO Page",
+            "link": "https://www.facebook.com/profile.php?id=100063651357008"
+        }
+    ],
+    "CCS Council Officers": [
+        {
+            "imageUrl": "assets/bryson.jpg",
+            "labelImage": "Gov Gagula",
+            "link": "https://www.facebook.com/profile.php?id=100010649170418"
+        },
+        {
+            "imageUrl": "assets/chavez.jpg",
+            "labelImage": "Vice Gov Chavez",
+            "link": "https://www.facebook.com/profile.php?id=100002329390864"
+        },
+        {
+            "imageUrl": "assets/poblacion.jpg",
+            "labelImage": "Rep Poblacion",
+            "link": "https://www.facebook.com/profile.php?id=100002353288542"
+        },
+        {
+            "imageUrl": "assets/draper.jpg",
+            "labelImage": "BM Draper",
+            "link": "https://www.facebook.com/profile.php?id=100000588657286"
+        },
+        {
+            "imageUrl": "assets/balane.jpg",
+            "labelImage": "BM Balane",
+            "link": "https://www.facebook.com/profile.php?id=100004411247569"
+        },
+        {
+            "imageUrl": "assets/tupas.jpg",
+            "labelImage": "BM Tupas",
+            "link": "https://www.facebook.com/profile.php?id=100008139348809"
+        },
+        {
+            "imageUrl": "assets/damelerio.jpg",
+            "labelImage": "BM Damelerio",
+            "link": "https://www.facebook.com/profile.php?id=100009460432897"
+        },
+        {
+            "imageUrl": "assets/gonzales.jpg",
+            "labelImage": "BM Gonzales",
+            "link": "https://www.facebook.com/profile.php?id=100054243183372"
+        },
+        {
+            "imageUrl": "assets/jacildo.jpg",
+            "labelImage": "BM Jacildo",
+            "link": "https://www.facebook.com/profile.php?id=100079262975160"
+        },
+        {
+            "imageUrl": "assets/auman.jpg",
+            "labelImage": "BM Auman",
+            "link": "https://www.facebook.com/profile.php?id=100001585643079"
+        },
+        {
+            "imageUrl": "assets/sanJose.jpg",
+            "labelImage": "BM San Jose",
+            "link": "https://www.facebook.com/profile.php?id=100084537758852"
+        }
+    ]
+}

@@ -1,17 +1,341 @@
 {
-    "event": "Important Events",
-    "sessions": [
-        {
-            "monthname": "Aug",
-            "dateStart": "1",
-            "dateEnd": "-2",
-            "event": "Enrollement - Work Studdents, F/S Dependents, Athletes, CPUR Officicals /n & International Students"
-        },
-        {
-            "monthname": "Aug",
-            "dateStart": "5",
-            "dateEnd": "-6",
-            "event": "Start Enrollment of 4th year students"
-        }
-    ]
+  "event": "Important Events",
+  "sessions": [
+    {
+      "event": "Start of Enrollement for 4th year students",
+      "dayevent": "2024-08-05 00:00:04Z",
+      "monthnum": "2024-08-05 00:00:04Z",
+      "yearnum": "2024-08-05 00:00:04Z"
+    },
+    {
+      "event": "Start of Enrollement for 4th year students",
+      "dayevent": "2024-08-06 00:00:04Z",
+      "monthnum": "2024-08-06 00:00:04Z",
+      "yearnum": "2024-08-06 00:00:04Z"
+    },
+    {
+      "event": "Start of Enrollement for 2nd year students",
+      "dayevent": "2024-08-07 00:00:04Z",
+      "monthnum": "2024-08-07 00:00:04Z",
+      "yearnum": "2024-08-07 00:00:04Z"
+    },
+    {
+      "event": "Start of Enrollement for 3rd year students",
+      "dayevent": "2024-08-08 00:00:04Z",
+      "monthnum": "2024-08-08 00:00:04Z",
+      "yearnum": "2024-08-08 00:00:04Z"
+    },
+    {
+      "event": "Enrollement for all year levels & Faculty and Staff Coneference",
+      "dayevent": "2024-08-09 00:00:04Z",
+      "monthnum": "2024-08-09 00:00:04Z",
+      "yearnum": "2024-08-09 00:00:04Z"
+    },
+    {
+      "event": "Enrollement for all year levels",
+      "dayevent": "2024-08-10 00:00:04Z",
+      "monthnum": "2024-08-10 00:00:04Z",
+      "yearnum": "2024-08-10 00:00:04Z"
+    },
+    {
+      "event": "Start of Change of SUbject Assignment and if Schedule",
+      "dayevent": "2024-08-12 00:00:04Z",
+      "monthnum": "2024-08-12 00:00:04Z",
+      "yearnum": "2024-08-12 00:00:04Z"
+    },
+    {
+      "event": "Classes Begin & Orientation for 1st Year College Students",
+      "dayevent": "2024-08-14 00:00:04Z",
+      "monthnum": "2024-08-14 00:00:04Z",
+      "yearnum": "2024-08-14 00:00:04Z"
+    },
+    {
+      "event": "Continued Orientation for 1st Year College Students",
+      "dayevent": "2024-08-15 00:00:04Z",
+      "monthnum": "2024-08-15 00:00:04Z",
+      "yearnum": "2024-08-15 00:00:04Z"
+    },
+    {
+      "event": "CPU Orientation",
+      "dayevent": "2024-08-16 00:00:04Z",
+      "monthnum": "2024-08-16 00:00:04Z",
+      "yearnum": "2024-08-16 00:00:04Z"
+    },
+    {
+      "event": "LGU Orientations",
+      "dayevent": "2024-08-19 00:00:04Z",
+      "monthnum": "2024-08-19 00:00:04Z",
+      "yearnum": "2024-08-19 00:00:04Z"
+    },
+    {
+      "event": "Continued LGU Orientations",
+      "dayevent": "2024-08-20 00:00:04Z",
+      "monthnum": "2024-08-20 00:00:04Z",
+      "yearnum": "2024-08-20 00:00:04Z"
+    },
+    {
+      "event": "Ninoy Aquino Day",
+      "dayevent": "2024-08-21 00:00:04Z",
+      "monthnum": "2024-08-21 00:00:04Z",
+      "yearnum": "2024-08-21 00:00:04Z"
+    },
+    {
+      "event": "DeadLine for submission of Application for Graduation at the Dean's Office",
+      "dayevent": "2024-08-23 00:00:04Z",
+      "monthnum": "2024-08-21 00:00:04Z",
+      "yearnum": "2024-08-21 00:00:04Z"
+    },
+    {
+      "event": "Orientation for parents of College Students",
+      "dayevent": "2024-08-24 00:00:04Z",
+      "monthnum": "2024-08-24 00:00:04Z",
+      "yearnum": "2024-08-24 00:00:04Z"
+    },
+    {
+      "event": "Iloilo Charter Day",
+      "dayevent": "2024-08-25 00:00:04Z",
+      "monthnum": "2024-08-25 00:00:04Z",
+      "yearnum": "2024-08-25 00:00:04Z"
+    },
+    {
+      "event": "National Heroes Day",
+      "dayevent": "2024-08-26 00:00:04Z",
+      "monthnum": "2024-08-26 00:00:04Z",
+      "yearnum": "2024-08-26 00:00:04Z"
+    },
+    {
+      "event": "Last day of Enrollement Changed in Schedule & Subject Assignment",
+      "dayevent": "2024-08-31 00:00:04Z",
+      "monthnum": "2024-08-31 00:00:04Z",
+      "yearnum": "2024-08-31 00:00:04Z"
+    },
+    {
+      "event": "DeadLine for submission of Application for Graduation at the Regisrar's Office",
+      "dayevent": "2024-09-04 00:00:04Z",
+      "monthnum": "2024-09-04 00:00:04Z",
+      "yearnum": "2024-09-04 00:00:04Z"
+    },
+    {
+      "event": "Bar Exam, Sep 6 - 16",
+      "dayevent": "2024-09-06 00:00:04Z",
+      "monthnum": "2024-09-06 00:00:04Z",
+      "yearnum": "2024-09-06 00:00:04Z"
+    },
+    {
+      "event": "Orientation Seminar for Newly Hired Faculty and Staff",
+      "dayevent": "2024-09-11 00:00:04Z",
+      "monthnum": "2024-09-11 00:00:04Z",
+      "yearnum": "2024-09-11 00:00:04Z"
+    },
+    {
+      "event": "End of Bar Exam",
+      "dayevent": "2024-09-16 00:00:04Z",
+      "monthnum": "2024-09-16 00:00:04Z",
+      "yearnum": "2024-09-16 00:00:04Z"
+    },
+    {
+      "event": "University-Wide Earthquake Drill",
+      "dayevent": "2024-09-20 00:00:04Z",
+      "monthnum": "2024-09-20 00:00:04Z",
+      "yearnum": "2024-09-20 00:00:04Z"
+    },
+    {
+      "event": "Start of Prelim Examinations",
+      "dayevent": "2024-09-24 00:00:04Z",
+      "monthnum": "2024-09-24 00:00:04Z",
+      "yearnum": "2024-09-24 00:00:04Z"
+    },
+    {
+      "event": "End of Prelim Examinations",
+      "dayevent": "2024-09-27 00:00:04Z",
+      "yearnum": "2024-09-27 00:00:04Z",
+      "monthnum": "2024-09-27 00:00:04Z"
+    },
+    {
+      "event": "Foundation Day & Teachers Day",
+      "dayevent": "2024-09-01 00:00:04Z",
+      "monthnum": "2024-09-01 00:00:04Z",
+      "yearnum": "2024-09-01 00:00:04Z"
+    },
+    {
+      "event": "University Week Celebration, Oct 7 - 12",
+      "dayevent": "2024-10-07 00:00:04Z",
+      "monthnum": "2024-10-07 00:00:04Z",
+      "yearnum": "2024-10-07 00:00:04Z"
+    },
+    {
+      "event": "Alumnu Homecoming & Last Day Of University Week Celebration",
+      "dayevent": "2024-10-12 00:00:04Z",
+      "monthnum": "2024-10-12 00:00:04Z",
+      "yearnum": "2024-10-12 00:00:04Z"
+    },
+    {
+      "event": "Faculty and Staff CEW Convocation",
+      "dayevent": "2024-10-18 00:00:04Z",
+      "monthnum": "2024-10-18 00:00:04Z",
+      "yearnum": "2024-10-18 00:00:04Z"
+    },
+    {
+      "event": "NSTP and Graduate Studies CEW Convoation",
+      "dayevent": "2024-10-19 00:00:04Z",
+      "monthnum": "2024-10-19 00:00:04Z",
+      "yearnum": "2024-10-19 00:00:04Z"
+    },
+    {
+      "event": "Christ Emphasis WEEK (CEW), Oct 21 - 25",
+      "dayevent": "2024-10-21 00:00:04Z",
+      "monthnum": "2024-10-21 00:00:04Z",
+      "yearnum": "2024-10-21 00:00:04Z"
+    },
+    {
+      "event": "Last day of CEW",
+      "dayevent": "2024-10-25 00:00:04Z",
+      "monthnum": "2024-10-25 00:00:04Z",
+      "yearnum": "2024-10-25 00:00:04Z"
+    },
+    {
+      "event": "All Saints Day",
+      "dayevent": "2024-11-01 00:00:04Z",
+      "monthnum": "2024-11-01 00:00:04Z",
+      "yearnum": "2024-11-01 00:00:04Z"
+    },
+    {
+      "event": "Additional Special Non Working Holiday",
+      "dayevent": "2024-11-02 00:00:04Z",
+      "monthnum": "2024-11-02 00:00:04Z",
+      "yearnum": "2024-11-02 00:00:04Z"
+    },
+    {
+      "event": "Start of Midterm Examination",
+      "dayevent": "2024-11-05 00:00:04Z",
+      "monthnum": "2024-11-05 00:00:04Z",
+      "yearnum": "2024-11-05 00:00:04Z"
+    },
+    {
+      "event": "End of Midterm Examination",
+      "dayevent": "2024-11-08 00:00:04Z",
+      "monthnum": "2024-11-08 00:00:04Z",
+      "yearnum": "2024-11-08 00:00:04Z"
+    },
+    {
+      "event": "University Thanksgiving Service",
+      "dayevent": "2024-11-20 00:00:04Z",
+      "monthnum": "2024-11-20 00:00:04Z",
+      "yearnum": "2024-11-20 00:00:04Z"
+    },
+    {
+      "event": "Awarding of Scholarships & Pre-Employment Orientation for Workforce Entrance Readiness (Power) Session",
+      "dayevent": "2024-11-22 00:00:04Z",
+      "monthnum": "2024-11-22 00:00:04Z",
+      "yearnum": "2024-11-22 00:00:04Z"
+    },
+    {
+      "event": "Bonefacio Day",
+      "dayevent": "2024-11-30 00:00:04Z",
+      "monthnum": "2024-11-30 00:00:04Z",
+      "yearnum": "2024-11-30 00:00:04Z"
+    },
+    {
+      "event": "Start of University Outreach Week",
+      "dayevent": "2024-12-02 00:00:04Z",
+      "monthnum": "2024-12-02 00:00:04Z",
+      "yearnum": "2024-12-02 00:00:04Z"
+    },
+    {
+      "event": "Opening of Lights & End of University Outreach Week",
+      "dayevent": "2024-12-06 00:00:04Z",
+      "monthnum": "2024-12-06 00:00:04Z",
+      "yearnum": "2024-12-06 00:00:04Z"
+    },
+    {
+      "event": "Additional Special Non Working Holiday (Republic Act No.10966",
+      "dayevent": "2024-12-08 00:00:04Z",
+      "monthnum": "2024-12-08 00:00:04Z",
+      "yearnum": "2024-12-08 00:00:04Z"
+    },
+    {
+      "event": "White Gift Service/Advent Celebration",
+      "dayevent": "2024-12-11 00:00:04Z",
+      "monthnum": "2024-12-11 00:00:04Z",
+      "yearnum": "2024-12-11 00:00:04Z"
+    },
+    {
+      "event": "Service Award & Univiersity Faculty and Staff Christmas Party",
+      "dayevent": "2024-12-13 00:00:04Z",
+      "monthnum": "2024-12-13 00:00:04Z",
+      "yearnum": "2024-12-13 00:00:04Z"
+    },
+    {
+      "event": "Start of Final Examination, Dec 16 - 17 & 19 - 21",
+      "dayevent": "2024-12-16 00:00:04Z",
+      "monthnum": "2024-12-16 00:00:04Z",
+      "yearnum": "2024-12-16 00:00:04Z"
+    },
+    {
+      "event": "Graciano Lopez Jaena Day",
+      "dayevent": "2024-12-18 00:00:04Z",
+      "monthnum": "2024-12-18 00:00:04Z",
+      "yearnum": "2024-12-18 00:00:04Z"
+    },
+    {
+      "event": "Hopevale Memorial Day",
+      "dayevent": "2024-12-20 00:00:04Z",
+      "monthnum": "2024-12-20 00:00:04Z",
+      "yearnum": "2024-12-20 00:00:04Z"
+    },
+    {
+      "event": "End of Final Examination",
+      "dayevent": "2024-12-21 00:00:04Z",
+      "monthnum": "2024-12-21 00:00:04Z",
+      "yearnum": "2024-12-21 00:00:04Z"
+    },
+    {
+      "event": "Academic Counseling, Dec 23 - 24 & 26 - 27",
+      "dayevent": "2024-12-23 00:00:04Z",
+      "monthnum": "2024-12-23 00:00:04Z",
+      "yearnum": "2024-12-23 00:00:04Z"
+    },
+    {
+      "event": "Last Day for Academic Counseling",
+      "dayevent": "2024-12-27 00:00:04Z",
+      "monthnum": "2024-12-27 00:00:04Z",
+      "yearnum": "2024-12-27 00:00:04Z"
+    },
+    {
+      "event": "Christmas Day *Have a happy holiday from us CS Compass!!*",
+      "dayevent": "2024-12-25 00:00:04Z",
+      "monthnum": "2024-12-25 00:00:04Z",
+      "yearnum": "2024-12-25 00:00:04Z"
+    },
+    {
+      "event": "Deadline for SUbmission of Grades for Prospective Honor Students",
+      "dayevent": "2024-12-28 00:00:04Z",
+      "monthnum": "2024-12-28 00:00:04Z",
+      "yearnum": "2024-12-28 00:00:04Z"
+    },
+    {
+      "event": "New Year's Day",
+      "dayevent": "2025-01-01 00:00:04Z",
+      "monthnum": "2025-01-01 00:00:04Z",
+      "yearnum": "2025-01-01 00:00:04Z"
+    },
+    {
+      "event": "Deadline for Online Submission of Grades & Deadline for Submission of OJT/Practicum/Internship/Practice Teaching Certificates",
+      "dayevent": "2025-01-06 00:00:04Z",
+      "monthnum": "2025-01-06 00:00:04Z",
+      "yearnum": "2025-01-06 00:00:04Z"
+    },
+    {
+      "event": "DELIBERATION",
+      "dayevent": "2025-01-09 00:00:04Z",
+      "monthnum": "2025-01-09 00:00:04Z",
+      "yearnum": "2025-01-09 00:00:04Z"
+    },
+    {
+      "event": "Deadline for Submission of Grade Sheets",
+      "dayevent": "2025-01-10 00:00:04Z",
+      "monthnum": "2025-01-10 00:00:04Z",
+      "yearnum": "2025-01-10 00:00:04Z"
+    }
+  ]
 }
