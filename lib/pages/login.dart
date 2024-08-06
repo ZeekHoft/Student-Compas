@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                         hintText: "Enter ID Number"),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please Enter Your CPU Email";
+                        return "Please Enter Your ID Numbe";
                       } else {
                         return null;
                       }

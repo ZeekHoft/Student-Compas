@@ -1,5 +1,5 @@
 import 'package:cs_compas/calendar_controller/calendar_entity.dart';
-import 'package:cs_compas/pages/home.dart';
+import 'package:cs_compas/controllers/color_control.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -41,6 +41,7 @@ class _TimelineState extends State<Timeline> {
       child: Column(
         children: [
           _buildHeader(),
+          _buildMonthName(),
           _buildWeeks(),
           Expanded(
               child: PageView.builder(
@@ -49,6 +50,12 @@ class _TimelineState extends State<Timeline> {
                     setState(() {
                       _currentMonth =
                           DateTime(_currentMonth.year, index + 1, 1);
+                      if (_currentMonth.year > 2034) {
+                        _currentMonth = DateTime(2034, 12,
+                            1); // Set to December 2034 if limit is reached
+                        _pageController.jumpToPage(
+                            1); // Jump to the first page again if exceeded limi (December 2034)
+                      }
                     });
                   },
                   itemCount: 12 * 10, // show 10 years if u want... idc
@@ -82,17 +89,12 @@ class _TimelineState extends State<Timeline> {
               }
             },
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios_outlined,
               color: AppColors.tertiaryColor,
             ),
           ),
           //display the currecnt month
           // M - month number/ MM - month number with leading zeroes/ MMM - month name shortcut/ MMMM - full name
-          Text(showDate()),
-          Text(
-            "${DateFormat('MMMM').format(_currentMonth)} ",
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
 
           DropdownButton<int>(
             // Dropdown for selecting a year
@@ -134,7 +136,7 @@ class _TimelineState extends State<Timeline> {
                 }
               },
               icon: const Icon(
-                Icons.arrow_forward,
+                Icons.arrow_forward_ios_outlined,
                 color: AppColors.tertiaryColor,
               ))
         ],
@@ -179,6 +181,34 @@ class _TimelineState extends State<Timeline> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMonthName() {
+    return Container(
+      decoration: customContainer(),
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              "${DateFormat('MMMM').format(_currentMonth)} ",
+              textAlign: TextAlign.end,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              showDate(),
+              textAlign: TextAlign.end,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -343,7 +373,7 @@ class _TimelineState extends State<Timeline> {
 
   String showDate() {
     final now = DateTime.now();
-    String formatter = DateFormat('MMMM, dd, E').format(now);
+    String formatter = DateFormat('MMM-dd-E').format(now);
     return formatter;
   }
 
@@ -353,3 +383,4 @@ class _TimelineState extends State<Timeline> {
     return formatter;
   }
 }
+// i hate coding.... AHHAHAH

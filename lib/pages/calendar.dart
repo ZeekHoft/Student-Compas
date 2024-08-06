@@ -1,9 +1,9 @@
 import 'package:cs_compas/calendar_controller/calendar_entity.dart';
 import 'package:cs_compas/calendar_controller/util_calendar.dart';
+import 'package:cs_compas/controllers/color_control.dart';
 import 'package:cs_compas/controllers/default_calendar.dart';
 import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:cs_compas/controllers/timeline.dart';
-import 'package:cs_compas/pages/home.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

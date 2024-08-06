@@ -2,17 +2,12 @@ import 'dart:async';
 
 import 'package:cs_compas/controllers/actionbuttons.dart';
 import 'package:cs_compas/controllers/auth.dart';
+import 'package:cs_compas/controllers/color_control.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/notif.dart';
 import 'package:cs_compas/pages/calendar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-class AppColors {
-  static const Color primaryColor = Colors.lightGreen;
-  static const Color secondaryColor = Colors.white;
-  static const Color tertiaryColor = Colors.black;
-}
 
 class Home extends StatefulWidget {
   final String email, idnumber, course, province;
@@ -86,28 +81,29 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     String userName = getUserNameFromEmail(email);
     String coursePrefix = course.split('-')[0];
+
     String imagePath = courseImages[coursePrefix] ?? 'assets/duck.png';
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.tertiaryColor,
-        selectedItemColor: AppColors.primaryColor,
-        unselectedItemColor: Colors.white,
+        backgroundColor: AppColors.primary,
+        selectedItemColor: AppColors.backgroundColor,
+        unselectedItemColor: AppColors.backgroundColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
-            backgroundColor: AppColors.tertiaryColor,
+            backgroundColor: AppColors.primary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
             label: "Calendar",
-            backgroundColor: AppColors.tertiaryColor,
+            backgroundColor: AppColors.primary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.announcement),
             label: "Announcements",
-            backgroundColor: AppColors.tertiaryColor,
+            backgroundColor: AppColors.primary,
           ),
           BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
         ],
@@ -126,8 +122,8 @@ class _HomeState extends State<Home> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-              Colors.white,
-              Colors.white,
+              AppColors.backgroundColor,
+              AppColors.backgroundColor,
             ])),
         child: SafeArea(
           child: IndexedStack(
@@ -142,9 +138,8 @@ class _HomeState extends State<Home> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        border: Border.all(
-                            color: AppColors.tertiaryColor, width: 3),
+                        color: AppColors.primary,
+                        border: Border.all(color: AppColors.primary, width: 3),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
 
@@ -174,14 +169,16 @@ class _HomeState extends State<Home> {
                                         fontSize: 12.0)),
                                 Text(userName.toCapitalized(),
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20.0)),
+                                        color: AppColors.backgroundColor,
+                                        fontSize: 20.0)),
                                 const Text("ID NUMBER:",
                                     style: TextStyle(
                                         color: AppColors.tertiaryColor,
                                         fontSize: 12.0)),
                                 Text("$idnumber ",
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20.0)),
+                                        color: AppColors.backgroundColor,
+                                        fontSize: 20.0)),
                               ],
                             ),
                           ),
@@ -196,16 +193,18 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                         color: AppColors.tertiaryColor,
                                         fontSize: 12.0)),
-                                Text("${province.toCapitalized()}. ",
+                                Text(province.toCapitalized(),
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20.0)),
+                                        color: AppColors.backgroundColor,
+                                        fontSize: 20.0)),
                                 const Text("COURSE & YEAR:",
                                     style: TextStyle(
                                         color: AppColors.tertiaryColor,
                                         fontSize: 12.0)),
                                 Text("$course ",
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20.0)),
+                                        color: AppColors.backgroundColor,
+                                        fontSize: 20.0)),
                               ],
                             ),
                           ),
@@ -221,7 +220,7 @@ class _HomeState extends State<Home> {
                   const Align(
                     alignment: Alignment.topCenter,
                     child: Text(
-                      "Created by CS Compass & Ternary Vanguards 🧭",
+                      "A Cs Compass & Ternary Vanguards creation 🧭",
                     ),
                   ),
                 ],
@@ -243,7 +242,7 @@ class _HomeState extends State<Home> {
         return AlertDialog(
           title: const Text(
             "Log out of CS Compass?",
-            style: TextStyle(color: AppColors.tertiaryColor),
+            style: TextStyle(color: AppColors.primary),
           ),
           actions: [
             TextButton(
