@@ -23,6 +23,7 @@ class _ActionButtonsState extends State<ActionButtons> {
   }
 
   Future<Map> loadContent() async {
+    // Read the json file
     final String jsonString =
         await rootBundle.loadString('assets/content.json');
     final Map data = jsonDecode(jsonString);
@@ -157,7 +158,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             Text(
               labelImage,
               style: const TextStyle(
-                color: AppColors.black,
+                color: AppColors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -186,7 +187,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7))),
-                  color: AppColors.accent)),
+                  color: AppColors.primary)),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 6, bottom: 7),
@@ -195,7 +196,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             height: 150,
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.accent,
+                color: AppColors.container,
                 border: Border.all(color: AppColors.black, width: 2),
               ),
               child: GestureDetector(
@@ -221,7 +222,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.black,
+                          color: AppColors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -247,7 +248,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               boxShadow: const [BoxShadow(offset: Offset(1, 2))],
-              color: const Color.fromARGB(255, 255, 181, 95),
+              color: AppColors.accent,
               border: Border.all(color: AppColors.black, width: 3),
             ),
             child: Text(

@@ -11,12 +11,12 @@ class AppColors {
   static const Color secondaryColor = Colors.white;
   static const Color tertiaryColor = Colors.black;
 
-  static const Color white = Color.fromRGBO(250, 248, 241, 1);
-  static const Color black = Color.fromRGBO(28, 26, 21, 1);
-  static const Color primary = Color.fromRGBO(255, 193, 7, 1);
-  static const Color secondary = Color.fromRGBO(145, 116, 23, 1);
-  static const Color accent = Color.fromRGBO(246, 202, 73, 1);
-  static const Color container = Color.fromRGBO(253, 240, 200, 1);
+  static const Color white = Color.fromARGB(255, 232, 241, 223);
+  static const Color black = Color.fromARGB(255, 43, 77, 34);
+  static const Color primary = Color(0xff34652E);
+  static const Color secondary = Color.fromARGB(255, 199, 221, 119);
+  static const Color container = Color(0xff4d9040);
+  static const Color accent = Color.fromARGB(255, 145, 218, 103);
 }
 
 class Home extends StatefulWidget {
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
         decoration: const BoxDecoration(
             border: Border(top: BorderSide(color: AppColors.black, width: 2))),
         child: BottomNavigationBar(
-          selectedItemColor: AppColors.black,
+          selectedItemColor: AppColors.white,
           unselectedItemColor: AppColors.secondary,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -86,12 +86,12 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month_rounded),
               label: "Calendar",
-              backgroundColor: AppColors.container,
+              backgroundColor: AppColors.primary,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.announcement),
               label: "Announcements",
-              backgroundColor: AppColors.container,
+              backgroundColor: AppColors.primary,
             ),
             BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
           ],
