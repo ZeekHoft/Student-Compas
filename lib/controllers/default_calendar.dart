@@ -32,7 +32,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
           gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              colors: [Colors.white, Colors.white])),
+              colors: [AppColors.backgroundColor, AppColors.backgroundColor])),
       child: Column(
         children: [
           _buildHeader(),
@@ -79,7 +79,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
             },
             icon: const Icon(
               Icons.arrow_back_ios_outlined,
-              color: AppColors.tertiaryColor,
+              color: AppColors.black,
             ),
           ),
           //display the currecnt month
@@ -126,7 +126,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
               },
               icon: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: AppColors.tertiaryColor,
+                color: AppColors.black,
               ))
         ],
       ),
@@ -140,7 +140,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
             color: AppColors.primaryColor,
-            border: Border.all(color: AppColors.tertiaryColor, width: 4),
+            border: Border.all(color: AppColors.black, width: 4),
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -166,7 +166,8 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
           children: [
             Text(
               day,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: AppColors.secondaryColor),
             ),
           ],
         ),
@@ -186,7 +187,10 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
             child: Text(
               "${DateFormat('MMMM').format(_currentMonth)} ",
               textAlign: TextAlign.end,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.secondaryColor),
             ),
           ),
           Padding(
@@ -194,7 +198,10 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
             child: Text(
               showDate(),
               textAlign: TextAlign.end,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.secondaryColor),
             ),
           ),
         ],
@@ -257,6 +264,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
+                      backgroundColor: AppColors.black,
                       title: const Text(
                         'Event Details',
                         style: TextStyle(color: AppColors.primaryColor),
@@ -265,7 +273,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                         "Need Internet to fetch data",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: AppColors.tertiaryColor),
+                            color: AppColors.secondaryColor),
                       ),
                       actions: [
                         TextButton(
@@ -299,9 +307,9 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                           child: Text(
                             text,
                             style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.black),
                           ),
                         ),
                       ),
@@ -319,7 +327,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
   BoxDecoration customContainer() {
     return BoxDecoration(
         color: AppColors.primaryColor,
-        border: Border.all(color: AppColors.tertiaryColor, width: 4),
+        border: Border.all(color: AppColors.black, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 

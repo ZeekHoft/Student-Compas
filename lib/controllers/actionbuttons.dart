@@ -221,7 +221,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.black,
+                          color: AppColors.secondaryColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),

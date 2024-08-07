@@ -43,7 +43,10 @@ class _NotificationsState extends State<Notifications> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.white, Colors.white])),
+                colors: [
+              AppColors.backgroundColor,
+              AppColors.backgroundColor
+            ])),
         child: ValueListenableBuilder(
           valueListenable: dataNotifier,
           builder: (context, Announcement? value, child) {
@@ -70,7 +73,7 @@ class _NotificationsState extends State<Notifications> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
-                                color: AppColors.tertiaryColor,
+                                color: AppColors.black,
                               ),
                             ),
                           ],
@@ -85,7 +88,7 @@ class _NotificationsState extends State<Notifications> {
                               session.body.toString(),
                               style: const TextStyle(
                                 fontSize: 16.0,
-                                color: AppColors.tertiaryColor,
+                                color: AppColors.black,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -104,7 +107,7 @@ class _NotificationsState extends State<Notifications> {
                                       : const Text(
                                           "Click Here!",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: AppColors.backgroundColor,
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -124,7 +127,7 @@ class _NotificationsState extends State<Notifications> {
                                       textAlign: TextAlign.start,
                                       style: const TextStyle(
                                           fontSize: 14.0,
-                                          color: AppColors.tertiaryColor,
+                                          color: AppColors.black,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
@@ -136,7 +139,7 @@ class _NotificationsState extends State<Notifications> {
                                       "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
                                       style: const TextStyle(
                                         fontSize: 14.0,
-                                        color: AppColors.tertiaryColor,
+                                        color: AppColors.black,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -158,7 +161,7 @@ class _NotificationsState extends State<Notifications> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _syncData(),
-        backgroundColor: AppColors.tertiaryColor,
+        backgroundColor: AppColors.black,
         mini: true,
         heroTag: "button announcement",
         tooltip: 'Sync',
@@ -199,8 +202,7 @@ class _NotificationsState extends State<Notifications> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(AppColors.tertiaryColor)),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.black)),
               SizedBox(height: 8.0),
               Text(
                 'Loading...',
@@ -216,7 +218,7 @@ class _NotificationsState extends State<Notifications> {
   BoxDecoration templateContainer() {
     return BoxDecoration(
         color: AppColors.primaryColor,
-        border: Border.all(color: AppColors.tertiaryColor, width: 4),
+        border: Border.all(color: AppColors.black, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 
