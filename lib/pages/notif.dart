@@ -38,126 +38,108 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-              AppColors.backgroundColor,
-              AppColors.backgroundColor
-            ])),
-        child: ValueListenableBuilder(
-          valueListenable: dataNotifier,
-          builder: (context, Announcement? value, child) {
-            if (value == null) {
-              return const Center(child: Text('No announcements found'));
-            }
-            return ListView.builder(
-              itemCount: value.sessions.length,
-              itemBuilder: (context, index) {
-                final session = value.sessions[index];
-                return Container(
-                  margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  child: Card(
-                    color: AppColors.tertiary,
-                    child: Container(
-                      decoration: templateContainer(),
-                      child: ExpansionTile(
-                        backgroundColor: AppColors.tertiary,
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              session.title,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                color: AppColors.dark,
-                              ),
-                            ),
-                          ],
+      backgroundColor: AppColors.backgroundColor,
+      body: ValueListenableBuilder(
+        valueListenable: dataNotifier,
+        builder: (context, Announcement? value, child) {
+          if (value == null) {
+            return const Center(child: Text('No announcements found'));
+          }
+          return ListView.builder(
+            itemCount: value.sessions.length,
+            itemBuilder: (context, index) {
+              final session = value.sessions[index];
+              return Container(
+                margin: const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                decoration: templateContainer(),
+                child: ExpansionTile(
+                  backgroundColor: AppColors.neutral,
+                  initiallyExpanded: index == 0 ? true : false,
+                  iconColor: AppColors.textDark,
+                  collapsedIconColor: AppColors.textDark,
+                  title: Text(
+                    session.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                      color: AppColors.dark,
+                    ),
+                  ),
+                  children: [
+                    //collapsable announcements
+                    //body
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        session.body.toString(),
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: AppColors.dark,
                         ),
-
-                        children: [
-                          //collapsable announcements
-                          //body
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              session.body.toString(),
-                              style: const TextStyle(
-                                fontSize: 16.0,
-                                color: AppColors.dark,
-                              ),
-                              textAlign: TextAlign.justify,
-                            ),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    //Link
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
+                          child: GestureDetector(
+                            onTap: () => _launchUrl(
+                                Uri.parse(session.link.toString()), false),
+                            child: session.link.isEmpty
+                                ? const Text("")
+                                : const Text(
+                                    "Click Here!",
+                                    style: TextStyle(
+                                        color: AppColors.primary,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                           ),
-                          //Link
+                        ),
+                      ],
+                    ),
+                    //Sender
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
+                      child: Column(
+                        children: [
                           Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(11, 2, 2, 0),
-                                child: GestureDetector(
-                                  onTap: () => _launchUrl(
-                                      Uri.parse(session.link.toString()),
-                                      false),
-                                  child: session.link.isEmpty
-                                      ? const Text("")
-                                      : const Text(
-                                          "Click Here!",
-                                          style: TextStyle(
-                                              color: AppColors.backgroundColor,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                ),
+                              Text(
+                                "\nFrom: ${session.sender.join(', ')}",
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(
+                                    fontSize: 14.0,
+                                    color: AppColors.dark,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
-                          //Sender
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 5),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "\nFrom: ${session.sender.join(', ')}",
-                                      textAlign: TextAlign.start,
-                                      style: const TextStyle(
-                                          fontSize: 14.0,
-                                          color: AppColors.dark,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
+                          //date
+                          Row(
+                            children: [
+                              Text(
+                                "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
+                                style: const TextStyle(
+                                  fontSize: 14.0,
+                                  color: AppColors.dark,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                                //date
-                                Row(
-                                  children: [
-                                    Text(
-                                      "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
-                                      style: const TextStyle(
-                                        fontSize: 14.0,
-                                        color: AppColors.dark,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
+                              )
+                            ],
+                          )
                         ],
-                        // Join sender names with comma
                       ),
                     ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
+                  ],
+                  // Join sender names with comma
+                ),
+              );
+            },
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _syncData(),
@@ -217,9 +199,11 @@ class _NotificationsState extends State<Notifications> {
 
   BoxDecoration templateContainer() {
     return BoxDecoration(
-        color: AppColors.tertiary,
-        border: Border.all(color: AppColors.dark, width: 4),
-        borderRadius: const BorderRadius.all(Radius.circular(10)));
+      color: AppColors.midtone,
+      border: Border.all(color: AppColors.borderColor, width: 4),
+      boxShadow: const [BoxShadow(offset: Offset(2, 4))],
+      // borderRadius: const BorderRadius.all(Radius.circular(10))
+    );
   }
 
   void _launchUrl(Uri uri, bool inAPP) async {
