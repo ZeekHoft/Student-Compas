@@ -79,7 +79,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
             },
             icon: const Icon(
               Icons.arrow_back_ios_outlined,
-              color: AppColors.black,
+              color: AppColors.dark,
             ),
           ),
           //display the currecnt month
@@ -126,7 +126,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
               },
               icon: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: AppColors.black,
+                color: AppColors.dark,
               ))
         ],
       ),
@@ -139,8 +139,8 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
       child: Container(
         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-            border: Border.all(color: AppColors.black, width: 4),
+            color: AppColors.tertiary,
+            border: Border.all(color: AppColors.dark, width: 4),
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -167,7 +167,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
             Text(
               day,
               style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: AppColors.secondaryColor),
+                  fontWeight: FontWeight.bold, color: AppColors.textLight),
             ),
           ],
         ),
@@ -190,7 +190,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.secondaryColor),
+                  color: AppColors.textLight),
             ),
           ),
           Padding(
@@ -201,7 +201,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.secondaryColor),
+                  color: AppColors.textLight),
             ),
           ),
         ],
@@ -264,16 +264,16 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      backgroundColor: AppColors.black,
+                      backgroundColor: AppColors.dark,
                       title: const Text(
                         'Event Details',
-                        style: TextStyle(color: AppColors.primaryColor),
+                        style: TextStyle(color: AppColors.tertiary),
                       ),
                       content: const Text(
                         "Need Internet to fetch data",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: AppColors.secondaryColor),
+                            color: AppColors.textLight),
                       ),
                       actions: [
                         TextButton(
@@ -283,7 +283,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                           child: const Text('Close',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.primaryColor)),
+                                  color: AppColors.tertiary)),
                         ),
                       ],
                     );
@@ -293,11 +293,11 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
               child: Container(
                 margin: const EdgeInsets.fromLTRB(2, 2, 2, 2),
                 decoration: const BoxDecoration(
-                    color: AppColors.primaryColor,
+                    color: AppColors.tertiary,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Card(
                   shadowColor: Colors.transparent,
-                  color: AppColors.primaryColor,
+                  color: AppColors.tertiary,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -309,7 +309,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
                             style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.black),
+                                color: AppColors.dark),
                           ),
                         ),
                       ),
@@ -326,8 +326,8 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
 
   BoxDecoration customContainer() {
     return BoxDecoration(
-        color: AppColors.primaryColor,
-        border: Border.all(color: AppColors.black, width: 4),
+        color: AppColors.tertiary,
+        border: Border.all(color: AppColors.dark, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 

@@ -165,19 +165,19 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("SURNAME:",
                                     style: TextStyle(
-                                        color: AppColors.tertiaryColor,
+                                        color: AppColors.backgroundColor,
                                         fontSize: 12.0)),
                                 Text(userName.toCapitalized(),
                                     style: const TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 20.0)),
                                 const Text("ID NUMBER:",
                                     style: TextStyle(
-                                        color: AppColors.tertiaryColor,
+                                        color: AppColors.backgroundColor,
                                         fontSize: 12.0)),
                                 Text("$idnumber ",
                                     style: const TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 20.0)),
                               ],
                             ),
@@ -191,19 +191,19 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("PROVINCE:",
                                     style: TextStyle(
-                                        color: AppColors.tertiaryColor,
+                                        color: AppColors.backgroundColor,
                                         fontSize: 12.0)),
                                 Text(province.toCapitalized(),
                                     style: const TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 20.0)),
                                 const Text("COURSE & YEAR:",
                                     style: TextStyle(
-                                        color: AppColors.tertiaryColor,
+                                        color: AppColors.backgroundColor,
                                         fontSize: 12.0)),
                                 Text("$course ",
                                     style: const TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 20.0)),
                               ],
                             ),
@@ -251,7 +251,7 @@ class _HomeState extends State<Home> {
               },
               child: const Text(
                 "Cancel",
-                style: TextStyle(color: AppColors.primaryColor),
+                style: TextStyle(color: AppColors.primary),
               ),
             ),
             TextButton(
@@ -261,7 +261,7 @@ class _HomeState extends State<Home> {
               },
               child: const Text(
                 "Confirm",
-                style: TextStyle(color: AppColors.primaryColor),
+                style: TextStyle(color: AppColors.primary),
               ),
             )
           ],

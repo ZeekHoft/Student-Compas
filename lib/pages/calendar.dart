@@ -43,10 +43,7 @@ class _CalendarState extends State<Calendar> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [
-              AppColors.backgroundColor,
-              AppColors.backgroundColor
-            ])),
+                colors: [AppColors.textLight, AppColors.textLight])),
         child: ValueListenableBuilder(
           valueListenable: notifierData,
           builder: (context, CalendarEvents? value, child) {
@@ -63,12 +60,12 @@ class _CalendarState extends State<Calendar> {
       floatingActionButton: FloatingActionButton(
         heroTag: "button calendar",
         mini: true,
-        backgroundColor: AppColors.black,
+        backgroundColor: AppColors.dark,
         onPressed: () => _syncDataCalendar(),
         tooltip: 'Sync Calendar',
         child: const Icon(
           Icons.calendar_month_outlined,
-          color: AppColors.primaryColor,
+          color: AppColors.tertiary,
         ),
       ),
     );
@@ -103,11 +100,11 @@ class _CalendarState extends State<Calendar> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.black)),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.dark)),
               SizedBox(height: 8.0),
               Text(
                 'Loading...',
-                style: TextStyle(color: AppColors.primaryColor),
+                style: TextStyle(color: AppColors.secondary),
               )
             ],
           ),

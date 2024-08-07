@@ -60,11 +60,11 @@ class _NotificationsState extends State<Notifications> {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child: Card(
-                    color: AppColors.primaryColor,
+                    color: AppColors.tertiary,
                     child: Container(
                       decoration: templateContainer(),
                       child: ExpansionTile(
-                        backgroundColor: AppColors.primaryColor,
+                        backgroundColor: AppColors.tertiary,
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -73,7 +73,7 @@ class _NotificationsState extends State<Notifications> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
-                                color: AppColors.black,
+                                color: AppColors.dark,
                               ),
                             ),
                           ],
@@ -88,7 +88,7 @@ class _NotificationsState extends State<Notifications> {
                               session.body.toString(),
                               style: const TextStyle(
                                 fontSize: 16.0,
-                                color: AppColors.black,
+                                color: AppColors.dark,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -127,7 +127,7 @@ class _NotificationsState extends State<Notifications> {
                                       textAlign: TextAlign.start,
                                       style: const TextStyle(
                                           fontSize: 14.0,
-                                          color: AppColors.black,
+                                          color: AppColors.dark,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
@@ -139,7 +139,7 @@ class _NotificationsState extends State<Notifications> {
                                       "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
                                       style: const TextStyle(
                                         fontSize: 14.0,
-                                        color: AppColors.black,
+                                        color: AppColors.dark,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
@@ -161,13 +161,13 @@ class _NotificationsState extends State<Notifications> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _syncData(),
-        backgroundColor: AppColors.black,
+        backgroundColor: AppColors.dark,
         mini: true,
         heroTag: "button announcement",
         tooltip: 'Sync',
         child: const Icon(
           Icons.announcement_rounded,
-          color: AppColors.primaryColor,
+          color: AppColors.tertiary,
         ),
       ),
     );
@@ -202,11 +202,11 @@ class _NotificationsState extends State<Notifications> {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.black)),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.dark)),
               SizedBox(height: 8.0),
               Text(
                 'Loading...',
-                style: TextStyle(color: AppColors.primaryColor),
+                style: TextStyle(color: AppColors.tertiary),
               )
             ],
           ),
@@ -217,8 +217,8 @@ class _NotificationsState extends State<Notifications> {
 
   BoxDecoration templateContainer() {
     return BoxDecoration(
-        color: AppColors.primaryColor,
-        border: Border.all(color: AppColors.black, width: 4),
+        color: AppColors.tertiary,
+        border: Border.all(color: AppColors.dark, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }
 

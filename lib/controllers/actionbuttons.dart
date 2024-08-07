@@ -111,8 +111,8 @@ class _ActionButtonsState extends State<ActionButtons> {
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-              color: AppColors.container,
-              border: Border.all(color: AppColors.black, width: 3),
+              color: AppColors.midtone,
+              border: Border.all(color: AppColors.dark, width: 3),
               borderRadius: BorderRadius.circular(8)),
           child: SizedBox(
             height: 120,
@@ -144,7 +144,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 clipBehavior: Clip.antiAlias,
                 foregroundDecoration: BoxDecoration(
-                    border: Border.all(color: AppColors.black, width: 3),
+                    border: Border.all(color: AppColors.dark, width: 3),
                     borderRadius: BorderRadius.circular(20)),
                 child: Image.asset(
                   imageUrl,
@@ -157,7 +157,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             Text(
               labelImage,
               style: const TextStyle(
-                color: AppColors.backgroundColor,
+                color: AppColors.textLight,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -182,11 +182,11 @@ class _ActionButtonsState extends State<ActionButtons> {
               clipBehavior: Clip.antiAlias,
               decoration: const ShapeDecoration(
                   shape: BeveledRectangleBorder(
-                      side: BorderSide(color: AppColors.black, width: 1.5),
+                      side: BorderSide(color: AppColors.textDark, width: 1.5),
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7))),
-                  color: AppColors.container)),
+                  color: AppColors.primary)),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 6, bottom: 7),
@@ -195,8 +195,8 @@ class _ActionButtonsState extends State<ActionButtons> {
             height: 150,
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.container,
-                border: Border.all(color: AppColors.black, width: 2),
+                color: AppColors.midtone,
+                border: Border.all(color: AppColors.textDark, width: 2),
               ),
               child: GestureDetector(
                 onTap: onTap,
@@ -206,8 +206,8 @@ class _ActionButtonsState extends State<ActionButtons> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            border:
-                                Border.all(color: AppColors.black, width: 2)),
+                            border: Border.all(
+                                color: AppColors.textDark, width: 2)),
                         child: Image.asset(
                           imageUrl,
                           errorBuilder: (context, error, stackTrace) =>
@@ -221,7 +221,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.secondaryColor,
+                          color: AppColors.textLight,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -247,13 +247,13 @@ class _ActionButtonsState extends State<ActionButtons> {
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               boxShadow: const [BoxShadow(offset: Offset(1, 2))],
-              color: AppColors.accent,
-              border: Border.all(color: AppColors.black, width: 3),
+              color: AppColors.tertiary,
+              border: Border.all(color: AppColors.textDark, width: 3),
             ),
             child: Text(
               label,
               style: const TextStyle(
-                color: AppColors.black,
+                color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
