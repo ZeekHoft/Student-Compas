@@ -150,7 +150,7 @@ class _TimelineState extends State<Timeline> {
       child: Container(
         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
-            color: AppColors.tertiary,
+            color: AppColors.midtone,
             border: Border.all(color: AppColors.dark, width: 4),
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: Row(
@@ -288,7 +288,7 @@ class _TimelineState extends State<Timeline> {
                       backgroundColor: AppColors.dark,
                       title: const Text(
                         'Event Details',
-                        style: TextStyle(color: AppColors.tertiary),
+                        style: TextStyle(color: AppColors.midtone),
                       ),
                       content: eventText.isEmpty
                           ? const Text("No Events yet",
@@ -307,7 +307,7 @@ class _TimelineState extends State<Timeline> {
                           child: const Text('Close',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.tertiary)),
+                                  color: AppColors.midtone)),
                         ),
                       ],
                     );
@@ -317,11 +317,11 @@ class _TimelineState extends State<Timeline> {
               child: Container(
                 margin: const EdgeInsets.fromLTRB(2, 2, 2, 2),
                 decoration: const BoxDecoration(
-                    color: AppColors.tertiary,
+                    color: AppColors.midtone,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Card(
                   shadowColor: Colors.transparent,
-                  color: AppColors.tertiary,
+                  color: AppColors.midtone,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -373,7 +373,7 @@ class _TimelineState extends State<Timeline> {
 
   BoxDecoration customContainer() {
     return BoxDecoration(
-        color: AppColors.tertiary,
+        color: AppColors.midtone,
         border: Border.all(color: AppColors.dark, width: 4),
         borderRadius: const BorderRadius.all(Radius.circular(10)));
   }

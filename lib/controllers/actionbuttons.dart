@@ -111,8 +111,8 @@ class _ActionButtonsState extends State<ActionButtons> {
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-              color: AppColors.midtone,
-              border: Border.all(color: AppColors.dark, width: 3),
+              color: AppColors.neutral,
+              border: Border.all(color: AppColors.borderColor, width: 3),
               borderRadius: BorderRadius.circular(8)),
           child: SizedBox(
             height: 120,
@@ -144,7 +144,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 clipBehavior: Clip.antiAlias,
                 foregroundDecoration: BoxDecoration(
-                    border: Border.all(color: AppColors.dark, width: 3),
+                    border: Border.all(color: AppColors.borderColor, width: 3),
                     borderRadius: BorderRadius.circular(20)),
                 child: Image.asset(
                   imageUrl,
@@ -157,7 +157,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             Text(
               labelImage,
               style: const TextStyle(
-                color: AppColors.textLight,
+                color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -182,7 +182,8 @@ class _ActionButtonsState extends State<ActionButtons> {
               clipBehavior: Clip.antiAlias,
               decoration: const ShapeDecoration(
                   shape: BeveledRectangleBorder(
-                      side: BorderSide(color: AppColors.textDark, width: 1.5),
+                      side:
+                          BorderSide(color: AppColors.borderColor, width: 1.5),
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7))),
@@ -207,7 +208,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                       Container(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: AppColors.textDark, width: 2)),
+                                color: AppColors.borderColor, width: 2)),
                         child: Image.asset(
                           imageUrl,
                           errorBuilder: (context, error, stackTrace) =>
@@ -221,7 +222,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.textLight,
+                          color: AppColors.textDark,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -247,7 +248,7 @@ class _ActionButtonsState extends State<ActionButtons> {
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               boxShadow: const [BoxShadow(offset: Offset(1, 2))],
-              color: AppColors.tertiary,
+              color: AppColors.secondary,
               border: Border.all(color: AppColors.textDark, width: 3),
             ),
             child: Text(

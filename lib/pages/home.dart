@@ -85,36 +85,41 @@ class _HomeState extends State<Home> {
     String imagePath = courseImages[coursePrefix] ?? 'assets/duck.png';
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.primary,
-        selectedItemColor: AppColors.backgroundColor,
-        unselectedItemColor: AppColors.backgroundColor,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-            backgroundColor: AppColors.primary,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            label: "Calendar",
-            backgroundColor: AppColors.primary,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.announcement),
-            label: "Announcements",
-            backgroundColor: AppColors.primary,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
-        ],
-        currentIndex: currentIndex,
-        onTap: (index) async {
-          if (index == 3) {
-            _alertDialog(context);
-          } else {
-            setState(() => currentIndex = index);
-          }
-        },
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+            border: Border(
+                top: BorderSide(color: AppColors.borderColor, width: 3))),
+        child: BottomNavigationBar(
+          backgroundColor: AppColors.primary,
+          selectedItemColor: AppColors.tertiary,
+          unselectedItemColor: AppColors.textLight,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+              backgroundColor: AppColors.primary,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month_outlined),
+              label: "Calendar",
+              backgroundColor: AppColors.primary,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.announcement),
+              label: "Announcements",
+              backgroundColor: AppColors.primary,
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
+          ],
+          currentIndex: currentIndex,
+          onTap: (index) async {
+            if (index == 3) {
+              _alertDialog(context);
+            } else {
+              setState(() => currentIndex = index);
+            }
+          },
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -132,16 +137,14 @@ class _HomeState extends State<Home> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10.0,
-                  ),
                   Container(
-                    margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                    decoration: BoxDecoration(
+                    // margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
                         color: AppColors.primary,
-                        border: Border.all(color: AppColors.primary, width: 3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
+                        border: Border(
+                            bottom: BorderSide(
+                                color: AppColors.borderColor, width: 3))),
 
                     //profile logo
                     child: Row(
@@ -165,7 +168,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("SURNAME:",
                                     style: TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 12.0)),
                                 Text(userName.toCapitalized(),
                                     style: const TextStyle(
@@ -173,7 +176,7 @@ class _HomeState extends State<Home> {
                                         fontSize: 20.0)),
                                 const Text("ID NUMBER:",
                                     style: TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 12.0)),
                                 Text("$idnumber ",
                                     style: const TextStyle(
@@ -191,7 +194,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("PROVINCE:",
                                     style: TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 12.0)),
                                 Text(province.toCapitalized(),
                                     style: const TextStyle(
@@ -199,7 +202,7 @@ class _HomeState extends State<Home> {
                                         fontSize: 20.0)),
                                 const Text("COURSE & YEAR:",
                                     style: TextStyle(
-                                        color: AppColors.backgroundColor,
+                                        color: AppColors.textLight,
                                         fontSize: 12.0)),
                                 Text("$course ",
                                     style: const TextStyle(
