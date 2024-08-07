@@ -48,6 +48,11 @@
             "link": "https://www.facebook.com/profile.php?id=100067320420361"
         },
         {
+            "imageUrl": "assets/dmiaPage.jpg",
+            "labelImage": "MIDAS Page",
+            "link": "https://www.facebook.com/profile.php?id=100064085917363"
+        },
+        {
             "imageUrl": "assets/lissoPage.jpg",
             "labelImage": "LISSO Page",
             "link": "https://www.facebook.com/profile.php?id=100063651357008"
@@ -55,58 +60,69 @@
     ],
     "CCS Council Officers": [
         {
-            "imageUrl": "assets/bryson.jpg",
-            "labelImage": "Gov Gagula",
+            "imageUrl": "assets/gov_bryson.png",
+            "position": "Governor",
+            "labelImage": "Gagula",
             "link": "https://www.facebook.com/profile.php?id=100010649170418"
         },
         {
-            "imageUrl": "assets/chavez.jpg",
-            "labelImage": "Vice Gov Chavez",
+            "imageUrl": "assets/vicegov_chavez.png",
+            "position": "Vice Gov.",
+            "labelImage": "Chavez",
             "link": "https://www.facebook.com/profile.php?id=100002329390864"
         },
         {
-            "imageUrl": "assets/poblacion.jpg",
-            "labelImage": "Rep Poblacion",
+            "imageUrl": "assets/rep_poblacion.png",
+            "position": "Rep.",
+            "labelImage": "Poblacion",
             "link": "https://www.facebook.com/profile.php?id=100002353288542"
         },
         {
-            "imageUrl": "assets/draper.jpg",
-            "labelImage": "BM Draper",
+            "imageUrl": "assets/bm_draper.png",
+            "position": "BM",
+            "labelImage": "Draper",
             "link": "https://www.facebook.com/profile.php?id=100000588657286"
         },
         {
-            "imageUrl": "assets/balane.jpg",
-            "labelImage": "BM Balane",
+            "imageUrl": "assets/bm_balane.png",
+            "position": "BM",
+            "labelImage": "Balane",
             "link": "https://www.facebook.com/profile.php?id=100004411247569"
         },
         {
-            "imageUrl": "assets/tupas.jpg",
-            "labelImage": "BM Tupas",
+            "imageUrl": "assets/bm_tupas.png",
+            "position": "BM",
+            "labelImage": "Tupas",
             "link": "https://www.facebook.com/profile.php?id=100008139348809"
         },
         {
-            "imageUrl": "assets/damelerio.jpg",
-            "labelImage": "BM Damelerio",
+            "imageUrl": "assets/bm_damalerio.png",
+            "position": "BM",
+            "labelImage": "Damelerio",
             "link": "https://www.facebook.com/profile.php?id=100009460432897"
         },
         {
-            "imageUrl": "assets/gonzales.jpg",
-            "labelImage": "BM Gonzales",
+            "imageUrl": "assets/bm_gonzales.png",
+            "position": "BM",
+            "labelImage": "Gonzales",
             "link": "https://www.facebook.com/profile.php?id=100054243183372"
         },
         {
-            "imageUrl": "assets/jacildo.jpg",
-            "labelImage": "BM Jacildo",
+            "imageUrl": "assets/bm_jacildo.png",
+            "position": "BM",
+            "labelImage": "Jacildo",
             "link": "https://www.facebook.com/profile.php?id=100079262975160"
         },
         {
-            "imageUrl": "assets/auman.jpg",
-            "labelImage": "BM Auman",
+            "imageUrl": "assets/bm_auman.png",
+            "position": "BM",
+            "labelImage": "Auman",
             "link": "https://www.facebook.com/profile.php?id=100001585643079"
         },
         {
-            "imageUrl": "assets/sanJose.jpg",
-            "labelImage": "BM San Jose",
+            "imageUrl": "assets/bm_sanjose.png",
+            "position": "BM",
+            "labelImage": "San Jose",
             "link": "https://www.facebook.com/profile.php?id=100084537758852"
         }
     ]

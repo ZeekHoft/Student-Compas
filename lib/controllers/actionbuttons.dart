@@ -57,6 +57,7 @@ class _ActionButtonsState extends State<ActionButtons> {
         for (Map<String, dynamic> officer in content[title]!) {
           var abOfficer = _actionButtonPagesOfficers(
               imageUrl: officer['imageUrl'],
+              position: officer['position'],
               labelImage: officer['labelImage'],
               onTap: () => _launchUrl(Uri.parse(officer['link']), false));
           officers.add(abOfficer);
@@ -172,6 +173,7 @@ class _ActionButtonsState extends State<ActionButtons> {
     // attributes for action button
     //required parameters for orginal widget
     required String imageUrl,
+    required String position,
     required String labelImage,
     required VoidCallback onTap, // requires a GestureDetector
   }) {
@@ -218,12 +220,18 @@ class _ActionButtonsState extends State<ActionButtons> {
                         ),
                       ),
                       const SizedBox(height: 5),
+                      Text(position,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: AppColors.dark,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          )),
                       Text(
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.textDark,
-                          fontWeight: FontWeight.bold,
+                          color: AppColors.dark,
                           fontSize: 14,
                         ),
                       )
