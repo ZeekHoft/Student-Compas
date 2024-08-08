@@ -41,8 +41,8 @@ class _HomeState extends State<Home> {
   final storage = const FlutterSecureStorage();
 
   final courseImages = {
-    'BSCS': 'assets/ccsPage.jpg',
-    'BSIT': 'assets/itPage.jpg',
+    'BSCS': 'assets/CS.png',
+    'BSIT': 'assets/IT.png',
     'BSLISSO': 'assets/lissoPage.jpg',
     'BSDMIA': 'assets/dmiaPage.jpg',
   };
@@ -149,17 +149,6 @@ class _HomeState extends State<Home> {
                     //profile logo
                     child: Row(
                       children: [
-                        SizedBox(
-                          height: 90,
-                          width: 90,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: Image.asset(imagePath),
-                            ),
-                          ),
-                        ),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(2.0),
@@ -168,7 +157,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("SURNAME:",
                                     style: TextStyle(
-                                        color: AppColors.textLight,
+                                        color: AppColors.textDark,
                                         fontSize: 12.0)),
                                 Text(userName.toCapitalized(),
                                     style: const TextStyle(
@@ -176,13 +165,23 @@ class _HomeState extends State<Home> {
                                         fontSize: 20.0)),
                                 const Text("ID NUMBER:",
                                     style: TextStyle(
-                                        color: AppColors.textLight,
+                                        color: AppColors.textDark,
                                         fontSize: 12.0)),
                                 Text("$idnumber ",
                                     style: const TextStyle(
                                         color: AppColors.textLight,
                                         fontSize: 20.0)),
                               ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 90,
+                          width: 90,
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: ClipRRect(
+                              child: Image.asset(imagePath),
                             ),
                           ),
                         ),
@@ -194,7 +193,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 const Text("PROVINCE:",
                                     style: TextStyle(
-                                        color: AppColors.textLight,
+                                        color: AppColors.textDark,
                                         fontSize: 12.0)),
                                 Text(province.toCapitalized(),
                                     style: const TextStyle(
@@ -202,7 +201,7 @@ class _HomeState extends State<Home> {
                                         fontSize: 20.0)),
                                 const Text("COURSE & YEAR:",
                                     style: TextStyle(
-                                        color: AppColors.textLight,
+                                        color: AppColors.textDark,
                                         fontSize: 12.0)),
                                 Text("$course ",
                                     style: const TextStyle(
