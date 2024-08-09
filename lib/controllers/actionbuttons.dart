@@ -223,7 +223,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                       Text(position,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            color: AppColors.dark,
+                            color: AppColors.textDark,
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                           )),
@@ -231,7 +231,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                         labelImage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: AppColors.dark,
+                          color: AppColors.textDark,
                           fontSize: 14,
                         ),
                       )
@@ -248,26 +248,63 @@ class _ActionButtonsState extends State<ActionButtons> {
 
   Widget _titleActionButtons({required String label}) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24, bottom: 16),
+      padding: const EdgeInsets.only(top: 32, bottom: 16),
       child: Center(
-        child: SizedBox(
-          height: 48,
-          child: Container(
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: const [BoxShadow(offset: Offset(1, 2))],
-              color: AppColors.secondary,
-              border: Border.all(color: AppColors.textDark, width: 3),
-            ),
-            child: Text(
-              label,
-              style: const TextStyle(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            SizedBox(
+              height: 48,
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  boxShadow: const [BoxShadow(offset: Offset(1, 2))],
+                  color: AppColors.secondary,
+                  border: Border.all(color: AppColors.textDark, width: 3),
+                ),
+                child: Text(
+                  label,
+                  style: const TextStyle(
+                    color: AppColors.textDark,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ),
-          ),
+            Positioned(
+              top: -18,
+              right: -15,
+              child: Transform.rotate(
+                angle: 0.25,
+                child: SizedBox(
+                  height: 32,
+                  width: 40,
+                  child: Container(
+                    // padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: AppColors.tertiary,
+                        border:
+                            Border.all(color: AppColors.borderColor, width: 3),
+                        boxShadow: [
+                          BoxShadow(offset: Offset.fromDirection(1.04, 2))
+                        ]),
+                    child: Icon(
+                      switch (label) {
+                        "Student Information Tools" =>
+                          Icons.tips_and_updates_rounded,
+                        "Organization Facebook Pages" => Icons.thumb_up_rounded,
+                        "CCS Council Officers" => Icons.groups_rounded,
+                        _ => Icons.cancel
+                      },
+                      color: AppColors.dark,
+                      size: 18,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
