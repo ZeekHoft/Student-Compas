@@ -5,7 +5,6 @@ import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 
@@ -39,98 +38,146 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: ValueListenableBuilder(
-        valueListenable: dataNotifier,
-        builder: (context, Announcement? value, child) {
-          if (value == null) {
-            return const Center(child: Text('No announcements found'));
-          }
-          return CustomRefreshIndicator(
-            onRefresh: _syncData,
-            builder: (context, child, controller) {
-              return _refreshBuilder(controller, child);
-            },
-            child: ListView.builder(
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: value.sessions.length,
-              itemBuilder: (context, index) {
-                final session = value.sessions[index];
-                return Container(
-                  margin: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-                  decoration: templateContainer(),
-                  child: ExpansionTile(
-                    backgroundColor: AppColors.neutral,
-                    initiallyExpanded: index == 0 ? true : false,
-                    iconColor: AppColors.textDark,
-                    collapsedIconColor: AppColors.textDark,
-                    title: Text(
-                      session.title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: AppColors.dark,
-                      ),
-                    ),
-                    childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //collapsable announcements
-                      //body
-                      Text(
-                        session.body.toString(),
-                        style: const TextStyle(
-                            fontSize: 16.0, color: AppColors.dark),
-                        textAlign: TextAlign.justify,
-                      ),
-                      //Link
-                      GestureDetector(
-                        onTap: () => _launchUrl(
-                            Uri.parse(session.link.toString()), false),
-                        child: session.link.isEmpty
-                            ? const Text("")
-                            : const Text(
-                                "Click Here!",
-                                style: TextStyle(
-                                  color: AppColors.primary,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                      ),
-                      const SizedBox(height: 16),
-                      //Sender
-                      Row(
-                        children: [
-                          Text(
-                            // Join sender names with comma
-                            "From: ${session.sender.join(', ')}",
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                              color: AppColors.dark,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const Spacer(),
-                          //date
-                          Text(
-                            "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
-                            style: const TextStyle(
-                              fontSize: 14.0,
-                              color: AppColors.dark,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                );
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        body: ValueListenableBuilder(
+          valueListenable: dataNotifier,
+          builder: (context, Announcement? value, child) {
+            if (value == null) {
+              return const Center(child: Text('No announcements found'));
+            }
+            return CustomRefreshIndicator(
+              onRefresh: _syncData,
+              builder: (context, child, controller) {
+                return _refreshBuilder(controller, child);
               },
+              child: ListView.builder(
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: value.sessions.length,
+                itemBuilder: (context, index) {
+                  final session = value.sessions[index];
+                  return Stack(
+                    children: [
+                      _announcementItem(index == 0, session),
+                      if (index == 0) _latestTag()
+                    ],
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _announcementItem(bool isFirst, Session session) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 28, 20, 0),
+      decoration: BoxDecoration(
+        color: AppColors.midtone,
+        border: Border.all(color: AppColors.borderColor, width: 4),
+        boxShadow: const [BoxShadow(offset: Offset(2, 3))],
+      ),
+      child: ExpansionTile(
+        backgroundColor: AppColors.neutral,
+        initiallyExpanded: isFirst ? true : false,
+        iconColor: AppColors.textDark,
+        collapsedIconColor: AppColors.textDark,
+        title: Text(
+          session.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+            color: AppColors.dark,
+          ),
+        ),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //collapsable announcements
+          //body
+          Text(
+            session.body.toString(),
+            style: const TextStyle(fontSize: 16.0, color: AppColors.dark),
+            textAlign: TextAlign.justify,
+          ),
+          //Link
+          GestureDetector(
+            onTap: () => _launchUrl(Uri.parse(session.link.toString()), false),
+            child: session.link.isEmpty
+                ? const Text("")
+                : const Text(
+                    "Click Here!",
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+          ),
+          const SizedBox(height: 16),
+          //Sender
+          Row(
+            children: [
+              Text(
+                // Join sender names with comma
+                "From: ${session.sender.join(', ')}",
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: AppColors.dark,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const Spacer(),
+              //date
+              Text(
+                "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: AppColors.dark,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _latestTag() {
+    return Positioned(
+      top: 14,
+      left: 8,
+      child: Transform.rotate(
+        angle: -0.2,
+        child: SizedBox(
+          height: 32,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+                color: AppColors.tertiary,
+                border: Border.all(color: AppColors.borderColor, width: 3),
+                boxShadow: [BoxShadow(offset: Offset.fromDirection(1, 3))]),
+            child: const Row(
+              children: [
+                Text(
+                  "Latest",
+                  style: TextStyle(
+                      color: AppColors.dark,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.new_releases_rounded,
+                  size: 18,
+                )
+              ],
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
@@ -205,14 +252,6 @@ class _NotificationsState extends State<Notifications> {
         print(e);
       }
     }
-  }
-
-  BoxDecoration templateContainer() {
-    return BoxDecoration(
-      color: AppColors.midtone,
-      border: Border.all(color: AppColors.borderColor, width: 4),
-      boxShadow: const [BoxShadow(offset: Offset(2, 3))],
-    );
   }
 
   void _launchUrl(Uri uri, bool inAPP) async {
