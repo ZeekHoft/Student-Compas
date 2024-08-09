@@ -5,7 +5,9 @@ import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 
 const remoteUserDataKey = "announcements";
 
@@ -45,8 +47,11 @@ class _NotificationsState extends State<Notifications> {
           if (value == null) {
             return const Center(child: Text('No announcements found'));
           }
-          return RefreshIndicator(
+          return CustomRefreshIndicator(
             onRefresh: _syncData,
+            builder: (context, child, controller) {
+              return _refreshBuilder(controller, child);
+            },
             child: ListView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
               itemCount: value.sessions.length,
@@ -127,23 +132,66 @@ class _NotificationsState extends State<Notifications> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _syncData(),
-        backgroundColor: AppColors.dark,
-        mini: true,
-        heroTag: "button announcement",
-        tooltip: 'Sync',
-        child: const Icon(
-          Icons.announcement_rounded,
-          color: AppColors.tertiary,
+    );
+  }
+
+  Widget _refreshBuilder(IndicatorController controller, Widget child) {
+    // Label during pull to refresh
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        if (!controller.isIdle)
+          Positioned(
+              top: 40.0 * controller.value,
+              child: switch (controller.isLoading) {
+                true => const Row(
+                    children: [
+                      SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                      Text(
+                        "   Loading",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textDark),
+                      )
+                    ],
+                  ),
+                false => Opacity(
+                    opacity: controller.value.clamp(0.0, 0.80),
+                    child: Row(
+                      children: [
+                        Icon(controller.value >= 1
+                            ? Icons.arrow_upward_rounded
+                            : Icons.arrow_downward_rounded),
+                        Text(
+                          controller.value >= 1
+                              ? " Release to refresh"
+                              : " Pull down to refresh",
+                          style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textDark),
+                        ),
+                      ],
+                    ),
+                  ),
+              }),
+        Transform.translate(
+          offset: Offset(0, 80.0 * controller.value),
+          child: child,
         ),
-      ),
+      ],
     );
   }
 
   Future<void> _syncData() async {
     //refreshes the announcemnts and forces to call every last one
-    showLoading(context);
     try {
       await remoteConfig.setConfigSettings(RemoteConfigSettings(
         fetchTimeout: const Duration(seconds: 10),
@@ -152,35 +200,11 @@ class _NotificationsState extends State<Notifications> {
       await remoteConfig.fetchAndActivate();
       final rs = remoteConfig.getString(remoteUserDataKey);
       dataNotifier.value = await util.parseJsonConfig(rs);
-      Navigator.pop(context); // hide loading
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
     }
-  }
-
-  void showLoading(BuildContext context) {
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return const AlertDialog(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.dark)),
-              SizedBox(height: 8.0),
-              Text(
-                'Loading...',
-                style: TextStyle(color: AppColors.tertiary),
-              )
-            ],
-          ),
-        );
-      },
-    );
   }
 
   BoxDecoration templateContainer() {
