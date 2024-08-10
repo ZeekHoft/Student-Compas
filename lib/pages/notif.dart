@@ -5,6 +5,7 @@ import 'package:cs_compas/controllers/load_notif_calendar.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 
@@ -161,16 +162,15 @@ class _NotificationsState extends State<Notifications> {
                 color: AppColors.tertiary,
                 border: Border.all(color: AppColors.borderColor, width: 3),
                 boxShadow: [BoxShadow(offset: Offset.fromDirection(1, 3))]),
-            child: const Row(
+            child: Row(
               children: [
-                Text(
-                  "Latest",
-                  style: TextStyle(
-                      color: AppColors.dark,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Icon(
+                Text("Latest",
+                    style: GoogleFonts.bebasNeue(
+                        textStyle: const TextStyle(
+                            color: AppColors.dark,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold))),
+                const Icon(
                   Icons.new_releases_rounded,
                   size: 18,
                 )

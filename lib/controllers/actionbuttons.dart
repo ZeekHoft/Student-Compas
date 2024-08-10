@@ -1,6 +1,7 @@
 import 'package:cs_compas/controllers/color_control.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -265,14 +266,14 @@ class _ActionButtonsState extends State<ActionButtons> {
                   color: AppColors.secondary,
                   border: Border.all(color: AppColors.textDark, width: 3),
                 ),
-                child: Text(
-                  label,
-                  style: const TextStyle(
-                    color: AppColors.textDark,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
+                child: Text(label,
+                    style: GoogleFonts.bebasNeue(
+                      textStyle: const TextStyle(
+                        color: AppColors.textDark,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    )),
               ),
             ),
             Positioned(

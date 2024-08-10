@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:cs_compas/pages/home.dart';
 import 'package:cs_compas/pages/login.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final navigatorkey = GlobalKey<NavigatorState>();
 
@@ -40,6 +41,7 @@ Future main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       navigatorKey: navigatorkey,
+      theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
       routes: {
         '/': (context) => const CheckUser(),
         '/signup': (context) => const Signup(),

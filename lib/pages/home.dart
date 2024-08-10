@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
           unselectedItemColor: AppColors.textLight,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home_rounded),
               label: "Home",
               backgroundColor: AppColors.primary,
             ),
@@ -105,11 +105,12 @@ class _HomeState extends State<Home> {
               backgroundColor: AppColors.primary,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.announcement),
+              icon: Icon(Icons.announcement_rounded),
               label: "Announcements",
               backgroundColor: AppColors.primary,
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.logout_rounded), label: "Log out"),
           ],
           currentIndex: currentIndex,
           onTap: (index) async {
@@ -130,7 +131,6 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  // margin: const EdgeInsets.fromLTRB(0,
                   padding: const EdgeInsets.all(8),
                   decoration: const BoxDecoration(
                       color: AppColors.primary,
