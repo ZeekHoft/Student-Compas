@@ -62,11 +62,14 @@ class _ActionButtonsState extends State<ActionButtons> {
               onTap: () => _launchUrl(Uri.parse(officer['link']), false));
           officers.add(abOfficer);
         }
-        children.add(Wrap(
-          alignment: WrapAlignment.spaceEvenly,
-          runSpacing: 16,
-          spacing: 8,
-          children: officers,
+        children.add(Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Wrap(
+            alignment: WrapAlignment.spaceEvenly,
+            runSpacing: 16,
+            spacing: 8,
+            children: officers,
+          ),
         ));
       } else {
         // Student Information Tools and FB Pages
@@ -108,7 +111,7 @@ class _ActionButtonsState extends State<ActionButtons> {
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -194,7 +197,7 @@ class _ActionButtonsState extends State<ActionButtons> {
         Padding(
           padding: const EdgeInsets.only(right: 6, bottom: 7),
           child: SizedBox(
-            width: 100,
+            width: 98,
             height: 150,
             child: Container(
               decoration: BoxDecoration(
@@ -281,7 +284,6 @@ class _ActionButtonsState extends State<ActionButtons> {
                   height: 32,
                   width: 40,
                   child: Container(
-                    // padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         color: AppColors.tertiary,
                         border:

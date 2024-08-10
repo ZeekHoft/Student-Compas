@@ -121,117 +121,104 @@ class _HomeState extends State<Home> {
           },
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-              AppColors.backgroundColor,
-              AppColors.backgroundColor,
-            ])),
-        child: SafeArea(
-          child: IndexedStack(
-            index: currentIndex,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    // margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                        color: AppColors.primary,
-                        border: Border(
-                            bottom: BorderSide(
-                                color: AppColors.borderColor, width: 3))),
+      backgroundColor: AppColors.backgroundColor,
+      body: SafeArea(
+        child: IndexedStack(
+          index: currentIndex,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  // margin: const EdgeInsets.fromLTRB(0,
+                  padding: const EdgeInsets.all(8),
+                  decoration: const BoxDecoration(
+                      color: AppColors.primary,
+                      border: Border(
+                          bottom: BorderSide(
+                              color: AppColors.borderColor, width: 3))),
 
-                    //profile logo
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("SURNAME:",
-                                    style: TextStyle(
-                                        color: AppColors.textDark,
-                                        fontSize: 12.0)),
-                                Text(userName.toCapitalized(),
-                                    style: const TextStyle(
-                                        color: AppColors.textLight,
-                                        fontSize: 20.0)),
-                                const Text("ID NUMBER:",
-                                    style: TextStyle(
-                                        color: AppColors.textDark,
-                                        fontSize: 12.0)),
-                                Text("$idnumber ",
-                                    style: const TextStyle(
-                                        color: AppColors.textLight,
-                                        fontSize: 20.0)),
-                              ],
-                            ),
+                  //profile logo
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("SURNAME:",
+                                  style: TextStyle(
+                                      color: AppColors.neutral,
+                                      fontSize: 12.0)),
+                              Text(userName.toCapitalized(),
+                                  style: const TextStyle(
+                                      color: AppColors.textLight,
+                                      fontSize: 20.0)),
+                              const Text("ID NUMBER:",
+                                  style: TextStyle(
+                                      color: AppColors.neutral,
+                                      fontSize: 12.0)),
+                              Text("$idnumber ",
+                                  style: const TextStyle(
+                                      color: AppColors.textLight,
+                                      fontSize: 20.0)),
+                            ],
                           ),
                         ),
-                        SizedBox(
-                          height: 90,
-                          width: 90,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: ClipRRect(
-                              child: Image.asset(imagePath),
-                            ),
+                      ),
+                      SizedBox(
+                        height: 90,
+                        width: 90,
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: Image.asset(imagePath),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("PROVINCE:",
+                                  style: TextStyle(
+                                      color: AppColors.neutral,
+                                      fontSize: 12.0)),
+                              Text(province.toCapitalized(),
+                                  style: const TextStyle(
+                                      color: AppColors.textLight,
+                                      fontSize: 20.0)),
+                              const Text("COURSE & YEAR:",
+                                  style: TextStyle(
+                                      color: AppColors.neutral,
+                                      fontSize: 12.0)),
+                              Text("$course ",
+                                  style: const TextStyle(
+                                      color: AppColors.textLight,
+                                      fontSize: 20.0)),
+                            ],
                           ),
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("PROVINCE:",
-                                    style: TextStyle(
-                                        color: AppColors.textDark,
-                                        fontSize: 12.0)),
-                                Text(province.toCapitalized(),
-                                    style: const TextStyle(
-                                        color: AppColors.textLight,
-                                        fontSize: 20.0)),
-                                const Text("COURSE & YEAR:",
-                                    style: TextStyle(
-                                        color: AppColors.textDark,
-                                        fontSize: 12.0)),
-                                Text("$course ",
-                                    style: const TextStyle(
-                                        color: AppColors.textLight,
-                                        fontSize: 20.0)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
 
-                  //Bottom team mention
-                  const Expanded(
-                    child: ActionButtons(),
-                  ),
-                  const Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      "A Cs Compass & Ternary Vanguards creation 🧭",
-                    ),
-                  ),
-                ],
-              ),
-              const Calendar(),
-              const Notifications(),
-              const Login(),
-            ],
-          ),
+                //Bottom team mention
+                const Expanded(
+                  child: ActionButtons(),
+                ),
+                const Text(
+                  "A CS Compass & Ternary Vanguards creation 🧭",
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            const Calendar(),
+            const Notifications(),
+            const Login(),
+          ],
         ),
       ),
     );
