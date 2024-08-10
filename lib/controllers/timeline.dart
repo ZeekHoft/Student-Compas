@@ -149,10 +149,7 @@ class _TimelineState extends State<Timeline> {
       padding: const EdgeInsets.symmetric(vertical: 9.0),
       child: Container(
         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        decoration: BoxDecoration(
-            color: AppColors.midtone,
-            border: Border.all(color: AppColors.dark, width: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        decoration: customContainer(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -172,7 +169,7 @@ class _TimelineState extends State<Timeline> {
   Widget _buildWeekDay(String day) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(13, 0, 13, 0),
+        padding: const EdgeInsets.fromLTRB(10, 0, 13, 0),
         child: Column(
           children: [
             Text(
@@ -374,8 +371,8 @@ class _TimelineState extends State<Timeline> {
   BoxDecoration customContainer() {
     return BoxDecoration(
         color: AppColors.midtone,
-        border: Border.all(color: AppColors.dark, width: 4),
-        borderRadius: const BorderRadius.all(Radius.circular(10)));
+        border: Border.all(color: AppColors.borderColor, width: 3),
+        boxShadow: [BoxShadow(offset: Offset.fromDirection(1, 3))]);
   }
 
   String showDate() {
