@@ -60,7 +60,7 @@ class _NotificationsState extends State<Notifications> {
                   final session = value.sessions[index];
                   return Stack(
                     children: [
-                      _announcementItem(index == 0, session),
+                      AnnouncementItem(session: session, isFirst: index == 0),
                       if (index == 0) _latestTag()
                     ],
                   );
@@ -69,81 +69,6 @@ class _NotificationsState extends State<Notifications> {
             );
           },
         ),
-      ),
-    );
-  }
-
-  Widget _announcementItem(bool isFirst, Session session) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 28, 20, 0),
-      decoration: BoxDecoration(
-        color: AppColors.midtone,
-        border: Border.all(color: AppColors.borderColor, width: 4),
-        boxShadow: const [BoxShadow(offset: Offset(2, 3))],
-      ),
-      child: ExpansionTile(
-        backgroundColor: AppColors.neutral,
-        initiallyExpanded: isFirst ? true : false,
-        iconColor: AppColors.textDark,
-        collapsedIconColor: AppColors.textDark,
-        title: Text(
-          session.title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18.0,
-            color: AppColors.dark,
-          ),
-        ),
-        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-        expandedCrossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //collapsable announcements
-          //body
-          Text(
-            session.body.toString(),
-            style: const TextStyle(fontSize: 16.0, color: AppColors.dark),
-            textAlign: TextAlign.justify,
-          ),
-          //Link
-          GestureDetector(
-            onTap: () => _launchUrl(Uri.parse(session.link.toString()), false),
-            child: session.link.isEmpty
-                ? const Text("")
-                : const Text(
-                    "Click Here!",
-                    style: TextStyle(
-                      color: AppColors.primary,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-          ),
-          const SizedBox(height: 16),
-          //Sender
-          Row(
-            children: [
-              Text(
-                // Join sender names with comma
-                "From: ${session.sender.join(', ')}",
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  color: AppColors.dark,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const Spacer(),
-              //date
-              Text(
-                "${session.dateTimeFrom.year.toString()}/${session.dateTimeFrom.month.toString()}/${session.dateTimeFrom.day.toString()} | ${session.dateTimeFrom.hour.toString()}:${session.dateTimeFrom.minute.toString()}",
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  color: AppColors.dark,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
-            ],
-          ),
-        ],
       ),
     );
   }
@@ -252,6 +177,109 @@ class _NotificationsState extends State<Notifications> {
         print(e);
       }
     }
+  }
+}
+
+class AnnouncementItem extends StatefulWidget {
+  final Session session;
+  final bool isFirst;
+
+  const AnnouncementItem(
+      {super.key, required this.session, required this.isFirst});
+
+  @override
+  State<AnnouncementItem> createState() => _AnnouncementItemState();
+}
+
+class _AnnouncementItemState extends State<AnnouncementItem> {
+  final double _turnDegrees = 1.0 / 8.0;
+  late double _turns = widget.isFirst ? _turnDegrees : 0.0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 28, 20, 0),
+      decoration: BoxDecoration(
+        color: AppColors.midtone,
+        border: Border.all(color: AppColors.borderColor, width: 4),
+        boxShadow: const [BoxShadow(offset: Offset(2, 3))],
+      ),
+      child: ExpansionTile(
+        backgroundColor: AppColors.neutral,
+        initiallyExpanded: widget.isFirst ? true : false,
+        iconColor: AppColors.textDark,
+        collapsedIconColor: AppColors.textDark,
+        onExpansionChanged: (value) {
+          setState(() {
+            _turns += _turnDegrees;
+          });
+        },
+        trailing: AnimatedRotation(
+          curve: Curves.easeInOutBack,
+          turns: _turns,
+          duration: const Duration(milliseconds: 500),
+          child: const Icon(Icons.add),
+        ),
+        title: Text(
+          widget.session.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+            color: AppColors.dark,
+          ),
+        ),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //collapsable announcements
+          //body
+          Text(
+            widget.session.body.toString(),
+            style: const TextStyle(fontSize: 16.0, color: AppColors.dark),
+            textAlign: TextAlign.justify,
+          ),
+          //Link
+          GestureDetector(
+            onTap: () =>
+                _launchUrl(Uri.parse(widget.session.link.toString()), false),
+            child: widget.session.link.isEmpty
+                ? const Text("")
+                : const Text(
+                    "Click Here!",
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+          ),
+          const SizedBox(height: 16),
+          //Sender
+          Row(
+            children: [
+              Text(
+                // Join sender names with comma
+                "From: ${widget.session.sender.join(', ')}",
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: AppColors.dark,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const Spacer(),
+              //date
+              Text(
+                "${widget.session.dateTimeFrom.year.toString()}/${widget.session.dateTimeFrom.month.toString()}/${widget.session.dateTimeFrom.day.toString()} | ${widget.session.dateTimeFrom.hour.toString()}:${widget.session.dateTimeFrom.minute.toString()}",
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: AppColors.dark,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   void _launchUrl(Uri uri, bool inAPP) async {
