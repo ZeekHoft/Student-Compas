@@ -76,7 +76,7 @@ class _ActionButtonsState extends State<ActionButtons> {
         // Student Information Tools and FB Pages
         List<Widget> section = [];
         for (Map<String, dynamic> item in content[title]!) {
-          var actionButton = _actionButtonPages(
+          var actionButton = _ActionButtonPage(
               imageUrl: item['imageUrl'],
               labelImage: item['labelImage'],
               onTap: () => _launchUrl(Uri.parse(item['link']), false));
@@ -125,49 +125,6 @@ class _ActionButtonsState extends State<ActionButtons> {
               children: children,
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _actionButtonPages({
-    // attributes for action button
-    //required parameters for orginal widget
-    required String imageUrl,
-    required String labelImage,
-    required VoidCallback onTap, // requires a GestureDetector
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                clipBehavior: Clip.antiAlias,
-                foregroundDecoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderColor, width: 3),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Image.asset(
-                  imageUrl,
-                  errorBuilder: (context, error, stackTrace) => const Center(
-                    child: Icon(Icons.error),
-                  ),
-                ),
-              ),
-            ),
-            Text(
-              labelImage,
-              style: const TextStyle(
-                color: AppColors.textDark,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-            )
-          ],
         ),
       ),
     );
@@ -309,6 +266,68 @@ class _ActionButtonsState extends State<ActionButtons> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+// Button with label that redirects on tap
+class _ActionButtonPage extends StatefulWidget {
+  final String imageUrl;
+  final String labelImage;
+  final VoidCallback onTap;
+  const _ActionButtonPage(
+      {required this.imageUrl, required this.labelImage, required this.onTap});
+
+  @override
+  State<_ActionButtonPage> createState() => __ActionButtonPageState();
+}
+
+class __ActionButtonPageState extends State<_ActionButtonPage> {
+  bool _pressing = false;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTapDown: (details) => setState(() => _pressing = true),
+              onTapUp: (value) => setState(() => _pressing = false),
+              onTapCancel: () => setState(() => _pressing = false),
+              onTap: widget.onTap,
+              child: AnimatedPadding(
+                padding: EdgeInsets.all(_pressing ? 4 : 0),
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.elasticOut,
+                child: Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  clipBehavior: Clip.antiAlias,
+                  foregroundDecoration: BoxDecoration(
+                      border:
+                          Border.all(color: AppColors.borderColor, width: 3),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Image.asset(
+                    widget.imageUrl,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Icon(Icons.error),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Text(
+            widget.labelImage,
+            style: const TextStyle(
+              color: AppColors.textDark,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          )
+        ],
       ),
     );
   }
