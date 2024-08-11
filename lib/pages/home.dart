@@ -43,8 +43,8 @@ class _HomeState extends State<Home> {
   final courseImages = {
     'BSCS': 'assets/CS.png',
     'BSIT': 'assets/IT.png',
-    'BSLISSO': 'assets/lissoPage.jpg',
-    'BSDMIA': 'assets/dmiaPage.jpg',
+    'BSLISSO': 'assets/LISSO.png',
+    'BSDMIA': 'assets/DMIA.png',
   };
 
   Future<void> _getEmail() async {
