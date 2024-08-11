@@ -56,7 +56,7 @@ class _ActionButtonsState extends State<ActionButtons> {
       if (title == "CCS Council Officers") {
         List<Widget> officers = [];
         for (Map<String, dynamic> officer in content[title]!) {
-          var abOfficer = _actionButtonPagesOfficers(
+          var abOfficer = _ActionButtonOfficer(
               imageUrl: officer['imageUrl'],
               position: officer['position'],
               labelImage: officer['labelImage'],
@@ -130,83 +130,6 @@ class _ActionButtonsState extends State<ActionButtons> {
     );
   }
 
-  Widget _actionButtonPagesOfficers({
-    // attributes for action button
-    //required parameters for orginal widget
-    required String imageUrl,
-    required String position,
-    required String labelImage,
-    required VoidCallback onTap, // requires a GestureDetector
-  }) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: const ShapeDecoration(
-                  shape: BeveledRectangleBorder(
-                      side:
-                          BorderSide(color: AppColors.borderColor, width: 1.5),
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(7),
-                          bottomLeft: Radius.circular(7))),
-                  color: AppColors.primary)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 6, bottom: 7),
-          child: SizedBox(
-            width: 98,
-            height: 150,
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.midtone,
-                border: Border.all(color: AppColors.textDark, width: 2),
-              ),
-              child: GestureDetector(
-                onTap: onTap,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: AppColors.borderColor, width: 2)),
-                        child: Image.asset(
-                          imageUrl,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Center(
-                            child: Icon(Icons.error),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(position,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: AppColors.textDark,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          )),
-                      Text(
-                        labelImage,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: AppColors.textDark,
-                          fontSize: 14,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _titleActionButtons({required String label}) {
     return Padding(
       padding: const EdgeInsets.only(top: 32, bottom: 16),
@@ -271,6 +194,156 @@ class _ActionButtonsState extends State<ActionButtons> {
   }
 }
 
+class _ActionButtonOfficer extends StatefulWidget {
+  // attributes for action button
+  //required parameters for orginal widget
+  final String imageUrl;
+  final String position;
+  final String labelImage;
+  final VoidCallback onTap; // requires a GestureDetector
+
+  const _ActionButtonOfficer({
+    required this.imageUrl,
+    required this.position,
+    required this.labelImage,
+    required this.onTap,
+  });
+
+  @override
+  State<_ActionButtonOfficer> createState() => __ActionButtonOfficerState();
+}
+
+class __ActionButtonOfficerState extends State<_ActionButtonOfficer> {
+  final double _itemWidth = 95;
+  final double _itemHeight = 150;
+  final double _sideLength = 7;
+  final _duration = const Duration(milliseconds: 300);
+  final _curve = Curves.easeOutCubic;
+
+  // variable for animation
+  late double _animationValue = _sideLength;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: _itemWidth + _sideLength,
+      height: _itemHeight + _sideLength,
+      child: GestureDetector(
+        onTapDown: (details) => setState(() => _animationValue = 0),
+        onTapUp: (value) => setState(() => _animationValue = _sideLength),
+        onTapCancel: () => setState(() => _animationValue = _sideLength),
+        onTap: () async {
+          // Wait for animation to complete
+          setState(() => _animationValue = 0);
+          await Future.delayed(_duration);
+          setState(() => _animationValue = _sideLength);
+          widget.onTap();
+        },
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.bottomRight,
+          children: [
+            // Bottom container
+            AnimatedPositioned(
+              duration: _duration,
+              curve: _curve,
+              right: _animationValue,
+              child: Transform(
+                transform: Matrix4.skewX(0.79),
+                child: AnimatedContainer(
+                  duration: _duration,
+                  curve: _curve,
+                  width: _itemWidth,
+                  height: _animationValue,
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    border: Border(
+                      bottom:
+                          BorderSide(color: AppColors.borderColor, width: 3),
+                      left: BorderSide(color: AppColors.borderColor, width: 3),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // Right container
+            AnimatedPositioned(
+              duration: _duration,
+              curve: _curve,
+              bottom: _animationValue,
+              child: Transform(
+                transform: Matrix4.skewY(0.78),
+                child: AnimatedContainer(
+                  duration: _duration,
+                  curve: _curve,
+                  width: _animationValue,
+                  height: _itemHeight,
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    border: Border(
+                      right: BorderSide(color: AppColors.borderColor, width: 3),
+                      top: BorderSide(color: AppColors.borderColor, width: 3),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: _duration,
+              curve: _curve,
+              bottom: _animationValue,
+              right: _animationValue,
+              child: SizedBox(
+                width: _itemWidth,
+                height: _itemHeight,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.midtone,
+                      border:
+                          Border.all(color: AppColors.borderColor, width: 3)),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: AppColors.borderColor, width: 2))),
+                        child: Image.asset(
+                          widget.imageUrl,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Center(
+                            child: Icon(Icons.error),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(widget.position,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: AppColors.textDark,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          )),
+                      Text(
+                        widget.labelImage,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: AppColors.textDark,
+                          fontSize: 14,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 // Button with label that redirects on tap
 class _ActionButtonPage extends StatefulWidget {
   final String imageUrl;
@@ -296,11 +369,17 @@ class __ActionButtonPageState extends State<_ActionButtonPage> {
               onTapDown: (details) => setState(() => _pressing = true),
               onTapUp: (value) => setState(() => _pressing = false),
               onTapCancel: () => setState(() => _pressing = false),
-              onTap: widget.onTap,
+              onTap: () async {
+                // Wait for animation to complete
+                setState(() => _pressing = true);
+                await Future.delayed(const Duration(milliseconds: 300));
+                setState(() => _pressing = false);
+                widget.onTap();
+              },
               child: AnimatedPadding(
                 padding: EdgeInsets.all(_pressing ? 4 : 0),
                 duration: const Duration(milliseconds: 300),
-                curve: Curves.elasticOut,
+                curve: Curves.easeOutCubic,
                 child: Container(
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
