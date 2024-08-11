@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
     String userName = getUserNameFromEmail(email);
     String coursePrefix = course.split('-')[0];
 
-    String imagePath = courseImages[coursePrefix] ?? 'assets/pngCompass.png';
+    String imagePath = courseImages[coursePrefix] ?? 'assets/OTHER.png';
 
     return Scaffold(
       bottomNavigationBar: Container(
