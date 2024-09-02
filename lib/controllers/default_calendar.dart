@@ -157,17 +157,14 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
 
   Widget _buildWeekDay(String day) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 0, 13, 0),
-        child: Column(
-          children: [
-            Text(
-              day,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: AppColors.textLight),
-            ),
-          ],
-        ),
+      child: Column(
+        children: [
+          Text(
+            day,
+            style: const TextStyle(
+                fontWeight: FontWeight.bold, color: AppColors.textLight),
+          ),
+        ],
       ),
     );
   }
