@@ -142,13 +142,13 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            _buildWeekDay('Sun'),
             _buildWeekDay('Mon'),
             _buildWeekDay('Tue'),
             _buildWeekDay('Wed'),
             _buildWeekDay('Thu'),
             _buildWeekDay('Fri'),
             _buildWeekDay('Sat'),
-            _buildWeekDay('Sun'),
           ],
         ),
       ),
@@ -208,13 +208,13 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
     // Calculate varisu details for the months display
     int daysInMonth = DateTime(month.year, month.month + 1, 0)
         .day; //creating a DateTime object for the first day of the next month and extracting the day component, the code calculates the number of days in the current month.
-    DateTime firstDayOfMonth = DateTime(month.year, month.month, 1);
+    DateTime firstDayOfMonth = DateTime(month.year, month.month, 2);
     int weekdayOfFirstDay = firstDayOfMonth
         .weekday; // determines the weekday of the first day of the specified month.
 
     // ignore: non_constant_identifier_names
     DateTime LastDayOfPreviousMonth =
-        firstDayOfMonth.subtract(const Duration(days: 1));
+        firstDayOfMonth.subtract(const Duration(days: 2));
     int daysInPreviousMonth = LastDayOfPreviousMonth.day;
 
     return Container(
@@ -225,7 +225,7 @@ class _DefaultCalendarState extends State<DefaultCalendar> {
           childAspectRatio: 0.5,
         ),
         // Calculating the total number of cells required in the grid
-        itemCount: daysInMonth + weekdayOfFirstDay - 2,
+        itemCount: daysInMonth + weekdayOfFirstDay - 1,
         itemBuilder: (context, index) {
           if (index < weekdayOfFirstDay - 1) {
             DateTime date = DateTime(
