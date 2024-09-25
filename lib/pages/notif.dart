@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+import 'package:cs_compas/pages/create_announcement.dart';
 
 const remoteUserDataKey = "announcements";
 
@@ -68,6 +69,22 @@ class _NotificationsState extends State<Notifications> {
               ),
             );
           },
+        ),
+        floatingActionButton: Builder(
+          builder: (context) => FloatingActionButton(
+            mini: true,
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CreateAnnouncement()));
+            },
+            backgroundColor: AppColors.dark,
+            child: const Icon(
+              Icons.add,
+              color: AppColors.tertiary,
+            ),
+          ),
         ),
       ),
     );

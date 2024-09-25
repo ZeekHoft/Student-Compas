@@ -1,15 +1,45 @@
 {
-    "title": "Important Update",
-    "startsAt": "2024-07-01",
+    "title": "New Feature Update!",
+    "startsAt": "2024-08-15",
     "sessions": [
         {
             "id": "Announcement",
-            "dateTimeFrom": "2024-07-13",
-            "title": "Welcom to CS Compass",
-            "body": "Hello User! We are happy that you're using the app developed by the students /n of CCS, The purpose of this app is to guide you so use well, Enjoy /n your time here in CPU!!!",
-            "link": "https://www.youtube.com",
+            "link": "",
+            "title": "Start of Online Classes",
+            "dateTimeFrom": "2024-09-05T08:26:00Z",
+            "body": "Online classes will start on September 6th to 15th due to the bar exam thank you and please comply.",
             "sender": [
-                "support"
+                "Asst Secretary"
+            ]
+        },
+        {
+            "id": "Announcement",
+            "link": "",
+            "title": "Long weekend",
+            "dateTimeFrom": "2024-08-22T22:26:00Z",
+            "body": "Enjoy your long weekend as of 23 to 26 there will be no school!",
+            "sender": [
+                "Asst Secretary"
+            ]
+        },
+        {
+            "id": "Announcement",
+            "link": "",
+            "title": "Campus Tour for Freshmen",
+            "dateTimeFrom": "2024-08-15T20:53:00Z",
+            "body": "We are having our CAMPUS TOUR tomorrow August 16, 2024, call time is 9:30am, assembly area will be on MT and the event proper or CPUR orientation will take place at RMA at 1:00 PM",
+            "sender": [
+                "Asst Secretary"
+            ]
+        },
+        {
+            "id": "Announcement",
+            "link": "https://www.youtube.com/watch?v=xvFZjo5PgG0",
+            "title": "Welcome to CS Compass",
+            "dateTimeFrom": "2024-08-15T10:30:00Z",
+            "body": "Hello Students!!! We are happy that you're using the app developed by the students of CCS, The purpose of this app is to guide you, so use well, Enjoy your time here in CPU!!!",
+            "sender": [
+                "Developers"
             ]
         }
     ]
