@@ -24,7 +24,7 @@ Future main() async {
     }
   }
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
-  OneSignal.initialize("71aac144-6b13-4bcd-ad79-f8e9fdc111b0");
+  OneSignal.initialize("Api key");
   OneSignal.Notifications.requestPermission(true);
 
   OneSignal.Notifications.addClickListener((event) {
